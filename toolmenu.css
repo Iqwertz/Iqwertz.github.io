@@ -1,0 +1,98 @@
+:root {
+    --Grid-Size:100px;
+}
+
+.ToolMenuContainer{
+    position: absolute;
+    top: calc(50% - var(--Grid-Size) / 2 - 20px);
+    left: calc(50% - var(--Grid-Size) / 2 - 90px);
+}
+
+
+.ToolIcon{
+    padding: 20px;
+    height: 20px;
+    width: 20px;
+    border-radius: 40px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background: rgb(89,0,255);
+    background: linear-gradient(180deg, rgba(89,0,255,1) 0%, rgba(33,33,33,1) 100%);
+    color: #fff;
+    font-size: 20px;
+    transition: border-radius 0.5s;
+    box-shadow: 5px 5px 10px #000;
+}
+
+.ToolClear{
+    margin-top: 20px;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 40px;
+    padding: 20px;
+    font-size: 20px;
+    color: #fff;
+    background: rgb(255,46,0);
+    background: linear-gradient(144deg, rgba(255,46,0,1) 0%, rgba(131,0,0,1) 100%);
+    box-shadow: 5px 5px 10px #000;
+}
+
+.SubMenu{
+    padding: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: #212121;
+    color: #fff;
+    font-size: 16px;
+    border-top: 2px solid;
+    border-color: #3b3b3b;
+    animation-fill-mode: forwards;
+    box-shadow: 5px 5px 10px #000;
+}
+
+.SubMenu:last-child{
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    background: rgb(89,0,255);
+    background: linear-gradient(0deg, rgba(89,0,255,1) 0%, rgba(33,33,33,1) 100%);
+}
+
+.SubMenu:hover{
+    color: #ff8989 !important;
+}
+
+@media screen and (max-width:736px) {
+    .ToolMenuContainer{
+        top: 420px;
+        left: 140px;
+        transform: rotate(-90deg);
+    }
+    .SubMenu:first-child{
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+    }
+
+    .SubMenu{
+        background: rgb(89,0,255);
+        background: linear-gradient(90deg, rgba(89,0,255,1) 0%, rgba(33,33,33,1) 100%) !important;
+        box-shadow: -5px 5px 10px #000;
+        border: 0px;
+    }
+
+    .SubMenu > i {
+        transform: rotate(90deg);
+    }
+
+    .ToolClear > i{
+        transform: rotate(270deg) scale(1,-1);
+    }
+    
+    .ToolClear {
+        top: 30px;
+    }
+    .ToolIcon{
+        display: none;
+
+    }
+}

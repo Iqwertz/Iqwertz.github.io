@@ -1,0 +1,102 @@
+.ColorBar{
+    position: absolute;
+    bottom: 10px;
+    left: calc(50% - 250px);
+    height: 50px;
+    width: 500px;
+    background-color: #212121;
+    border-radius: 20px;
+    display: flex;
+    box-shadow: 5px 5px 10px #000;
+}
+
+.ColorTap{
+    position: relative;
+    margin: 5px;
+    height: 40px;
+    width: 40px;
+    background-color: #d3d3d3;
+    border-radius: 24px;
+}
+
+#ColorTab0{
+    background: rgb(9,255,0);
+    background: linear-gradient(135deg, rgba(9,255,0,1) 0%, rgba(0,219,255,1) 25%, rgba(222,0,255,1) 50%, rgba(255,0,69,1) 75%, rgba(255,218,0,1) 100%);
+    color: #fff;
+    box-shadow: 0px 0px 15px;
+}
+
+.ColorPickerContainer{
+    display: none;
+    z-index: 2;
+    position: absolute;
+    bottom: 70px;
+    left: -25px;
+    width: 120px;
+    height: 170px;
+    background-color: #212121; 
+    border-radius: 20px;
+    border: 2px solid;
+    box-shadow: 0px 0px 10px;
+}
+
+.pointer{
+    z-index: 1;
+    position: relative;
+    left: 30px;
+    bottom: -5px;
+    width: 40px;
+    height: 40px;
+    background-color: #212121;
+    transform: rotate(45deg);
+    border-radius: 10px;
+}
+
+.ColorPicker{
+    z-index: 3;
+    position: relative;
+    left: 10px;
+    top: 10px;
+}
+
+.MobileColorBar{
+    display: none;
+}
+
+@media screen and (max-width:736px) {
+    .ColorBar{
+        display: none;
+    }
+    .MobileColorBar{
+        position: relative;
+        margin: 3px;
+        margin-bottom: 7px;
+        top: calc(var(--Grid-Size) + 70px);
+        left: 5px;
+        height: 50px;
+        width: calc(100% - 20px);
+        background-color: #212121;
+        border-radius: 20px;
+        display: flex;
+        box-shadow: 5px 5px 10px #000;
+    }
+    
+    .MobileColorPickerContainer{
+    display: none;
+    z-index: 2;
+    position: absolute;
+    bottom: 70px;
+    left: 2px;
+    width: 120px;
+    height: 170px;
+    background-color: #212121; 
+    border-radius: 15px;
+    border: 2px solid;
+    box-shadow: 0px 0px 10px;
+}
+    
+    .MobileColorPickerContainer > .pointer{
+        left: 5px;
+        width: 35px;
+    }
+}
