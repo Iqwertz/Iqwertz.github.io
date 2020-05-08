@@ -1,0 +1,31 @@
+// Size.
+	$size: (
+        element-height: 4rem,
+		border-radius:		7px,
+		border-width:		3px,
+        chartcontainer-width: 65%,
+	);
+
+// Font.
+	$font: (
+		family:				('Source Sans Pro', Arial, Helvetica, sans-serif),
+		family-fixed:		('Courier New', monospace),
+		weight:				300,
+		weight-bold:		700,
+	);
+
+// Palette.
+	$palette: (
+		bg:					#1D1D23,
+		bg-dark:			#131317,
+
+		accent1:			#35FF83 , 
+		accent1-hover:		saturate(lighten(#549AC1, 3), 8),
+		accent1-alt:		desaturate(darken(#35FF83 , 5), 8),
+		accent1-dark:		saturate(darken(#35FF83 , 18), 3),
+		accent2:			#549AC1,
+        accent3:            #7549e0,
+        accent3-alt:        #482991,
+        
+        font-color:         #222222
+	);
