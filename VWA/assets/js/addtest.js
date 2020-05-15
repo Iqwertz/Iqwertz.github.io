@@ -2,16 +2,33 @@ var AddingTest = false;
 var BleAddTestSendArray = [];
 var LastAddedData = "";
 var BleSendDataIndex = 0;
-var BleSendDelay = 2000;
+//var BleSendDelay = 0;
 var BleSendTestMode;
 
 app.controller('AddTest', function($scope) {
     $scope.Name="";
 
-    $scope.parameter = [{Name: "Infill", Value: 15, Unit: "%"},{Name: "Layer Height", Value: 0.5, Unit: "mm"},{Name: "Nozzle Temperatur", Value: 200, Unit: "°"}];
+    $scope.InfillTypeOptions = ["Rectilinear", "Grid", "Triangles", "Stars", "Cubic", "Line", "Concentric", "Honeycomb", "3d Honeycomb", "Gyroid", "Hilbert Curve", "Archimedean Chords", "Octagram Spiral"];
+    $scope.InfillType = "Gyroid";
+
+    $scope.MaterialTypeOptions = ["PLA", "PETG", "PET", "ABS", "TPU", "PC", "NYLON", "ASA"];
+    $scope.MaterialType = "PLA";
+
+    $scope.parameter = [
+        {Name: "Infill", Value: 15, Unit: "%"},
+        {Name: "Layer Height", Value: 0.3, Unit: "mm"},
+        {Name: "First Layer Height", Value: 0.3, Unit: "mm"},
+        {Name: "Nozzle Size", Value: 0.5, Unit: "mm"},
+        {Name: "Bed Temperatur", Value: 70, Unit: "°"},
+        {Name: "Nozzle Temperatur", Value: 200, Unit: "°"},
+        {Name: "Vertical Shells", Value: 3, Unit: ""},
+        {Name: "Top Layers", Value: 3, Unit: ""},
+        {Name: "Bottom Layers", Value: 3, Unit: ""}
+    ];
 
     $scope.TestModes = ["Slow Test (M10)", "Fast Test (M13)"];
     $scope.SelectedMode;
+
 
     $scope.Notes="";
 
@@ -28,7 +45,7 @@ app.controller('AddTest', function($scope) {
     }
 
     $scope.StartTest = function(){
-        
+
         if($scope.Name!="" && $scope.SelectedMode!=null){
             var Mode;
             if($scope.SelectedMode==$scope.TestModes[0]){
@@ -36,12 +53,24 @@ app.controller('AddTest', function($scope) {
             } else if ($scope.SelectedMode==$scope.TestModes[1]){
                 Mode="M13";
             }
-                   $scope.$parent.ControllerInterface=true;
+            $scope.Sending=true;
+            $scope.parameter.unshift({Name: "Infill Type", Value: $scope.InfillType , Unit: ""});
+            $scope.parameter.unshift({Name: "Material", Value: $scope.MaterialType, Unit: ""});
+
             BleStartNewTest($scope.Name, $scope.parameter, Mode, $scope.Notes);
         }else{
             alert("Please Select Test Mode and set Name")
         }
     }
+
+    $scope.ExitStartTest =function(){
+        BleSendDataIndex = 0
+        $scope.Sending=false;
+        $scope.$parent.ControllerInterface=true;
+    }
+
+    $scope.SendingStatus=0;
+    $scope.Sending=false;
 });  
 
 
@@ -58,12 +87,11 @@ function BleStartNewTest(Name, Parameter, TestMode, Notes){
     BleAddTestSendArray.push('"TestMode": "' + TestMode + '",');
     BleAddTestSendArray.push('"Notes": "' + Notes + '"');
     BleAddTestSendArray.push('},');
-   // BleAddTestSendArray.push('}');
-    
+    // BleAddTestSendArray.push('}');
+
     BleSendTestMode = TestMode;
     AddingTest=true;
     BleSendTestData();
-    
 }
 
 function BleSendTestData(respons){
@@ -72,14 +100,18 @@ function BleSendTestData(respons){
             send(BleAddTestSendArray[BleSendDataIndex]);
         }else{
             if(respons==BleAddTestSendArray[BleSendDataIndex]){
-                send("OK");
+                //   send("OK");
                 BleSendDataIndex++;
                 if(BleSendDataIndex==BleAddTestSendArray.length){
-                    setTimeout(function () {send("END "+BleSendTestMode)},BleSendDelay);
+                    send("OKEND "+BleSendTestMode);
+                    //setTimeout(function () {send("END "+BleSendTestMode)},BleSendDelay);
                     AddingTest=false;
+                    var scope = angular.element(document.getElementById("NewTest")).scope();
+                    scope.ExitStartTest();
                 }else{
                     console.log("Delay");
-                    setTimeout(function () {send(BleAddTestSendArray[BleSendDataIndex])},BleSendDelay);
+                    send("OK"+BleAddTestSendArray[BleSendDataIndex]);
+                    //setTimeout(function () {send(BleAddTestSendArray[BleSendDataIndex])},BleSendDelay);
                 }
             }else{
                 send("FALSE");
@@ -88,6 +120,7 @@ function BleSendTestData(respons){
     }else{
         send("NEW");
     }
+    SetSendStat((BleSendDataIndex*100)/ BleAddTestSendArray.length);
 }
 
 function GetDateTime() {
@@ -115,4 +148,11 @@ function GetDateTime() {
     }   
     var dateTime = year+'/'+month+'/'+day+' '+hour+':'+minute+':'+second;   
     return dateTime;
+}
+
+function SetSendStat(Percent){
+    var scope = angular.element(document.getElementById("NewTest")).scope();
+    scope.$apply(function(){
+        scope.SendingStatus = Math.round(Percent);
+    })
 }

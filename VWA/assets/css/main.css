@@ -61,7 +61,7 @@ input[type="reset"],
 input[type="button"],
 button,
 .button {
-  background-color: #7549e0;
+  background-color: #56ff83;
   border-radius: 7px;
   border: 0;
   color: !important;
@@ -85,13 +85,13 @@ button,
   input[type="button"]:hover,
   button:hover,
   .button:hover {
-    background-color: #67a5c8; }
+    background-color: #f3f3f3; }
   input[type="submit"]:active,
   input[type="reset"]:active,
   input[type="button"]:active,
   button:active,
   .button:active {
-    background-color: #549AC1; }
+    background-color: #e6e6e6; }
   input[type="submit"].primary,
   input[type="reset"].primary,
   input[type="button"].primary,
@@ -165,7 +165,7 @@ button,
 
 input[type=text],
 input[type=number] {
-  background-color: #549AC1;
+  background-color: #e6e6e6;
   border: 0;
   border-radius: 7px;
   height: 2rem;
@@ -188,7 +188,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 select {
   margin: 15px;
-  background-color: #549AC1;
+  background-color: #e6e6e6;
   border: 0;
   border-radius: 7px;
   height: 2.8rem;
@@ -364,6 +364,17 @@ h1 {
           width: 3vw; }
       .ParameterList .ParaCon .ParameterItem.Unit {
         margin-right: 1.4em; }
+      .ParameterList .ParaCon .ParameterItem.Dropdown {
+        margin: 5px -40px; }
+        .ParameterList .ParaCon .ParameterItem.Dropdown select {
+          margin: 0;
+          font-size: 1.1vw;
+          border-radius: 7px;
+          height: 1.6rem;
+          background-color: rgba(227, 227, 227, 0.95);
+          width: 9.8vw;
+          border: 0px;
+          padding: 0 5px; }
     .ParameterList .ParaCon.Header {
       border-bottom: 3px solid #35FF83; }
       .ParameterList .ParaCon.Header .PH {
@@ -383,6 +394,18 @@ h1 {
         background-color: #e0e0e0;
         font-size: 1.2vw;
         border-radius: 7px; }
+
+.LoadingScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  font-size: 1.5em;
+  color: #fff;
+  padding-top: 50%; }
 
 @media screen and (max-width: 736px) {
   .ParameterList .ParaCon .ParameterItem.Name {
