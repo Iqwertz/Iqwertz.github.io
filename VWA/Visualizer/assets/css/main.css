@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Muli:wght@300&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("../Bg.jpg");
+  background-size: cover;
+  font-family: "Muli", sans-serif; }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #262626 #e2e2e2; }
+
+*::-webkit-scrollbar {
+  width: 12px; }
+
+*::-webkit-scrollbar-track {
+  background: #262626;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px; }
+
+*::-webkit-scrollbar-thumb {
+  background-color: #e2e2e2;
+  border-radius: 20px;
+  border: 3px solid #262626; }
+
+.SelectDataPreview {
+  position: absolute;
+  width: 100%;
+  height: 100%; }
+
+.SelectDataPreviewOverlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.62); }
+
+.SelectContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  color: #fff;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 2em; }
+  .SelectContainer input[type=file] {
+    visibility: hidden; }
+  .SelectContainer button {
+    margin: 40px 20px;
+    height: 50px;
+    width: 220px;
+    background-color: #5367ff;
+    border: 0;
+    border-radius: 15px;
+    font-size: 0.6em;
+    transition: background-color .5s; }
+  .SelectContainer button:hover {
+    background-color: #53a9ff; }
+  .SelectContainer button:active {
+    background-color: #53ff60; }
+
+.VisualizerContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%; }
+  .VisualizerContainer .Chart {
+    position: absolute;
+    width: 65%;
+    height: 80%;
+    top: 10%;
+    left: 30px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #262626; }
+  .VisualizerContainer .TestData {
+    position: relative;
+    display: float;
+    width: 25%;
+    height: 80%;
+    top: 10%;
+    float: right;
+    margin-right: 30px;
+    border-radius: 20px;
+    background-color: #262626;
+    overflow-y: auto;
+    overflow-x: hidden; }
+  .VisualizerContainer .Back {
+    top: 5px;
+    left: 10px;
+    position: absolute;
+    color: #e2e2e2;
+    font-size: 3em; }
+
+.SelectTest {
+  cursor: default;
+  transition: transform ease-in-out 1.5s; }
+  .SelectTest {
+    scrollbar-width: thin;
+    scrollbar-color: #262626 #e2e2e2; }
+  .SelectTest::-webkit-scrollbar {
+    width: 12px; }
+  .SelectTest::-webkit-scrollbar-track {
+    background: #262626;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px; }
+  .SelectTest::-webkit-scrollbar-thumb {
+    background-color: #e2e2e2;
+    border-radius: 20px;
+    border: 3px solid #262626; }
+  .SelectTest h1 {
+    color: #e2e2e2;
+    text-align: center; }
+  .SelectTest .TestItem {
+    box-sizing: border-box;
+    position: relative;
+    width: 80%;
+    height: 30px;
+    left: 10%;
+    top: 15px;
+    border-radius: 5px;
+    background-color: #e2e2e2;
+    color: #121212;
+    font-size: 1.2em;
+    padding: 3px 10px;
+    margin: 10px 0;
+    overflow-x: hidden;
+    transition: background-color .5s; }
+    .SelectTest .TestItem::-webkit-scrollbar {
+      width: 12px; }
+    .SelectTest .TestItem::-webkit-scrollbar-track {
+      background: #262626;
+      border-radius: 4px; }
+    .SelectTest .TestItem::-webkit-scrollbar-thumb {
+      background-color: #e2e2e2;
+      border-radius: 20px;
+      border: 2px solid #262626; }
+  .SelectTest .TestItem:hover {
+    background-color: #c9c9c9; }
+
+.MetaData {
+  transform: translate(130%, 0);
+  transition: transform ease-in-out 1.5s; }
+  .MetaData h1 {
+    color: #e2e2e2;
+    text-align: center; }
+  .MetaData i {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3em;
+    color: #e2e2e2; }
+  .MetaData .TestItem {
+    box-sizing: border-box;
+    position: relative;
+    width: 80%;
+    height: 30px;
+    left: 10%;
+    top: 15px;
+    border-radius: 5px;
+    background-color: #e2e2e2;
+    color: #121212;
+    font-size: 1.2em;
+    padding: 3px 10px;
+    margin: 10px 0;
+    overflow-x: hidden; }
+    .MetaData .TestItem::-webkit-scrollbar {
+      width: 12px; }
+    .MetaData .TestItem::-webkit-scrollbar-track {
+      background: #262626;
+      border-radius: 4px; }
+    .MetaData .TestItem::-webkit-scrollbar-thumb {
+      background-color: #e2e2e2;
+      border-radius: 20px;
+      border: 2px solid #262626; }
+    .MetaData .TestItem.Parameter {
+      left: 15%;
+      font-size: 1.1em; }
+
+.SelectTestMove {
+  transform: translateX(-130%); }
+
+.BreakpointContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%; }
+  .BreakpointContainer .Chart {
+    position: absolute;
+    width: 90%;
+    height: 80%;
+    top: 10%;
+    left: 3.5%;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #262626; }
+  .BreakpointContainer .Back {
+    top: 5px;
+    left: 10px;
+    position: absolute;
+    color: #e2e2e2;
+    font-size: 3em; }
+
+/*# sourceMappingURL=main.css.map */
