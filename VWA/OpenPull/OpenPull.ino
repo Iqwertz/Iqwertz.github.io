@@ -1,4 +1,3 @@
-
 /*########################################
   ##### OPEN PULL
   ##### DIY Universal Test Machnine, with ble and sd-card
@@ -29,6 +28,8 @@ const int BreakMin = 10; //When the Value is smaller than this the test gets abo
 
 long tareValue;
 
+float SdWriteIntervall = .5;
+bool WriteWhenTighten = true;  //When enabled the Data will be written to the Sd only when the sample is tightend (Force gets applied)
 int TestStopDifferenz = 200;
 ////// Stepper Variables
 
@@ -70,9 +71,11 @@ bool debug = false; //debug mode to test the remote
 bool WriteToSD = false;
 bool SdInserted = false;
 float MeasurmentMaxValue = 0;
+float BreakPoint = 0;
 const int LastMaxValuesSize = 5;    //Amount of the Last Values
 float LastMaxValues[LastMaxValuesSize]; //Circular Buffer of the Last Max Values
 byte LastMaxValuesIndex = 0;
+bool AutoAbort = true;
 
 /////Library Config
 Hx711 loadCell(A1, A2);
@@ -171,6 +174,10 @@ void loop() {
       mode = 1;
       if (rest == "S1") {
         modeAddition = 1;
+      } else if (rest == "A0") {
+        AutoAbort = false;
+      } else if (rest == "A1") {
+        AutoAbort = true;
       }
       measuringIntervall = measuringIntervallTest;
       maxForce = 0;
@@ -198,6 +205,11 @@ void loop() {
       Log("Tare");
       tareValue = loadCell.averageValue(32);
     } else if (taskPart == "M13") { //Youngs Modulus Test Mode
+      if (rest == "A0") {
+        AutoAbort = false;
+      } else if (rest == "A1") {
+        AutoAbort = true;
+      }
       digitalWrite(enablePin, LOW);
       mode = 4;
       measuringIntervall = measuringIntervallTest;
@@ -217,6 +229,11 @@ void loop() {
       digitalWrite(led1Pin, LOW);
       startTime = millis();
     } else if (taskPart == "M14") { //Start FAST test
+      if (rest == "A0") {
+        AutoAbort = false;
+      } else if (rest == "A1") {
+        AutoAbort = true;
+      }
       digitalWrite(enablePin, LOW);
       mode = 3;
       measuringIntervall = measuringIntervallTestFast;
@@ -261,9 +278,17 @@ void loop() {
     Serial.println(loadValue);
     Serial1.println(String("V") + loadValue);
     if (WriteToSD) {
-      File TestFile = SD.open(RootFolderName + "/" + LastFileIndex + ".txt", FILE_WRITE);
-      TestFile.println(loadValue + String(","));
-      TestFile.close();
+      if (WriteWhenTighten) {
+        if (loadValue > 5) {
+          File TestFile = SD.open(RootFolderName + "/" + LastFileIndex + ".txt", FILE_WRITE);
+          TestFile.println(loadValue + String(","));
+          TestFile.close();
+        }
+      } else {
+        File TestFile = SD.open(RootFolderName + "/" + LastFileIndex + ".txt", FILE_WRITE);
+        TestFile.println(loadValue + String(","));
+        TestFile.close();
+      }
     }
     digitalWrite(led1Pin, LOW);
     lastLoadValues = currentMicros;
@@ -289,7 +314,16 @@ void loop() {
 
       if (MeasurmentMaxValue > MinStrength) {
         if (loadValue < BreakMin) {
-          AbortTest();
+          BreakPoint = 0;
+          for (int i = 0; i < LastMaxValuesSize; i++) {
+            if (BreakPoint <= LastMaxValues[i]) {
+              BreakPoint = LastMaxValues[i];
+            }
+          }
+
+          if (AutoAbort) {
+            AbortTest();
+          }
         }
       }
     }
@@ -435,17 +469,11 @@ void YoungsModule() {
 void AbortTest() {
   Log("Test aborted - entering manual mode");
   if (SdInserted) {
-    float Break = 0;
-    for (int i = 0; i < LastMaxValuesSize; i++) {
-      if (Break <= LastMaxValues[i]){
-        Break = LastMaxValues[i];
-      }
-    }
-
     File TestFile = SD.open(RootFolderName + "/" + LastFileIndex + ".txt", FILE_WRITE);
     TestFile.println(0);
     TestFile.println("],");
-    TestFile.println(String("\"BreakPoint\":") + Break + String(","));
+    TestFile.println(String("\"MeasuringIntervall\":") + measuringIntervall + String(","));
+    TestFile.println(String("\"BreakPoint\":") + BreakPoint + String(","));
     TestFile.println(String("\"Maximum\":") + MeasurmentMaxValue);
     TestFile.println("}");
     TestFile.close();
@@ -505,8 +533,11 @@ void BleNewTest() {
 
     NewTest = SD.open(RootFolderName + "/" + LastFileIndex + ".txt", FILE_WRITE);
     Serial1.println("OK NEW");
-    Serial.println("New Test");
+  } else {
+    Serial1.println("OK NEW NOSD");
   }
+  Serial.println("New Test");
+
   bool FinishedIni = false;
   String LastString = "";
   String NextInput = "";

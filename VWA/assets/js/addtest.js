@@ -27,6 +27,7 @@ app.controller('AddTest', function($scope) {   //Start new addTest Controller
     $scope.TestModes = Config.StandardTestParameter.TestModes.Options;   //var Containig the TestMode options // Is set to the Default defined in the Config.js file
     $scope.SelectedMode;   //Selected TestMode //No default
 
+    $scope.AutoAbort = true //Var holding the AutoAbort
 
     $scope.Notes="";   //Var containing the Notes
 
@@ -49,10 +50,18 @@ app.controller('AddTest', function($scope) {   //Start new addTest Controller
             var Mode; //Selected Test Mode
 
             //CHeck which TestMode is selected and set the correct Maschine Command
+            var addition;
+            if($scope.AutoAbort){
+                addition=" A1";
+            }else{
+                addition=" A0";
+            }
             if($scope.SelectedMode==$scope.TestModes[0]){
-                Mode="M10";
+                Mode="M10"+addition;
             } else if ($scope.SelectedMode==$scope.TestModes[1]){
-                Mode="M13";
+                Mode="M13"+addition;
+            }else if ($scope.SelectedMode==$scope.TestModes[2]){
+                Mode="M14"+addition;
             }
 
             $scope.Sending=true;  //Activat Sending
@@ -148,6 +157,11 @@ function BleSendTestData(respons){
     if(respons){
         if(respons=="OK NEW"){
             send(BleAddTestSendArray[BleSendDataIndex]);
+        }else if(respons=="OK NEW NOSD"){  //When no Sd Card is sent, skip sending queue and start Test
+            send("END "+BleSendTestMode);
+            AddingTest=false;
+            var scope = angular.element(document.getElementById("NewTest")).scope(); //Accsess Angular Controler
+            scope.ExitStartTest();   //Exit the Start Test Screen
         }else{
             if(respons==BleAddTestSendArray[BleSendDataIndex]){
                 BleSendDataIndex++;
@@ -207,5 +221,5 @@ function SetSendStat(Percent){  //Set the Send Status to the angular controller 
 }
 
 function ScrollTop() {
-  document.getElementById("ControlsId").scrollTop = 0;
+    document.getElementById("ControlsId").scrollTop = 0;
 }
