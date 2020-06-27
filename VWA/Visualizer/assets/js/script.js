@@ -14,9 +14,12 @@ var JsonData = [];  //Array which contains The files in form of a Json obj
 var Mode = 0; //Mode 0 = View TestData / 1 = View Breakpoints
 
 fileInput.addEventListener('change', function() {
+    console.log("open");
     var files = fileInput.files;                //get files
     var ErrorFiles = [];                        //Array of broken file names
 
+    console.log("Loaded");
+    
     for (var i = 0; i < files.length; i++) {         //loop threw files
         (function(file) {
             var name = file.name;                    //get file name
@@ -26,9 +29,10 @@ fileInput.addEventListener('change', function() {
                     try{                             //try creating JSON
                         var text = e.target.result;  //get data
                         var json = JSON.parse(text); //convert data to Json 
- 
+
                         json.MetaData.FileName = name;//add File Name to Json obj
                         JsonData.push(json);          //add Data to Json Array
+                      
                     }catch(error){
                         console.log(error);
                         ErrorFiles.push(name);        //If file ist broken push its name to the Error Array
@@ -52,7 +56,7 @@ fileInput.addEventListener('change', function() {
                     try{                             //try creating JSON
                         var text = e.target.result;  //get data
                         var json = JSON.parse(text); //convert data to Json 
- 
+
                         json.MetaData.FileName = name;//add File Name to Json obj
                         JsonData.push(json);          //add Data to Json Array
                     }catch(error){
@@ -106,6 +110,7 @@ app.controller('Visualizer', function($scope) {
         $scope.ShowMode=0;
         $scope.Data=[];
         JsonData=[];
+        fileInput.value=[];
     }
 
     $scope.BackToMenu = function(){    //Reset Graph  and selected Test //Back to Select Data Menu (only in ShowMode = 1)
@@ -161,13 +166,13 @@ app.controller('Visualizer', function($scope) {
 
 
         for(var i=0; i<TestDataParameterNames.length; i++){   //Set Parameter vor every Property
-                $scope.DisplayParameter.push([TestDataParameterNames[i], TestDataParameterValues[i]]);
-            
+            $scope.DisplayParameter.push([TestDataParameterNames[i], TestDataParameterValues[i]]);
+
         }
 
         console.log($scope.DisplayMetaData);
 
-        
+
         ///////Set swipe animation
         angular.element( document.querySelector( '.SelectTest' ) ).addClass('SelectTestMove');
 
@@ -187,7 +192,7 @@ var DefaultStepSize=1;   //Step Siz eof Displayed Data (y-Axis)
 
 var ctx = document.getElementById('LiveChartId');  //Get chart context 
 
- //Set Width and Height of the chart to fit container
+//Set Width and Height of the chart to fit container
 ctx.height=innerDimensions('ChartCon').height;   
 ctx.width=innerDimensions('ChartCon').width;
 
@@ -242,7 +247,7 @@ var LiveChart = new Chart(ctx, {  //create Chart.js Chart and Set options for th
 
 var ctx2 = document.getElementById('BreakpointChartId');  //Get Chart Index
 
- //Set Width and Height of the chart to fit container
+//Set Width and Height of the chart to fit container
 ctx2.height=innerDimensions('BarChartCon').height;
 ctx2.width=innerDimensions('BarChartCon').width;
 
