@@ -44,6 +44,13 @@ ul {
     width: 100%;
     height: 100%;
 
+    .Back{
+        top: 5px;
+        left: 10px;
+        position: absolute;
+        color: $accent2;
+        font-size: 3em;
+    }
 }
 
 .SelectDataPreviewOverlay {
@@ -120,7 +127,7 @@ ul {
         overflow-x: hidden;
 
     }
-    
+
     .Back{
         top: 5px;
         left: 10px;
@@ -258,7 +265,7 @@ ul {
     height: 100%;
 
     .Chart{
-        position: absolute;
+        position: relative;
         width: 90%;
         height: 80%;
         top: 10%;
@@ -266,11 +273,24 @@ ul {
         padding: 20px;
         border-radius: 30px;
         background-color: $bg-color;
+        margin-bottom: 5%;
     }
-    
+
+    #BarChartCon{
+        margin-bottom: 10%;
+    }
+
     .Back{
         top: 5px;
         left: 10px;
+        position: absolute;
+        color: $accent2;
+        font-size: 3em;
+    }
+    
+    .OpenChooseTest{
+        top: 5px;
+        right: 10px;
         position: absolute;
         color: $accent2;
         font-size: 3em;
