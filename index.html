@@ -1,94 +1,137 @@
 <html>
     <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131500551-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-131500551-1');
+        </script>
+
         <meta charset="UTF-8">
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
-        <script language="javascript" type="text/javascript" src="libraries/iro.js"></script>
-        <script language="javascript" type="text/javascript" src="BleMatrixScript.js"></script>
-
-        <script src="https://kit.fontawesome.com/096ef5e38d.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="toolmenu.css">
-        <link rel="stylesheet" href="ColorBar.css">
-        <link rel="stylesheet" href="style.css">
-
-        <link rel="apple-touch-icon" sizes="180x180" href="Favicons/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="Favicons/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="Favicons/favicon-16x16.png">
-        <link rel="manifest" href="site.webmanifest">
-        <link rel="mask-icon" href="Favicons/safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="msapplication-TileColor" content="#2b5797">
-        <meta name="theme-color" content="#ffffff">
+        <link rel="stylesheet" type="text/css" href="trixdesign.css">
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:100" rel="stylesheet">
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
     </head>
 
     <body>
-        <div class="ToolMenuContainer">
-            <div class="ToolIcon">
-                <i class="fas fa-pencil-ruler"></i>
+        <div id="header">
+            <h1>TRIXAM</h1>
+            <h2>P5.js and other projects by Julius Hussl</h2>
+        </div>
+        <div id="content">
+            <!--<main class="grid">
+<a href="http://trixam.online/Lines.html"><img src="TrixPic/LinesJs.png" alt="LinesJs"> <span class="text-content"><span>Place Name</span></span></a>
+<a href="http://trixam.online"><img src="TrixPic/Verbumquaero.png" alt="Verbumquaero"></a>
+<a href="http://trixam.online/DVD.html"><img src="TrixPic/DVD.png" alt="DVD"></a>
+<a href="http://trixam.online/FerienTimer.html"><img src="TrixPic/Ferientimer.png" alt="Ferientimer"></a>
+</main> 1-->
+            <div class="projContainer">
+                <a href="https://iqwertz.github.io/BleMatrix/"><div class="projInfoContainer">
+                    <h2>Ble Led Matrix Web App</h2>
+                    <p class="projCat">Html + css + js + c++</p>
+                    <p class="projSpec">The Website for the school ball of my school</p>
+                    </div></a>
+                <img src="TrixPic/BleLedMatrix.png" />
             </div>
-            <div id="ToolMenu" class="ToolMenu">
-                <div onclick="SetTool(0);" style="--animation-offset:0.5" class="SubMenu"><i class="fas fa-pencil-alt"></i></div>
-                <div onclick="SetTool(1);" style="--animation-offset:1.2" class="SubMenu"><i class="fas fa-fill-drip"></i></div>
-                <div onclick="SetTool(2);" style="--animation-offset:2" class="SubMenu"><i class="far fa-circle"></i></div>
-                <div onclick="SetTool(3);"  style="--animation-offset:2.5" class="SubMenu"><i class="fas fa-vector-square"></i></div>
+            <div class="projContainer">
+                <a href="http://www.schulball-grg4.at/"><div class="projInfoContainer">
+                    <h2>Schulball2020</h2>
+                    <p class="projCat">Html + css</p>
+                    <p class="projSpec">The Website for the school ball of my school</p>
+                    </div></a>
+                <img src="TrixPic/Schulball.png" />
             </div>
-            <div onclick="ClearDisp();" class="ToolClear"><i class="fas fa-eraser"></i></div>
-        </div>
-        <div id="Grid" class="Canvas"></div>
-        <div class="ColorBar">
-            <div id="CPC" class="ColorPickerContainer">
-                <div id="picker" class="ColorPicker"></div> 
-                <div class="pointer"></div>
+            <div class="projContainer">
+                <a href="http://textfeld.space"><div class="projInfoContainer">
+                    <h2>Textfeld.space</h2>
+                    <p class="projCat">Html + css + js/php/sql</p>
+                    <p class="projSpec">The Website for our school newspaper, with an online article editor&amp;generator (Not finished)</p>
+                    </div></a>
+                <img src="TrixPic/Textfeld.png" />
             </div>
-            <div onclick="OpenColorPicker();" id="ColorTab0" class="ColorTap"></div>
-            <div onclick="SelectColor(1);" id="ColorTab1" class="ColorTap"></div>
-            <div onclick="SelectColor(2);" id="ColorTab2" class="ColorTap"></div>
-            <div onclick="SelectColor(3);" id="ColorTab3" class="ColorTap"></div>
-            <div onclick="SelectColor(4);" id="ColorTab4" class="ColorTap"></div>
-            <div onclick="SelectColor(5);" id="ColorTab5" class="ColorTap"></div>
-            <div onclick="SelectColor(6);" id="ColorTab6" class="ColorTap"></div>
-            <div onclick="SelectColor(7);" id="ColorTab7" class="ColorTap"></div>
-            <div onclick="SelectColor(8);" id="ColorTab8" class="ColorTap"></div>
-            <div onclick="SelectColor(9);" id="ColorTab9" class="ColorTap"></div>
-        </div>
-
-        <div class="MobileColorBar">
-            <div id="MCPC" class="MobileColorPickerContainer">
-                <div id="mobilepicker" class="ColorPicker"></div> 
-                <div class="pointer"></div>
+            <div class="projContainer">
+                <a href="https://iqwertz.github.io/Gif2Matrix/"><div class="projInfoContainer">
+                    <h2>Gif2Matrix</h2>
+                    <p class="projCat">Html + css + js + c++</p>
+                    <p class="projSpec">A simple converter vor my arduino based 16*16ledmatrix</p>
+                    </div></a>
+                <img src="TrixPic/Gif2Matrix.png" />
             </div>
-            <div onclick="OpenColorPicker();" id="ColorTab0" class="ColorTap"></div>
-            <div onclick="SelectColor(1);" id="MobileColorTab1" class="ColorTap"></div>
-            <div onclick="SelectColor(2);" id="MobileColorTab2" class="ColorTap"></div>
-            <div onclick="SelectColor(3);" id="MobileColorTab3" class="ColorTap"></div>
-            <div onclick="SelectColor(4);" id="MobileColorTab4" class="ColorTap"></div>
-            <div onclick="SelectColor(5);" id="MobileColorTab5" class="ColorTap"></div>
-            <div onclick="SelectColor(6);" id="MobileColorTab6" class="ColorTap"></div>
-        </div>
-        <div id="2" class="MobileColorBar">
-            <div onclick="SelectColor(7);" id="MobileColorTab7" class="ColorTap"></div>
-            <div onclick="SelectColor(8);" id="MobileColorTab8" class="ColorTap"></div>
-            <div onclick="SelectColor(9);" id="MobileColorTab9" class="ColorTap"></div>
-            <div onclick="SelectColor(10);" id="MobileColorTab10" class="ColorTap"></div>
-            <div onclick="SelectColor(11);" id="MobileColorTab11" class="ColorTap"></div>
-            <div onclick="SelectColor(12);" id="MobileColorTab12" class="ColorTap"></div>
-            <div onclick="SelectColor(13);" id="MobileColorTab13" class="ColorTap"></div>
-        </div>
+            <div class="projContainer">
+                <a href="https://iqwertz.github.io/Lines/Lines.html"><div class="projInfoContainer">
+                    <h2>Lines.js</h2>
+                    <p class="projCat">P5.js + dat.gui</p>
+                    <p class="projSpec">An particle System based on right angeled directions<br/>Configurable with a dat.gui Interface</p>
+                    </div></a>
+                <img src="TrixPic/LinesJs.png" />
+            </div>
 
-        <div class="BleButtonsContainer">
-            <button onclick="onStartButtonClick();" class="BleButtons" id="connect">Connect</button>
-            <button onclick="BleMatrixUpdate();" class="BleButtons" id="update">Update</button>
-            <button onclick="onStopButtonClick();" class="BleButtons" id="disconnect">Disconnect</button>
+            <div class="projContainer">
+                <a href="https://iqwertz.github.io/IAEA/"><div class="projInfoContainer">
+                    <h2>IAEA</h2>
+                    <p class="projCat">html + css + js</p>
+                    <p class="projSpec">A website which illustrates the history and present of nuclear energy (Not finished)</p>
+                    </div></a>
+                <img src="TrixPic/IAEA.png" />
+            </div>
 
-            <input type="range" min="0" max="100" value="30" id="Brightness" onchange="SetBrightness(this.value)" class="BrightnessSlider BleButtons"/>
-        </div>
+            <div class="projContainer">
+                <a href="https://iqwertz.github.io/Curves/Curves.html"><div class="projInfoContainer">
+                    <h2>Curves.js</h2>
+                    <p class="projCat">P5.js + dat.gui</p>
+                    <p class="projSpec">An particle System based on quarter arcs elements<br/>Configurable with a dat.gui Interface</p>
+                    </div></a>
+                <img src="TrixPic/CurvesJs.png" />
+            </div>
 
-        <div onclick="OpenBleMenu();" id="MBB" class="MobileBleButtons">
-            <i class="fab fa-bluetooth-b"></i>
-            <button onclick="onStartButtonClick();" class="MobileButtons" id="connect">Connect</button>
-            <button onclick="BleMatrixUpdate();" class="MobileButtons" id="update">Update</button>
-            <button onclick="onStopButtonClick();" class="MobileButtons" id="disconnect">Disconnect</button>
+            <div class="projContainer">
+                <a href="https://iqwertz.github.io/Raummessung/Raummessung.php"><div class="projInfoContainer">
+                    <h2>Raumklima</h2>
+                    <p class="projCat">PHP + Mysql + C++</p>
+                    <p class="projSpec">A school sponsored projekt<br/>A wemos d1 mini collecting room data and sending it to a mysql database<br/>The Website displays the actual data and some stats</p>
+                    </div></a>
+                <img src="TrixPic/Raumklima.png" />
+            </div>
 
-            <input type="range" min="0" max="100" value="30" id="Brightness" onchange="SetBrightness(this.value)" class="BrightnessSlider BleButtons"/>
+            <div class="projContainer">
+                <a href="https://iqwertz.github.io/Drawmirror/Drawmirror.html"><div class="projInfoContainer">
+                    <h2>Drawmirror.js</h2>
+                    <p class="projCat">P5.js + Dat.gui</p>
+                    <p class="projSpec">Draw Mandalas easy</p>
+                    </div></a>
+                <img src="TrixPic/Drawmirror.png" />
+            </div>
+
+            <div class="projContainer">
+                <a href="https://iqwertz.github.io/online_verbum_quaero/verbumquaero.html"><div class="projInfoContainer">
+                    <h2>Verbum Quaero</h2>
+                    <p class="projCat">P5.js</p>
+                    <p class="projSpec">A web app for Latin Vocabular<br />Based on the Medias in res vocabs</p>
+                    </div></a>
+                <img src="TrixPic/Verbumquaero.png" />
+            </div>
+
+            <div class="projContainer">
+                <a href="https://iqwertz.github.io/DVD_online/DVD.html"><div class="projInfoContainer">
+                    <h2>DVD Screensaver</h2>
+                    <p class="projCat">P5.js</p>
+                    <p class="projSpec">Customizable Screensaver<br />Will it hit the Corner?</p>
+                    </div></a>
+                <img src="TrixPic/DVD.png" />
+            </div>
+
+            <div class="projContainer">
+                <a href="https://iqwertz.github.io/FerienTimer/FerienTimer.html"><div class="projInfoContainer">
+                    <h2>Ferientimer</h2>
+                    <p class="projCat">P5.js</p>
+                    <p class="projSpec">A Countdown until the Austrian Summer Holidays<br />More stuff about it, too</p>
+                    </div></a>
+                <img src="TrixPic/Ferientimer.png"  />
+            </div>
+
         </div>
     </body>
 </html>
