@@ -8,6 +8,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.9/angular.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
         <script src="https://kit.fontawesome.com/096ef5e38d.js" crossorigin="anonymous"></script>
+        
     </head>
     <body ng-app="app">
         <button class="button round" onclick="onStartButtonClick();" id="Ble">
@@ -17,6 +18,39 @@
         <div class="ChartContainer" id="ChartCon" >
             <canvas id="LiveChart" class="Chart"></canvas>
         </div>
+
+        <div class="popupController" id="popup" ng-controller="Popup">
+        <div class="popupContainer" ng-show="showPopup">
+            <button class="close button smallround" ng-click="showPopup=false">
+                <i class="fas fa-times"></i>
+            </button>
+            <h1>Test finished</h1>
+            <div class="results-container">
+                <div class="result maximum">
+                    <div class="name">
+                        Maximum:
+                    </div>
+                    <div class="value">
+                        {{maximum}}N
+                    </div>
+                </div>
+                <div class="result breakpoint">
+                    <div class="name">
+                        Breakpoint:
+                    </div>
+                    <div class="value">
+                        {{breakpoint}}N
+                    </div>
+                </div>
+            </div>
+            <div class="open-visualizer-button">
+                <button class="button fit add" ng-click="download()">Open Data in Visualizer</button>
+            </div>
+            <div class="download-button">
+                <button class="button fit add" ng-click="openDataInVisualizer">Download Results</button>
+            </div>
+        </div>
+            </div>
 
         <div id="ControlsId" class="ControlsContainer" ng-controller="Controls as MainController">
             <div id="ControllInterface" ng-show="ControllerInterface" >
@@ -156,5 +190,6 @@
         <script src="assets/js/controls.js"></script>
         <script src="assets/js/addtest.js"></script>
         <script src="assets/js/ble.js"></script>
+        <script src="assets/js/popup.js"></script>
     </body>
 </html>
