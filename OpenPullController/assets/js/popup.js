@@ -7,7 +7,7 @@ app.controller('Popup', function($scope) {   //Start new popup COntroller
     }
     $scope.openDataInVisualizer = function(){
         localStorage.setItem("openPullTestData", JSON.stringify(LastTestData));
-        window.open("https://iqwertz.github.io/Visualizer/?localData=true")
+        window.open("https://iqwertz.github.io/Visualizer/?localData=true");
     }
 }); 
 
