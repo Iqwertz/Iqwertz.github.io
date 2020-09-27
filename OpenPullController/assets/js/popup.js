@@ -1,13 +1,13 @@
 app.controller('Popup', function($scope) {   //Start new popup COntroller
     $scope.maximum = 0;
     $scope.breakpoint = 0;
-    $scope.showPopup = true;
+    $scope.showPopup = false;
     $scope.download = function(){
         downloadObjectAsJson(LastTestData, LastTestData.MetaData.Name);
     }
     $scope.openDataInVisualizer = function(){
-        localStorage.setItem("openPullTestData", JSON.stringify(LastTestData));
-        window.open("https://iqwertz.github.io/Visualizer/?localData=true");
+        localStorage.setItem("openPullTestData", JSON.stringify(LastTestData));  //sets localstorage
+        window.open("https://iqwertz.github.io/Visualizer/?localData=true");  //opens visualizer
     }
 }); 
 
