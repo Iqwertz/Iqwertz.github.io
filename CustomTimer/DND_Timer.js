@@ -118,7 +118,7 @@ function keyReleased() {
 }
 
 function UpdateLink(){
-    LinkUrl = window.location.href + "?";
+    LinkUrl = window.location.protocol + '//' + window.location.host + window.location.pathname + "?";
     LinkUrl += "y="+inputFieldElements.year.value;
     LinkUrl += "&mon="+inputFieldElements.month.value;
     LinkUrl += "&d="+inputFieldElements.day.value;
