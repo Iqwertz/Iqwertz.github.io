@@ -163,7 +163,6 @@ ul {
     h1{
         color: $accent2;
         text-align: center;
-
     }
 
     .TestItem{
@@ -321,6 +320,15 @@ ul {
         box-shadow: 8px 8px 10px #000;
         transition: opacity ease-in-out .5s;
 
+        .SelcetAllButton{
+            padding: 5px;
+            border-radius: 7px;
+            background-color: $accent2; 
+            color: #000;
+            margin: 5px 15px;
+            width: 100px;
+        }
+
         .TestItem{
             box-sizing: border-box;
             position: relative;
@@ -381,7 +389,17 @@ ul {
         border-radius: 30px;
         background-color: $accent2;
         margin-bottom: 5%;
-        
+
+        h1, h3{
+            text-align: center;
+        }
+
+        select{
+            position: relative;
+            width: 200px;
+            left: calc(50% - 100px);
+        }
+
         .fileNameTextfield{
             position: relative;
             width: 200px;
@@ -397,15 +415,48 @@ ul {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
+        }
+
+        .selectcon{
+            position: relative;
+            width: 200px;
+            left: calc(50% - 100px);
+
+            select{
+                margin: 15px 0;
+            }
 
             button{
-                border-radius: 10px;
-                border: 0;
-                background-color: $accent1;
-                padding: 10px;
-                font-size: 1.5em;
-                cursor: pointer;
+                width: 100%;
             }
+
+            .Downloads{
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 530px;
+                
+                        button{
+                            width: 250px;
+        }
+            }
+        }
+
+        button{
+            border-radius: 10px;
+            border: 0;
+            background-color: $accent1;
+            padding: 10px;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        #TTestCon{
+            position: relative;
+            width: 85vw;
+            height: 50vh;
+            left: 50%;
+            transform: translateX(-50%);
         }
     }
 
