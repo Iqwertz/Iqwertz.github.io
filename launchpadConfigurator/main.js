@@ -1189,7 +1189,8 @@ class MainComponent {
         }
         let savedData = localStorage.getItem('matrixConfiguration');
         if (savedData == null) {
-            this.loadDefaultConfig();
+            this.setDefaultButtonArray();
+            this.loadDefaultConfig(false);
         }
         else {
             this.matrixData = this.stringToButtonArray(savedData);
@@ -1212,9 +1213,11 @@ class MainComponent {
         console.log(this.matrixData[x][y]);
         this.buttonConf.openButtonConfig(x, y);
     }
-    loadDefaultConfig() {
+    loadDefaultConfig(changeData) {
         this.matrixData = this.stringToButtonArray(_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].defaultConfig);
-        this.matrixDataService.changeData(this.matrixData);
+        if (changeData) {
+            this.matrixDataService.changeData(this.matrixData);
+        }
     }
     downloadSiteConfig() {
         let stringifiedConfig = this.stringifyMatrix(this.matrixData);
@@ -1408,7 +1411,7 @@ MainComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComp
     } }, decls: 7, vars: 2, consts: [["buttonconf", ""], [3, "clear", "loadDefault", "downloadSetting", "loadSetting", "generateBmap", "generateConfig"], ["settingsconf", ""], [3, "loadingData"], [1, "grid-container"], ["class", "grid-row", 4, "ngFor", "ngForOf"], [1, "grid-row"], ["class", "grid-box", 3, "background-color", "click", 4, "ngFor", "ngForOf"], [1, "grid-box", 3, "click"], [4, "ngIf"], [3, "src"]], template: function MainComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "app-sidenav", null, 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "app-settings-sidenav", 1, 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("clear", function MainComponent_Template_app_settings_sidenav_clear_2_listener() { return ctx.setDefaultButtonArray(); })("loadDefault", function MainComponent_Template_app_settings_sidenav_loadDefault_2_listener() { return ctx.loadDefaultConfig(); })("downloadSetting", function MainComponent_Template_app_settings_sidenav_downloadSetting_2_listener() { return ctx.downloadSiteConfig(); })("loadSetting", function MainComponent_Template_app_settings_sidenav_loadSetting_2_listener($event) { return ctx.loadSiteConfig($event); })("generateBmap", function MainComponent_Template_app_settings_sidenav_generateBmap_2_listener() { return ctx.exportbmap(); })("generateConfig", function MainComponent_Template_app_settings_sidenav_generateConfig_2_listener() { return ctx.zipAndDownloadConfig(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("clear", function MainComponent_Template_app_settings_sidenav_clear_2_listener() { return ctx.setDefaultButtonArray(); })("loadDefault", function MainComponent_Template_app_settings_sidenav_loadDefault_2_listener() { return ctx.loadDefaultConfig(true); })("downloadSetting", function MainComponent_Template_app_settings_sidenav_downloadSetting_2_listener() { return ctx.downloadSiteConfig(); })("loadSetting", function MainComponent_Template_app_settings_sidenav_loadSetting_2_listener($event) { return ctx.loadSiteConfig($event); })("generateBmap", function MainComponent_Template_app_settings_sidenav_generateBmap_2_listener() { return ctx.exportbmap(); })("generateConfig", function MainComponent_Template_app_settings_sidenav_generateConfig_2_listener() { return ctx.zipAndDownloadConfig(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "app-loader", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "div", 4);
