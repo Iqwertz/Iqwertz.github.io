@@ -118,7 +118,7 @@ function keyReleased() {
 }
 
 function UpdateLink(){
-    LinkUrl = window.location.protocol + '//' + window.location.host + window.location.pathname + "?";
+    LinkUrl = window.location.href + "?";
     LinkUrl += "y="+inputFieldElements.year.value;
     LinkUrl += "&mon="+inputFieldElements.month.value;
     LinkUrl += "&d="+inputFieldElements.day.value;
@@ -162,8 +162,8 @@ function Berechnung() {
     }
     var akt = new Date();
 
-    var diff = (start.getTime() - akt.getTime());
-    var timediff =convertMS(diff);
+    var diff = abs(start.getTime() - akt.getTime());
+    var timediff = convertMS(diff);
     var tag = timediff.d;
     var std = timediff.h;
     var min = timediff.m;
