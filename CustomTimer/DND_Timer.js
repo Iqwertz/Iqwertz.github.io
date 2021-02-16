@@ -89,14 +89,14 @@ function setup() {
         document.getElementById("generate-link-box").style.display="flex";
         LinkIsOpen=true;
     }
-    
+
     document.getElementById("close").onclick  = function(){
         // console.log(linkBoxDisp);
         document.getElementById("generate-link-box").style.display="none";
         setTimeout(() => {LinkIsOpen=false}, 10);
     }
 
-    
+
     document.getElementById("copy-button").onclick = function(){
         copyStringToClipboard(LinkUrl);
     }
@@ -118,7 +118,7 @@ function keyReleased() {
 }
 
 function UpdateLink(){
-    LinkUrl = window.location.href + "?";
+    LinkUrl = location.protocol + '//' + location.host + location.pathname + "?";
     LinkUrl += "y="+inputFieldElements.year.value;
     LinkUrl += "&mon="+inputFieldElements.month.value;
     LinkUrl += "&d="+inputFieldElements.day.value;
@@ -151,7 +151,7 @@ function draw() {
     Berechnung();
     textSize(20);
     text("Tippe um die Zeiteinheit" + responsive1 + " zu ändern", width/2, height/1.1);
-    
+
 }
 
 function Berechnung() {
@@ -178,7 +178,11 @@ function Berechnung() {
    var sec = Math.floor(diff / 1000);
    var mSec = diff % 1000;*/
     fill('#363030');
-    text("Noch", width/2, height/3);
+    if(start.getTime() - akt.getTime()>0){
+        text("Noch", width/2, height/3);
+    }else{
+        text("Schon", width/2, height/3);
+    }
     fill(0);
     switch (i) {
         case 0:
@@ -206,7 +210,12 @@ function Berechnung() {
             break;
     }
     fill('#363030');
-    text("bis " + Zweck, width/2, height/1.5);
+    if(start.getTime() - akt.getTime()>0){
+        text("bis " + Zweck, width/2, height/1.5);
+    }else{
+        text("seit " + Zweck, width/2, height/1.5);
+    }
+
 }
 
 function hintergrund() {
@@ -286,25 +295,25 @@ function copyStringToClipboard(copText) {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
-  }
+}
 
 const umlautMap = {
-  '\u00dc': 'UE',
-  '\u00c4': 'AE',
-  '\u00d6': 'OE',
-  '\u00fc': 'ue',
-  '\u00e4': 'ae',
-  '\u00f6': 'oe',
-  '\u00df': 'ss',
+    '\u00dc': 'UE',
+    '\u00c4': 'AE',
+    '\u00d6': 'OE',
+    '\u00fc': 'ue',
+    '\u00e4': 'ae',
+    '\u00f6': 'oe',
+    '\u00df': 'ss',
 }
 
 function replaceUmlaute(str) {
-  return str
-    .replace(/[\u00dc|\u00c4|\u00d6][a-z]/g, (a) => {
-      const big = umlautMap[a.slice(0, 1)];
-      return big.charAt(0) + big.charAt(1).toLowerCase() + a.slice(1);
+    return str
+        .replace(/[\u00dc|\u00c4|\u00d6][a-z]/g, (a) => {
+        const big = umlautMap[a.slice(0, 1)];
+        return big.charAt(0) + big.charAt(1).toLowerCase() + a.slice(1);
     })
-    .replace(new RegExp('['+Object.keys(umlautMap).join('|')+']',"g"),
-      (a) => umlautMap[a]
-    );
+        .replace(new RegExp('['+Object.keys(umlautMap).join('|')+']',"g"),
+                 (a) => umlautMap[a]
+                );
 }
