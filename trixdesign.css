@@ -31,6 +31,33 @@ h3 {
     margin-bottom: 50px;
 }
 
+.impressumcontainer{
+    font-family: 'Quicksand', sans-serif;
+}
+
+.impressumcontainer h1{
+    font-size: 3em;
+    text-align: center;
+    margin: 0.7em
+}
+
+.impressumcontainer h2{
+    font-size: 2em;
+    color: black;
+    margin-top: 100px;
+}
+
+.impressumlink{
+    width: 100%;
+    text-align: center;
+    font-family: sans-serif;
+    margin-bottom: 50px;
+}
+
+.impressumlink a{
+    color:black;
+}
+
 @media (max-width:700px){
     #content {
         width:95%;
