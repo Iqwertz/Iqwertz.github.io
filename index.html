@@ -1,90 +1,125 @@
 <html>
-    <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131500551-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+  <head>
+    <script type="text/javascript">
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//192.168.1.206/matomo/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.type = "text/javascript";
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script>
 
-            gtag('config', 'UA-131500551-1');
-        </script>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="trixdesign.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:100"
+      rel="stylesheet"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width,height=device-height,initial-scale=1.0"
+    />
+  </head>
 
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="trixdesign.css">
-        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:100" rel="stylesheet">
-        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
-    </head>
-
-    <body>
-        <div id="header">
-            <h1><a href="https://iqwertz.github.io/">TRIXAM</a></h1>
-            <h2>Angular, Node.js, P5.js, c++ and other projects by Julius Hussl</h2>
-        </div>
-        <div id="content">
-            <!--<main class="grid">
+  <body>
+    <div id="header">
+      <h1><a href="https://iqwertz.github.io/">TRIXAM</a></h1>
+      <h2>Angular, Node.js, P5.js, c++ and other projects by Julius Hussl</h2>
+    </div>
+    <div id="content">
+      <!--<main class="grid">
 <a href="http://trixam.online/Lines.html"><img src="TrixPic/LinesJs.png" alt="LinesJs"> <span class="text-content"><span>Place Name</span></span></a>
 <a href="http://trixam.online"><img src="TrixPic/Verbumquaero.png" alt="Verbumquaero"></a>
 <a href="http://trixam.online/DVD.html"><img src="TrixPic/DVD.png" alt="DVD"></a>
 <a href="http://trixam.online/FerienTimer.html"><img src="TrixPic/Ferientimer.png" alt="Ferientimer"></a>
 </main> 1-->
-            <div class="projContainer">
-                <a href="https://iqwertz.github.io/launchpadConfigurator/"><div class="projInfoContainer">
-                    <h2>Launchpad Configurator</h2>
-                    <p class="projCat">Angular + Scss</p>
-                    <p class="projSpec">An only Configurator for a Launschpad</p>
-                    </div></a>
-                <img src="TrixPic/launchpadConfig.png" />
-            </div>
-            <div class="projContainer">
-                <a href="http://poller.rf.gd/#/"><div class="projInfoContainer">
-                    <h2>Poller</h2>
-                    <p class="projCat">Angular + Scss + Node.js</p>
-                    <p class="projSpec">An Add free Survey service</p>
-                    </div></a>
-                <img src="TrixPic/Poller.png" />
-            </div>
-            <div class="projContainer">
-                <a href="http://transfertube.000webhostapp.com/"><div class="projInfoContainer">
-                    <h2>TransferTube</h2>
-                    <p class="projCat">Angular + Scss + Websockets + Node.js</p>
-                    <p class="projSpec">A Website where you can easily transfer data from one device to another</p>
-                    </div></a>
-                <img src="TrixPic/TransferTube.png" />
-            </div>
-                        <div class="projContainer">
-                <a href="https://iqwertz.github.io/lithophanekeychain/index.html"><div class="projInfoContainer">
-                    <h2>Custom Lithophane Keychain Tutorial</h2>
-                    <p class="projCat">Paint.net + Cura + PrusaSlicer</p>
-                    <p class="projSpec">An Tutorial on how to create an custom lithophane keychain</p>
-                    </div></a>
-                <img src="TrixPic/customLithophaneKeychain.png" />
-            </div>
-            <div class="projContainer">
-                <a href="https://iqwertz.github.io/OpenPullController/"><div class="projInfoContainer">
-                    <h2>Ble OpenPull Webcontroller</h2>
-                    <p class="projCat">Html + css + js + c++</p>
-                    <p class="projSpec">Web Controller for my TensileTestMaschine</p>
-                    </div></a>
-                <img src="TrixPic/BleController.png" />
-            </div>
-            <div class="projContainer">
-                <a href="https://iqwertz.github.io/Visualizer/"><div class="projInfoContainer">
-                    <h2>OpenPull Visualizer</h2>
-                    <p class="projCat">Html + css + js</p>
-                    <p class="projSpec">A Tool to Visualize data from the TensileTestMaschine</p>
-                    </div></a>
-                <img src="TrixPic/Visualizer.png" />
-            </div>
-            <div class="projContainer">
-                <a href="https://iqwertz.github.io/BleMatrix/"><div class="projInfoContainer">
-                    <h2>Ble Led Matrix Web App</h2>
-                    <p class="projCat">Html + css + js + c++</p>
-                    <p class="projSpec">The Website for the school ball of my school</p>
-                    </div></a>
-                <img src="TrixPic/BleLedMatrix.png" />
-            </div>
-         <!--   <div class="projContainer">
+      <div class="projContainer">
+        <a href="https://iqwertz.github.io/launchpadConfigurator/"
+          ><div class="projInfoContainer">
+            <h2>Launchpad Configurator</h2>
+            <p class="projCat">Angular + Scss</p>
+            <p class="projSpec">An only Configurator for a Launschpad</p>
+          </div></a
+        >
+        <img src="TrixPic/launchpadConfig.png" />
+      </div>
+      <div class="projContainer">
+        <a href="http://poller.rf.gd/#/"
+          ><div class="projInfoContainer">
+            <h2>Poller</h2>
+            <p class="projCat">Angular + Scss + Node.js</p>
+            <p class="projSpec">An Add free Survey service</p>
+          </div></a
+        >
+        <img src="TrixPic/Poller.png" />
+      </div>
+      <div class="projContainer">
+        <a href="http://transfertube.000webhostapp.com/"
+          ><div class="projInfoContainer">
+            <h2>TransferTube</h2>
+            <p class="projCat">Angular + Scss + Websockets + Node.js</p>
+            <p class="projSpec">
+              A Website where you can easily transfer data from one device to
+              another
+            </p>
+          </div></a
+        >
+        <img src="TrixPic/TransferTube.png" />
+      </div>
+      <div class="projContainer">
+        <a href="https://iqwertz.github.io/lithophanekeychain/index.html"
+          ><div class="projInfoContainer">
+            <h2>Custom Lithophane Keychain Tutorial</h2>
+            <p class="projCat">Paint.net + Cura + PrusaSlicer</p>
+            <p class="projSpec">
+              An Tutorial on how to create an custom lithophane keychain
+            </p>
+          </div></a
+        >
+        <img src="TrixPic/customLithophaneKeychain.png" />
+      </div>
+      <div class="projContainer">
+        <a href="https://iqwertz.github.io/OpenPullController/"
+          ><div class="projInfoContainer">
+            <h2>Ble OpenPull Webcontroller</h2>
+            <p class="projCat">Html + css + js + c++</p>
+            <p class="projSpec">Web Controller for my TensileTestMaschine</p>
+          </div></a
+        >
+        <img src="TrixPic/BleController.png" />
+      </div>
+      <div class="projContainer">
+        <a href="https://iqwertz.github.io/Visualizer/"
+          ><div class="projInfoContainer">
+            <h2>OpenPull Visualizer</h2>
+            <p class="projCat">Html + css + js</p>
+            <p class="projSpec">
+              A Tool to Visualize data from the TensileTestMaschine
+            </p>
+          </div></a
+        >
+        <img src="TrixPic/Visualizer.png" />
+      </div>
+      <div class="projContainer">
+        <a href="https://iqwertz.github.io/BleMatrix/"
+          ><div class="projInfoContainer">
+            <h2>Ble Led Matrix Web App</h2>
+            <p class="projCat">Html + css + js + c++</p>
+            <p class="projSpec">The Website for the school ball of my school</p>
+          </div></a
+        >
+        <img src="TrixPic/BleLedMatrix.png" />
+      </div>
+      <!--   <div class="projContainer">
                 <a href="http://www.schulball-grg4.at/"><div class="projInfoContainer">
                     <h2>Schulball2020</h2>
                     <p class="projCat">Html + css</p>
@@ -92,7 +127,7 @@
                     </div></a>
                 <img src="TrixPic/Schulball.png" />
             </div>-->
-            <!--
+      <!--
             <div class="projContainer">
                 <a href="http://textfeld.space"><div class="projInfoContainer">
                     <h2>Textfeld.space</h2>
@@ -101,60 +136,87 @@
                     </div></a>
                 <img src="TrixPic/Textfeld.png" />
             </div>-->
-            <div class="projContainer">
-                <a href="https://iqwertz.github.io/Gif2Matrix/"><div class="projInfoContainer">
-                    <h2>Gif2Matrix</h2>
-                    <p class="projCat">Html + css + js + c++</p>
-                    <p class="projSpec">A simple converter vor my arduino based 16*16ledmatrix</p>
-                    </div></a>
-                <img src="TrixPic/Gif2Matrix.png" />
-            </div>
-            <div class="projContainer">
-                <a href="https://iqwertz.github.io/Lines/Lines.html"><div class="projInfoContainer">
-                    <h2>Lines.js</h2>
-                    <p class="projCat">P5.js + dat.gui</p>
-                    <p class="projSpec">An particle System based on right angeled directions<br/>Configurable with a dat.gui Interface</p>
-                    </div></a>
-                <img src="TrixPic/LinesJs.png" />
-            </div>
+      <div class="projContainer">
+        <a href="https://iqwertz.github.io/Gif2Matrix/"
+          ><div class="projInfoContainer">
+            <h2>Gif2Matrix</h2>
+            <p class="projCat">Html + css + js + c++</p>
+            <p class="projSpec">
+              A simple converter vor my arduino based 16*16ledmatrix
+            </p>
+          </div></a
+        >
+        <img src="TrixPic/Gif2Matrix.png" />
+      </div>
+      <div class="projContainer">
+        <a href="https://iqwertz.github.io/Lines/Lines.html"
+          ><div class="projInfoContainer">
+            <h2>Lines.js</h2>
+            <p class="projCat">P5.js + dat.gui</p>
+            <p class="projSpec">
+              An particle System based on right angeled directions<br />Configurable
+              with a dat.gui Interface
+            </p>
+          </div></a
+        >
+        <img src="TrixPic/LinesJs.png" />
+      </div>
 
-            <div class="projContainer">
-                <a href="https://iqwertz.github.io/IAEA/"><div class="projInfoContainer">
-                    <h2>IAEA</h2>
-                    <p class="projCat">html + css + js</p>
-                    <p class="projSpec">A website which illustrates the history and present of nuclear energy (Not finished)</p>
-                    </div></a>
-                <img src="TrixPic/IAEA.png" />
-            </div>
+      <div class="projContainer">
+        <a href="https://iqwertz.github.io/IAEA/"
+          ><div class="projInfoContainer">
+            <h2>IAEA</h2>
+            <p class="projCat">html + css + js</p>
+            <p class="projSpec">
+              A website which illustrates the history and present of nuclear
+              energy (Not finished)
+            </p>
+          </div></a
+        >
+        <img src="TrixPic/IAEA.png" />
+      </div>
 
-            <div class="projContainer">
-                <a href="https://iqwertz.github.io/Curves/Curves.html"><div class="projInfoContainer">
-                    <h2>Curves.js</h2>
-                    <p class="projCat">P5.js + dat.gui</p>
-                    <p class="projSpec">An particle System based on quarter arcs elements<br/>Configurable with a dat.gui Interface</p>
-                    </div></a>
-                <img src="TrixPic/CurvesJs.png" />
-            </div>
+      <div class="projContainer">
+        <a href="https://iqwertz.github.io/Curves/Curves.html"
+          ><div class="projInfoContainer">
+            <h2>Curves.js</h2>
+            <p class="projCat">P5.js + dat.gui</p>
+            <p class="projSpec">
+              An particle System based on quarter arcs elements<br />Configurable
+              with a dat.gui Interface
+            </p>
+          </div></a
+        >
+        <img src="TrixPic/CurvesJs.png" />
+      </div>
 
-            <div class="projContainer">
-                <a href="http://juliushussl.000webhostapp.com/Raummessung.php"><div class="projInfoContainer">
-                    <h2>Raumklima</h2>
-                    <p class="projCat">PHP + Mysql + C++</p>
-                    <p class="projSpec">A school sponsored projekt<br/>A wemos d1 mini collecting room data and sending it to a mysql database<br/>The Website displays the actual data and some stats</p>
-                    </div></a>
-                <img src="TrixPic/Raumklima.png" />
-            </div>
+      <div class="projContainer">
+        <a href="http://juliushussl.000webhostapp.com/Raummessung.php"
+          ><div class="projInfoContainer">
+            <h2>Raumklima</h2>
+            <p class="projCat">PHP + Mysql + C++</p>
+            <p class="projSpec">
+              A school sponsored projekt<br />A wemos d1 mini collecting room
+              data and sending it to a mysql database<br />The Website displays
+              the actual data and some stats
+            </p>
+          </div></a
+        >
+        <img src="TrixPic/Raumklima.png" />
+      </div>
 
-            <div class="projContainer">
-                <a href="https://iqwertz.github.io/Drawmirror/Drawmirror.html"><div class="projInfoContainer">
-                    <h2>Drawmirror.js</h2>
-                    <p class="projCat">P5.js + Dat.gui</p>
-                    <p class="projSpec">Draw Mandalas easy</p>
-                    </div></a>
-                <img src="TrixPic/Drawmirror.png" />
-            </div>
+      <div class="projContainer">
+        <a href="https://iqwertz.github.io/Drawmirror/Drawmirror.html"
+          ><div class="projInfoContainer">
+            <h2>Drawmirror.js</h2>
+            <p class="projCat">P5.js + Dat.gui</p>
+            <p class="projSpec">Draw Mandalas easy</p>
+          </div></a
+        >
+        <img src="TrixPic/Drawmirror.png" />
+      </div>
 
-       <!--     <div class="projContainer">
+      <!--     <div class="projContainer">
                 <a href="https://iqwertz.github.io/online_verbum_quaero/verbumquaero.html"><div class="projInfoContainer">
                     <h2>Verbum Quaero</h2>
                     <p class="projCat">P5.js</p>
@@ -163,16 +225,20 @@
                 <img src="TrixPic/Verbumquaero.png" />
             </div>-->
 
-            <div class="projContainer">
-                <a href="https://iqwertz.github.io/DVD_online/DVD.html"><div class="projInfoContainer">
-                    <h2>DVD Screensaver</h2>
-                    <p class="projCat">P5.js</p>
-                    <p class="projSpec">Customizable Screensaver<br />Will it hit the Corner?</p>
-                    </div></a>
-                <img src="TrixPic/DVD.png" />
-            </div>
+      <div class="projContainer">
+        <a href="https://iqwertz.github.io/DVD_online/DVD.html"
+          ><div class="projInfoContainer">
+            <h2>DVD Screensaver</h2>
+            <p class="projCat">P5.js</p>
+            <p class="projSpec">
+              Customizable Screensaver<br />Will it hit the Corner?
+            </p>
+          </div></a
+        >
+        <img src="TrixPic/DVD.png" />
+      </div>
 
-       <!--     <div class="projContainer">
+      <!--     <div class="projContainer">
                 <a href="https://iqwertz.github.io/FerienTimer/FerienTimer.html"><div class="projInfoContainer">
                     <h2>Ferientimer</h2>
                     <p class="projCat">P5.js</p>
@@ -181,9 +247,10 @@
                 <img src="TrixPic/Ferientimer.png"  />
             </div>
 -->
-        </div>
-        <div class="impressumlink">
-            &copy; 2020 Julius Hussl | <a href="https://iqwertz.github.io/impressum.html">Impressum</a>
-        </div>
-    </body>
+    </div>
+    <div class="impressumlink">
+      &copy; 2020 Julius Hussl |
+      <a href="https://iqwertz.github.io/impressum.html">Impressum</a>
+    </div>
+  </body>
 </html>
