@@ -1,71 +1,121 @@
-
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
 Highlights by Pixelarity
 pixelarity.com | hello@pixelarity.com
 License: pixelarity.com/license
 -->
 <html>
-    <head>
-        <title>Gif2LedMatrix</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <link rel="stylesheet" href="assets/css/loader.css" />
-        <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
-        <script language="javascript" type="text/javascript" src="Gif2Matrix.js"></script>
-        <script type="text/javascript" src="libraries/dat.gui.min.js"></script>
-        <script src="https://unpkg.com/p5.gif/dist/p5gif.min.js" ></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    </head>
-    <body class="is-preload">
-        <!-- Header -->
-        <div class="Copyconf">Code wurde kopiert</div>
-        <div class="LoaderBackground">
-            <div class="loader">
-                <div class="loader__bar"></div>
-                <div class="loader__bar"></div>
-                <div class="loader__bar"></div>
-                <div class="loader__bar"></div>
-                <div class="loader__bar"></div>
-                <div class="loader__ball"></div>
-            </div>
-            <div class="LadeText">
-                Lade Gif hoch...
-            </div>
+  <head>
+    <title>Gif2LedMatrix</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/loader.css" />
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="libraries/p5.js"
+    ></script>
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="Gif2Matrix.js"
+    ></script>
+    <script type="text/javascript" src="libraries/dat.gui.min.js"></script>
+    <script src="https://unpkg.com/p5.gif/dist/p5gif.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "http://62.178.37.97/matomo/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.type = "text/javascript";
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script>
+  </head>
+  <body class="is-preload">
+    <!-- Header -->
+    <div class="Copyconf">Code wurde kopiert</div>
+    <div class="LoaderBackground">
+      <div class="loader">
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__ball"></div>
+      </div>
+      <div class="LadeText">Lade Gif hoch...</div>
+    </div>
+    <section id="header">
+      <header class="major">
+        <h1>Gif to LedMatrix</h1>
+        <p>
+          Füge einen Link zu einem Gif ein <br />oder lade ein Gif hoch und
+          Drücke auf "Hochladen"
+        </p>
+        <textarea
+          name="Link"
+          rows="1"
+          placeholder="Füge hier den Link deines Gifs ein"
+          id="LinkArea"
+          class="TextareaUrl"
+        ></textarea>
+        <textarea
+          name="Brightness"
+          rows="1"
+          placeholder="Helligkeit (0-255)"
+          id="Brightness"
+          maxlength="3"
+          class="Brightness"
+        ></textarea>
+      </header>
+      <div class="container">
+        <ul class="actions special">
+          <li>
+            <a
+              href="#one"
+              onclick="return StartConversation();"
+              class="button primary scrolly"
+              >Hochladen</a
+            ><a href="#LinkArea" id="ToLink"></a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- One -->
+    <section id="one" class="main special">
+      <div class="container">
+        <span class="image fit primary"
+          ><img src="images/pic01.jpg" alt=""
+        /></span>
+        <div class="content">
+          <div style="margin: 20px" id="GifObject"></div>
+          <h3>Die Datei wurde erfolgreich konvertiert</h3>
+
+          <a onClick="CopyCode()" class="button primary">Kopiere Code</a>
+
+          <a onClick="DownloadCode()" class="button primary">Download Code</a>
         </div>
-        <section id="header">
-            <header class="major">
-                <h1>Gif to LedMatrix</h1>
-                <p>Füge einen Link zu einem Gif ein <br>oder lade ein Gif hoch und Drücke auf "Hochladen"</p>
-                <textarea name="Link" rows="1" placeholder="Füge hier den Link deines Gifs ein" id="LinkArea" class="TextareaUrl"></textarea>
-                <textarea name="Brightness" rows="1" placeholder="Helligkeit (0-255)" id="Brightness" maxlength="3" class="Brightness"></textarea>
-            </header>
-            <div class="container">
-                <ul class="actions special">
-                    <li><a href="#one" onclick="return StartConversation();" class="button primary scrolly">Hochladen</a><a href="#LinkArea" id="ToLink"></a></li>
-                </ul>
-            </div>
-        </section>
+        <!-- <a href="#two" class="goto-next scrolly">Next</a>-->
+      </div>
+    </section>
 
-        <!-- One -->
-        <section id="one" class="main special">
-            <div class="container">
-                <span class="image fit primary"><img src="images/pic01.jpg" alt="" /></span>
-                <div class="content">
-                    <div style="margin: 20px;" id=GifObject></div>
-                    <h3>Die Datei wurde erfolgreich konvertiert</h3>
-
-                    <a onClick="CopyCode()" class="button primary">Kopiere Code</a>
-
-                    <a onClick="DownloadCode()" class="button primary">Download Code</a>
-                </div>
-                <!-- <a href="#two" class="goto-next scrolly">Next</a>-->
-            </div>
-        </section>
-
-        <!-- Two -->
-        <!-- <section id="two" class="main special">
+    <!-- Two -->
+    <!-- <section id="two" class="main special">
 <div class="container">
 <span class="image fit primary"><img src="images/pic02.jpg" alt="" /></span>
 <div class="content">
@@ -96,8 +146,8 @@ License: pixelarity.com/license
 </div>
 </section> -->
 
-        <!-- Three -->
-        <!--    <section id="three" class="main special">
+    <!-- Three -->
+    <!--    <section id="three" class="main special">
 <div class="container">
 <span class="image fit primary"><img src="images/pic03.jpg" alt="" /></span>
 <div class="content">
@@ -110,9 +160,9 @@ License: pixelarity.com/license
 </div>
 </section>-->
 
-        <!-- Four -->
+    <!-- Four -->
 
-        <!--  <section id="four" class="main">
+    <!--  <section id="four" class="main">
 <div class="container">
 <div class="content">
 <header class="major">
@@ -430,9 +480,8 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 </div>
 </section> -->
 
-
-        <!-- Footer -->
-        <!-- <section id="footer">
+    <!-- Footer -->
+    <!-- <section id="footer">
 <div class="container">
 <header class="major">
 <h2>Col at morbi</h2>
@@ -464,26 +513,24 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 </footer>
 </section> -->
 
-        <!-- Scripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/jquery.scrollex.min.js"></script>
-        <script src="assets/js/jquery.scrolly.min.js"></script>
-        <script src="assets/js/browser.min.js"></script>
-        <script src="assets/js/breakpoints.min.js"></script>
-        <script src="assets/js/util.js"></script>
-        <script src="assets/js/main.js"></script>
-        <script>
-            $('.Brightness').keypress(function(e) {   //prevents user from not entering numbers into brightness field
-                var a = [];
-                var k = e.which;
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      $(".Brightness").keypress(function (e) {
+        //prevents user from not entering numbers into brightness field
+        var a = [];
+        var k = e.which;
 
-                for (i = 48; i < 58; i++)
-                    a.push(i);
+        for (i = 48; i < 58; i++) a.push(i);
 
-                if (!(a.indexOf(k)>=0))
-                    e.preventDefault();
-            });
-        </script>
-
-    </body>
+        if (!(a.indexOf(k) >= 0)) e.preventDefault();
+      });
+    </script>
+  </body>
 </html>
