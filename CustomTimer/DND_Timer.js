@@ -1,3 +1,14 @@
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//Ferientimer.js                                                                        //
+//a website to check seconds/minutes/hours/days/weeks until summerbreak in Vienna.      //
+//on the top right you can also create a custom timer link!                             //
+//code written by Julius Hussl                                                          //
+//                                                                                      //
+//repo: https://github.com/Iqwertz/FerienTimer                                          //
+//website: https://iqwertz.github.io/CustomTimer/                                       //
+//////////////////////////////////////////////////////////////////////////////////////////
+
 var sekunden;
 var minuten;
 var stunden;
@@ -8,8 +19,7 @@ var jahr;
 var Ferienmonat=6;
 var Ferientag=29;
 var Ferienyear=2019;
-var start = new Date(2020, 6, 4);
-//var myVar = setInterval(function() {time()}, 1);
+var start = new Date(2021, 6, 3);  //starting with 0
 var myFont;
 var mode=0;
 var i=0;
@@ -21,7 +31,6 @@ var gcheck=1;
 var bcheck=0;
 var responsive1=" ";
 var Zweck = "zu den Sommerferien";
-
 var inputFieldElements = {};
 var LinkUrl;
 var LinkIsOpen = false;
@@ -85,13 +94,11 @@ function setup() {
     UpdateLink();
 
     document.getElementById("share").onclick  = function(){
-        // console.log(linkBoxDisp);
         document.getElementById("generate-link-box").style.display="flex";
         LinkIsOpen=true;
     }
 
     document.getElementById("close").onclick  = function(){
-        // console.log(linkBoxDisp);
         document.getElementById("generate-link-box").style.display="none";
         setTimeout(() => {LinkIsOpen=false}, 10);
     }
@@ -109,7 +116,6 @@ function mouseClicked() {
         }
         i++;
     }
-
     UpdateLink();
 }
 
@@ -141,17 +147,14 @@ function draw() {
     minuten=minute();
     stunden=hour();
     tage=day();
-    //wochen=wochen();
     monate=month();
     jahr=year();
     textSize(50);
     textAlign(CENTER, CENTER);
     fill(0);
-    // text(jahr+":"+monate+":"+tage+":"+stunden+":"+minuten+":"+sekunden, width/2, height/2);
     Berechnung();
     textSize(20);
     text("Tippe um die Zeiteinheit" + responsive1 + " zu ändern", width/2, height/1.1);
-
 }
 
 function Berechnung() {
@@ -168,15 +171,6 @@ function Berechnung() {
     var std = timediff.h;
     var min = timediff.m;
     var sec = timediff.s;
-    /*print(diff);
-   var tag = Math.floor(diff / (1000*60*60*24));
-   diff = diff % (1000*60*60*24);
-   var std = Math.floor(diff / (1000*60*60));
-   diff = diff % (1000*60*60);
-   var min = Math.floor(diff / (1000*60));
-   diff = diff % (1000*60);
-   var sec = Math.floor(diff / 1000);
-   var mSec = diff % 1000;*/
     fill('#363030');
     if(start.getTime() - akt.getTime()>0){
         text("Noch", width/2, height/3);
@@ -253,17 +247,6 @@ function hintergrund() {
 }
 
 function convertMS(ms) {
-    /*    var neg = 1;
-    if(ms<0){
-        neg = -1;
-    }
-    var datdiff=new Date(ms);
-    console.log(datdiff);
-     var d, h, m, s;
-    s = datdiff.getSeconds()*neg;
-    m = datdiff.getMinutes()*neg;
-    h = datdiff.getHours()*neg;
-    d = datdiff.getDay()*neg + datdiff.getMonth();*/
     var d, h, m, s;
     s = Math.floor(ms / 1000);
     m = Math.floor(s / 60);
