@@ -681,12 +681,12 @@ img.icon {
 @font-face {
   font-family: "Bauer";
   /* here change when migrat to gams */
-  src: url("/assets/fonts/BauerBodoniStd-BoldCond.otf");
+  src: url('BauerBodoniStd-BoldCond.otf');
 }
 @font-face {
   font-family: "SansPro";
   /* here change when migrat to gams */
-  src: url("/assets/fonts/SourceSansPro-Light.otf");
+  src: url('SourceSansPro-Light.otf');
 }
 ul.dropdown-menu > li > a {
   font-size: 12pt;
