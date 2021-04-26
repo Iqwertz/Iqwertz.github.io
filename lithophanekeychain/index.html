@@ -15,23 +15,6 @@ License: pixelarity.com/license
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="assets/css/main.css" />
-    <script type="text/javascript">
-      var _paq = (window._paq = window._paq || []);
-      _paq.push(["trackPageView"]);
-      _paq.push(["enableLinkTracking"]);
-      (function () {
-        var u = "https://trixamserver.tk/matomo/";
-        _paq.push(["setTrackerUrl", u + "matomo.php"]);
-        _paq.push(["setSiteId", "1"]);
-        var d = document,
-          g = d.createElement("script"),
-          s = d.getElementsByTagName("script")[0];
-        g.type = "text/javascript";
-        g.async = true;
-        g.src = u + "matomo.js";
-        s.parentNode.insertBefore(g, s);
-      })();
-    </script>
   </head>
   <body class="is-preload">
     <!-- Header -->
@@ -69,10 +52,10 @@ License: pixelarity.com/license
     <div id="main" class="wrapper style1">
       <div class="inner">
         <header class="major">
-          <h1>How to Create a Custom Lithophane Keychain</h1>
+          <h1>How to create a Custom Lithophane Keychain</h1>
           <p>
-            In this Tutorial you will learn how to create a Custom Lithophane
-            Keychain - A perfect Christmas or Birthday present
+            In this tutorial you will learn how to create a Custom Lithophane
+            Keychain - A perfect christmas or birthday present
           </p>
         </header>
         <span class="image fit"><img src="images/Benchy2.jpeg" alt="" /></span>
@@ -106,27 +89,27 @@ License: pixelarity.com/license
           </li>
         </ul>
         <p>
-          These Programs are needed to create a Lithophane Keychain, however you
+          These programs are needed to create a Lithophane Keychain, however you
           don't need to know how to use them.
         </p>
         <h3>Prepare Files</h3>
         <p>
-          At first you need to choose a Picture for the Keychain. The Subject of
+          At first you need to choose a picture for the keychain. The subject of
           the picture should be in the center because we will apply a "vignette
-          effect". Download all the Model files for this project from
+          effect". Download all the model files for this project from
           prusaprinters:
           <a
             href="https://www.prusaprinters.org/prints/48141-custom-lithophane-keychain"
             target="_blank"
             >www.prusaprinters.org/prints/48141-custom-lithophane-keychain</a
           >
-          and put all of them with your Picture in a Folder to keep an overview.
+          and put all of them with your picture in a folder to keep an overview.
         </p>
 
         <h3>Edit Picture</h3>
         <p>
-          To Edit the Picture we use <b>Paint.net</b>. Start the Program and
-          open your Picture in it (Ctrl + O). For this tutorial I use a Picture
+          To edit the picture we use <b>Paint.net</b>. Start the program and
+          open your picture in it (Ctrl + O). For this tutorial I use a picture
           of a Benchy!
           <br />
           <span class="image center"
@@ -134,10 +117,10 @@ License: pixelarity.com/license
           /></span>
           <br />
           At first, you have to make sure that the picture has the same height
-          and width. For that click on <b>Image>Canvas Size</b>. A Popup window
+          and width. For that click on <b>Image>Canvas Size</b>. A Popup Window
           will appear. There deselect "maintain aspect ratio" and set the width
           equal to height (or reverse depending on which side is longer. The
-          Image shouldn't be cropped).
+          image shouldn't be cropped).
         </p>
         <p>
           <span class="image center"
@@ -152,14 +135,14 @@ License: pixelarity.com/license
             ><img src="images/Picture3.png" alt=""
           /></span>
           <br />
-          This step is finished and you can save the Image in your Folder.
+          This step is finished and you can save the image in your folder.
         </p>
 
         <h3>Convert Picture to Stl</h3>
         <p>
-          Now we convert our Picture to a Lithophane on the following page:
+          Now we convert our picture to a Lithophane on the following page:
           <a href="http://3dp.rocks/lithophane/">3dp.rocks/lithophane</a>. Open
-          the web page and upload your Picture ("Images" tab).
+          the web page and upload your picture ("Images" tab).
           <br />
           Click on <b>Settings>Image Settings</b>. Now check that the settings
           are like in the picture below.
@@ -181,11 +164,11 @@ License: pixelarity.com/license
 
         <h3>Convert Stl to Keychain</h3>
         <p>
-          The .stl file is now a square with your Picture on it. To transform
-          it, we use <b>Blender</b>. Open the Program and delete the "Standard
+          The .stl file is now a square with your picture on it. To transform
+          it, we use <b>Blender</b>. Open the program and delete the "Standard
           Cube" (Gray Cube in the Center, Delete with "Del").
           <br />
-          Now open your Files by clicking on <b>File>Import>Stl</b>. In the
+          Now open your files by clicking on <b>File>Import>Stl</b>. In the
           Popup select "centercircle.stl", "keychain top.stl" and the stl you
           generated in the previous step. If everything is correct, it should
           look like this:
@@ -195,7 +178,7 @@ License: pixelarity.com/license
           /></span>
           <br />
           In the next step click on your "generated" file (the file generated on
-          3dp.rocks/lithophane) in the top right. Then on the little Wrench
+          3dp.rocks/lithophane) in the top right. Then on the little wrench
           below and click "Add Modifier". Select "Boolean". Repeat this so you
           have two modifiers.
           <br />
@@ -204,9 +187,9 @@ License: pixelarity.com/license
           /></span>
           <br />
           In the first modifier Tab, select "Intersect" and select
-          "Centercircle" as Object. <br />
+          "Centercircle" as object. <br />
           In the second modifier Tab, select "Union", select "Keychain Top" as
-          Object and set the "Overlap Threshold to 0.3m.
+          object and set the "Overlap Threshold" to 0.3m.
           <br />
           The Modifier Tab should now look like this:
           <br />
@@ -215,12 +198,12 @@ License: pixelarity.com/license
           /></span>
           <br />
           <u
-            >To save the file, click on your "generated" File in the top right.
+            >To save the file, click on your "generated" file in the top right.
             Then go to <b>File>Export>Stl</b>. In the Popup select "Selection
             Only" and then click on "Export Stl".
             <br />
             <b
-              >(It is Important that the "generated" file is selected before
+              >(It is important that the "generated" file is selected before
               export else you will see just a flat surface in Prusaslicer)</b
             >
           </u>
@@ -236,15 +219,15 @@ License: pixelarity.com/license
 
         <ul>
           <li>
-            Most of the Time Blenders "Boolean Operator" is faulty. So after
+            Most of the time Blenders "Boolean Operator" is faulty. So after
             import into the PrusaSlicer you should click on the triangle by the
             filename to repair it.
           </li>
           <li>
-            You have to Print the Keychain up right (Like in the Picture below)
+            You have to print the Keychain up right (Like in the Picture below)
             and therefore enable "Support material on Build plate only"
           </li>
-          <li>Print with a Layerheight of 0.1mm and 4 Perimeters</li>
+          <li>Print with a layerheight of 0.1mm and 4 Perimeters</li>
         </ul>
 
         <span class="image center"
@@ -253,7 +236,7 @@ License: pixelarity.com/license
 
         <p>Now you are ready for printing! Have Fun!</p>
         <p>
-          I hope this tutorial helped you! If you have any Improvements or Notes
+          I hope this tutorial helped you! If you have any improvements or notes
           you can write me an Email: <u>juliushussl@gmail.com</u>.
         </p>
 
