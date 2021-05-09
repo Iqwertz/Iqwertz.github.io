@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script type="text/javascript">
-      var _paq = (window._paq = window._paq || []);
-      _paq.push(["trackPageView"]);
-      _paq.push(["enableLinkTracking"]);
-      (function () {
-        var u = "https://trixamserver.tk/matomo/";
-        _paq.push(["setTrackerUrl", u + "matomo.php"]);
-        _paq.push(["setSiteId", "1"]);
-        var d = document,
-          g = d.createElement("script"),
-          s = d.getElementsByTagName("script")[0];
-        g.type = "text/javascript";
-        g.async = true;
-        g.src = u + "matomo.js";
-        s.parentNode.insertBefore(g, s);
-      })();
-    </script>
     <meta charset="UTF-8" />
 
     <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
     <script
       language="javascript"
       type="text/javascript"
       src="libraries/p5.min.js"
     ></script>
+    <link rel="stylesheet" type="text/css" href="libraries/flipClock.css" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script
       language="javascript"
       type="text/javascript"
       src="DND_Timer.js"
+    ></script>
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="libraries/confetti.js"
+    ></script>
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="libraries/flipClock.js"
     ></script>
     <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
     <script
@@ -89,6 +89,7 @@
         align-items: center;
         padding: 20px;
         display: none;
+        z-index: 10;
       }
 
       .close {
@@ -250,6 +251,12 @@
         <option value="standard">Standard</option>
       </select>
 
+      <h3>Theme:</h3>
+      <select id="theme">
+        <option value="default">Default</option>
+        <option value="fc">flipClock</option>
+      </select>
+
       <hr />
 
       <h3>Link:</h3>
@@ -263,5 +270,79 @@
     <form method="get" action="file.doc">
       <!--<button type="submit" id="zwei" class="btn"><i class="fa fa-download"></i> Android Wallpaper</button>!-->
     </form>
+
+    <div class="flip-clock-container" id="flipClock">
+      <div class="clock">
+        <div class="digit hundredday">
+          <span class="base"></span>
+          <div class="flap over front"></div>
+          <div class="flap over back"></div>
+          <div class="flap under"></div>
+        </div>
+
+        <div class="digit tenday">
+          <span class="base"></span>
+          <div class="flap over front"></div>
+          <div class="flap over back"></div>
+          <div class="flap under"></div>
+        </div>
+
+        <div class="digit day last">
+          <span class="base"></span>
+          <div class="flap over front"></div>
+          <div class="flap over back"></div>
+          <div class="flap under"></div>
+        </div>
+
+        <div class="digit tenhour">
+          <span class="base"></span>
+          <div class="flap over front"></div>
+          <div class="flap over back"></div>
+          <div class="flap under"></div>
+        </div>
+
+        <div class="digit hour last">
+          <span class="base"></span>
+          <div class="flap over front"></div>
+          <div class="flap over back"></div>
+          <div class="flap under"></div>
+        </div>
+
+        <div class="digit tenmin">
+          <span class="base"></span>
+          <div class="flap over front"></div>
+          <div class="flap over back"></div>
+          <div class="flap under"></div>
+        </div>
+
+        <div class="digit min last">
+          <span class="base"></span>
+          <div class="flap over front"></div>
+          <div class="flap over back"></div>
+          <div class="flap under"></div>
+        </div>
+
+        <div class="digit tensec">
+          <span class="base"></span>
+          <div class="flap over front"></div>
+          <div class="flap over back"></div>
+          <div class="flap under"></div>
+        </div>
+
+        <div class="digit sec last">
+          <span class="base"></span>
+          <div class="flap over front"></div>
+          <div class="flap over back"></div>
+          <div class="flap under"></div>
+        </div>
+      </div>
+      <div class="tags">
+        <div class="tagElement">Tage</div>
+        <div class="tagElement">Stunden</div>
+        <div class="tagElement">Minuten</div>
+        <div class="tagElement">Sekunden</div>
+      </div>
+    </div>
+    <div id="p5Canvas"></div>
   </body>
 </html>
