@@ -1,0 +1,21 @@
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
+body {
+  font-family: monospace;
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: normal;
+}
+
+canvas {
+  display: block;
+}
+
+#webgl-error-message {
+  text-align: center;
+  background: #fff;
+  color: #000;
+  padding: 1.5em;
+  width: 400px;
+  margin: 5em auto 0;
+}
