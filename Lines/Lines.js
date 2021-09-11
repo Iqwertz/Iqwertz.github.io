@@ -129,7 +129,6 @@ function windowResized() {             //Resize Canvas when Window Resizes
 }
 
 function draw() {             //draw loop 
-    print(word);
     updateVars();              //updates every Variable from the (controls)
     if(WordOrder.length>0){
         TextShorten("nix",0);  
