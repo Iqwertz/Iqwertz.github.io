@@ -440,7 +440,7 @@ module.exports = content.locals || {};
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Webseiten\DeviceConnect\DeviceConnect-frontend\src\styles.scss */"./src/styles.scss");
+module.exports = __webpack_require__(/*! C:\Users\juliu\Webseiten\DeviceConnect\DeviceConnect-frontend\src\styles.scss */"./src/styles.scss");
 
 
 /***/ })
