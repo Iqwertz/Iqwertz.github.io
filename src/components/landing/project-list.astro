@@ -1,0 +1,332 @@
+---
+import ProjectTemplate from "./project-template.astro";
+import SmallProjectTemplate from "./small-project-template.astro";
+
+export interface Link {
+  text: string;
+  url: string;
+}
+---
+
+<div class="featured-project-list-container">
+  <div class="title">
+    <h2>Projects</h2>
+  </div>
+
+  <ProjectTemplate
+    title="Depictor"
+    description='Depictor is an raspberry pie based open-source web app to control 2D pen plotters. It simplifies the process of generating and drawing images by providing a modern and responsive interface built with <span class="highlite">Angular</span>. The app supports real-time plot progress tracking, automatic background removal, draw time estimates, a gallery of previous prints and much more. The backend is primarily powered by <span class="highlite">Node.js</span> but also leverages <span class="highlite">Java</span> and <span class="highlite">c++</span> for performance-critical tasks, ensuring smooth and efficient operation. <br/> The project was tested and developed on a selfmade 2D pen plotter.'
+    image="./projects/Depictor.png"
+    imageLink="https://github.com/Iqwertz/Depictor"
+    techIcons={[
+      { name: "devicon:raspberrypi", link: "https://www.raspberrypi.com/" },
+      { name: "devicon:angular", link: "https://angular.io/" },
+      { name: "devicon:express", link: "https://expressjs.com/" },
+      { name: "devicon:typescript", link: "https://www.typescriptlang.org/" },
+      { name: "devicon:bash", link: "https://www.gnu.org/software/bash/" },
+    ]}
+    links={[
+      { text: "GitHub", url: "https://github.com/Iqwertz/Depictor" },
+      { text: "Demo (YT)", url: "https://www.youtube.com/watch?v=6MJPgy_1h4w" },
+    ]}
+  />
+  <ProjectTemplate
+    title="Rooms"
+    description='Rooms is a web application I developed for my student dormitory to efficiently manage shared rooms and common areas. The platform enables residents to book rooms and request access codes seamlessly. The backend is powered by <span class="highlite">Express.js</span> and <span class="highlite">Redis</span>, while the frontend is built using <span class="highlite">Angular 17</span>. For secure authentication, <span class="highlite">LDAP</span> integration is employed. <br/>Currently, the application serves nearly 300 residents and has been running smoothly for over six months without any significant issues.'
+    image="./projects/Rooms.png"
+    imageLink="rooms.schollheim.net"
+    isLeft={true}
+    techIcons={[
+      { name: "devicon:angular", link: "https://angular.io/" },
+      { name: "devicon:express", link: "https://expressjs.com/" },
+      { name: "devicon:typescript", link: "https://www.typescriptlang.org/" },
+      { name: "devicon:redis", link: "https://redis.io/" },
+    ]}
+    links={[{ text: "Demo", url: "https://rooms.schollheim.net" }]}
+  />
+
+  <ProjectTemplate
+    title="Tensile test machine"
+    description="This project was part of my graduation paper in which I tested the influence of 3D printing parameters on the tensile strength of the part. The project involved building a selfmade tensile test machine as well as online control and data analysis software to efficiently test over 100 samples."
+    image="./projects/Vwa.png"
+    imageLink="projects.juliushussl.at/VWA%20-%20Julius%20Hussl.pdf"
+    techIcons={[
+      { name: "devicon:arduino", link: "https://www.arduino.cc/" },
+      { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+      { name: "simple-icons:autodesk", link: "https://autodesk.com/" },
+    ]}
+    links={[
+      { text: "Paper", url: "projects.juliushussl.at/VWA%20-%20Julius%20Hussl.pdf" },
+      {
+        text: "OpenPull Controller",
+        url: "https://github.com/Iqwertz/OpenPull-Web-Controller",
+      },
+      { text: "OpenPull Analyzer", url: "https://github.com/Iqwertz/OpenPullTestDataVisualizer" },
+    ]}
+  />
+
+  <div class="title">
+    <h2>other projects:</h2>
+  </div>
+  <div class="project-list-container">
+    <SmallProjectTemplate
+      title="Connect-4 Online"
+      description="A simple online multiplayer connect-4 game built with Angular and Express.js. It uses websockets for real-time communication and features a simple lobby system."
+      image="./projects/connect4.png"
+      link="https://projects.juliushussl.at/connect-4/"
+      techIcons={[
+        { name: "devicon:angular", link: "https://angular.io/" },
+        { name: "devicon:express", link: "https://expressjs.com/" },
+        { name: "devicon:typescript", link: "https://www.typescriptlang.org/" },
+      ]}
+    />
+
+    <SmallProjectTemplate
+      title="Battle Bots"
+      description="Program your bot and let it fight in an Arena. Built with angular, firebase and some node.js."
+      image="./projects/Battlebots.png"
+      link="https://projects.juliushussl.at/BattleBots/"
+      techIcons={[
+        { name: "devicon:angular", link: "https://angular.io/" },
+        { name: "devicon:firebase", link: "https://firebase.google.com/" },
+        { name: "devicon:nodejs", link: "https://nodejs.org/" },
+      ]}
+    />
+
+    <SmallProjectTemplate
+      title="Raumklima"
+      description="A room climate monitoring system with a web interface powered by Wemos D1 mini and BMP280 sensors, built with Angular and Firebase."
+      image="./projects/RoomSensor.png"
+      link="https://projects.juliushussl.at/RoomSensor/"
+      techIcons={[
+        { name: "devicon:angular", link: "https://angular.io/" },
+        { name: "devicon:firebase", link: "https://firebase.google.com/" },
+      ]}
+    />
+
+    <SmallProjectTemplate
+      title="E.Z.f.B.S."
+      description="A website I created and maintain for the fundraising organization 'Ein Zuhause für Bukarester Straßenkinder.'"
+      image="./projects/Bukarest.png"
+      link="http://www.bukarester-strassenkinder.org/index.php"
+      techIcons={[
+        { name: "devicon:html5", link: "https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5" },
+        { name: "devicon:css3", link: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+        { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+      ]}
+    />
+
+    <SmallProjectTemplate
+      title="Button Top Creator"
+      description="An online button generator for a Launchpad, built with Vue and Three.js."
+      image="./projects/ButtonTopCreator.png"
+      link="https://projects.juliushussl.at/buttonTopCreator/"
+      techIcons={[
+        { name: "devicon:vuejs", link: "https://vuejs.org/" },
+        { name: "devicon:threejs", link: "https://threejs.org/" },
+      ]}
+    />
+
+    <SmallProjectTemplate
+      title="Launchpad Configurator"
+      description="An online configurator for a Launchpad built with Angular and SCSS."
+      image="./projects/launchpadConfig.png"
+      link="https://projects.juliushussl.at/launchpadConfigurator/"
+      techIcons={[{ name: "devicon:angular", link: "https://angular.io/" }]}
+    />
+
+    <SmallProjectTemplate
+      title="Poller"
+      description="An ad-free survey service built with Angular, SCSS, and Node.js."
+      image="./projects/Poller.png"
+      link="https://projects.juliushussl.at/poller/"
+      techIcons={[
+        { name: "devicon:angular", link: "https://angular.io/" },
+        { name: "devicon:nodejs", link: "https://nodejs.org/" },
+      ]}
+    />
+
+    <SmallProjectTemplate
+      title="TransferTube"
+      description="A website to easily transfer data from one device to another, built with Angular, SCSS, Websockets, and Node.js."
+      image="./projects/TransferTube.png"
+      link="https://projects.juliushussl.at/Transfertube"
+      techIcons={[
+        { name: "devicon:angular", link: "https://angular.io/" },
+        { name: "devicon:nodejs", link: "https://nodejs.org/" },
+      ]}
+    />
+
+    <SmallProjectTemplate
+      title="Lithophane Keychain Tutorial"
+      description="A tutorial on how to create a custom lithophane keychain using Paint.net, Cura, and PrusaSlicer."
+      image="./projects/customLithophaneKeychain.png"
+      link="https://projects.juliushussl.at/lithophanekeychain/index.html"
+      techIcons={[]}
+    />
+
+    <SmallProjectTemplate
+      title="BLE OpenPull Webcontroller"
+      description="Web Controller for my Tensile Test Machine using HTML, CSS, JavaScript, and C++."
+      image="./projects/BleController.png"
+      link="https://projects.juliushussl.at/OpenPullController/"
+      techIcons={[
+        { name: "devicon:html5", link: "https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5" },
+        { name: "devicon:css3", link: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+        { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+        { name: "devicon:cplusplus", link: "https://cplusplus.com/" },
+      ]}
+    />
+
+    <SmallProjectTemplate
+      title="OpenPull Visualizer"
+      description="A tool to visualize data from the Tensile Test Machine using HTML, CSS, and JavaScript."
+      image="./projects/Visualizer.png"
+      link="https://projects.juliushussl.at/Visualizer/"
+      techIcons={[
+        { name: "devicon:html5", link: "https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5" },
+        { name: "devicon:css3", link: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+        { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+      ]}
+    />
+
+    <SmallProjectTemplate
+      title="BLE LED Matrix Web App"
+      description="The website for the school ball of my school, built using HTML, CSS, JavaScript, and C++."
+      image="./projects/BleLedMatrix.png"
+      link="https://projects.juliushussl.at/BleMatrix/"
+      techIcons={[
+        { name: "devicon:html5", link: "https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5" },
+        { name: "devicon:css3", link: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+        { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+        { name: "devicon:cplusplus", link: "https://cplusplus.com/" },
+      ]}
+    />
+
+    <SmallProjectTemplate
+      title="Gif2Matrix"
+      description="A simple converter for my Arduino-based 16*16 LED matrix."
+      image="./projects/Gif2Matrix.png"
+      link="https://projects.juliushussl.at/Gif2Matrix/"
+      techIcons={[
+        { name: "devicon:html5", link: "https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5" },
+        { name: "devicon:css3", link: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+        { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+        { name: "devicon:cplusplus", link: "https://cplusplus.com/" },
+      ]}
+    />
+
+    <SmallProjectTemplate
+      title="Lines.js"
+      description="A particle system based on right-angled directions. Configurable with a dat.gui interface, built using P5.js."
+      image="./projects/LinesJs.png"
+      link="https://projects.juliushussl.at/Lines.js/"
+      techIcons={[
+        { name: "devicon:html5", link: "https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5" },
+        { name: "devicon:css3", link: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+        { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+      ]}
+    />
+    <SmallProjectTemplate
+      title="IAEA"
+      description="A website which illustrates the history and present of nuclear energy (Not finished)."
+      image="./projects/IAEA.png"
+      link="https://projects.juliushussl.at/IAEA/"
+      techIcons={[
+        { name: "devicon:html5", link: "https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5" },
+        { name: "devicon:css3", link: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+        { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+      ]}
+    />
+
+    <SmallProjectTemplate
+      title="Curves.js"
+      description="A particle system based on quarter arcs elements. Configurable with a dat.gui interface."
+      image="./projects/CurvesJs.png"
+      link="https://projects.juliushussl.at/Curves/Curves.html"
+      techIcons={[
+        { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+        { name: "devicon:p5js", link: "https://p5js.org/" },
+      ]}
+    />
+
+    <SmallProjectTemplate
+      title="Drawmirror.js"
+      description="Draw Mandalas easily with this web app."
+      image="./projects/Drawmirror.png"
+      link="https://projects.juliushussl.at/Drawmirror/Drawmirror.html"
+      techIcons={[
+        { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+        { name: "devicon:p5js", link: "https://p5js.org/" },
+      ]}
+    />
+
+    <SmallProjectTemplate
+      title="Verbum Quaero"
+      description="A web app for learning Latin vocabulary. Based on the Medias in Res vocabs."
+      image="./projects/Verbumquaero.png"
+      link="https://projects.juliushussl.at/online_verbum_quaero/verbumquaero.html"
+      techIcons={[
+        { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+        { name: "devicon:p5js", link: "https://p5js.org/" },
+      ]}
+    />
+
+    <SmallProjectTemplate
+      title="DVD Screensaver"
+      description="Customizable screensaver inspired by the classic DVD screensaver. Will it hit the corner?"
+      image="./projects/DVD.png"
+      link="https://projects.juliushussl.at/DVD_online/DVD.html"
+      techIcons={[
+        { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+        { name: "devicon:p5js", link: "https://p5js.org/" },
+      ]}
+    />
+
+    <SmallProjectTemplate
+      title="Custom Timer"
+      description="A custom countdown timer that you can share as a link."
+      image="./projects/Ferientimer.png"
+      link="https://projects.juliushussl.at/CustomTimer/"
+      techIcons={[
+        { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+        { name: "devicon:p5js", link: "https://p5js.org/" },
+      ]}
+    />
+  </div>
+
+  <style lang="scss">
+    .featured-project-list-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-flow: column;
+      text-align: center;
+      width: 100vw;
+      color: var(--text-color);
+
+      .title {
+        h2 {
+          color: var(--accent);
+          font-weight: 400;
+        }
+      }
+    }
+
+    .project-list-container {
+      max-width: 90vw;
+    }
+
+    @media (max-width: 1024px) {
+      .project-list-container {
+        max-width: 90vw;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .project-list-container {
+        max-width: 100vw;
+      }
+    }
+  </style>
+</div>

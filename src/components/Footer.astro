@@ -1,0 +1,52 @@
+---
+import { Icon } from "astro-icon/components";
+const today = new Date();
+---
+
+<footer>
+  &copy; {today.getFullYear()} Julius Hussl. All rights reserved.
+  <div class="social-links">
+    <a href="https://www.instagram.com/juhu_1_1/">
+      <Icon name="mdi:instagram" />
+    </a>
+    <a href="https://www.linkedin.com/in/ju-hu/">
+      <Icon name="mdi:linkedin" />
+    </a>
+    <a href="https://github.com/Iqwertz">
+      <Icon name="mdi:github" />
+    </a>
+    <a href="https://www.printables.com/@JuHu_31662">
+      <Icon name="simple-icons:printables" />
+    </a>
+    <a href="mailto:contact@juliushussl.at">
+      <Icon name="mdi:email" />
+    </a>
+  </div>
+  <a href="./impressum">Imprint</a>
+</footer>
+<style>
+  footer {
+    margin-top: 4em;
+    padding: 2em 1em 2em 1em;
+    background-color: var(--accent-dark);
+    color: var(--text-color);
+    text-align: center;
+  }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 1em;
+  }
+  .social-links a {
+    text-decoration: none;
+    color: rgb(var(--gray));
+  }
+  .social-links a:hover {
+    color: rgb(var(--gray-dark));
+  }
+
+  [data-icon] {
+    font-size: 1.8em;
+  }
+</style>

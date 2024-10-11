@@ -1,0 +1,99 @@
+<div class="about-container">
+  <div class="hex-image" data-scroll-animate="fadeInLeft">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 327.846 318.144">
+      <defs>
+        <clipPath id="aboutImage">
+          <path
+            transform="translate(111.598) rotate(30)"
+            d="M172.871,0a28.906,28.906,0,0,1,25.009,14.412L245.805,97.1a28.906,28.906,0,0,1,0,28.989L197.88,208.784A28.906,28.906,0,0,1,172.871,223.2H76.831a28.906,28.906,0,0,1-25.009-14.412L3.9,126.092A28.906,28.906,0,0,1,3.9,97.1L51.821,14.412A28.906,28.906,0,0,1,76.831,0Z"
+          ></path>
+        </clipPath>
+      </defs>
+      <image
+        clip-path="url(#aboutImage)"
+        height="100%"
+        width="100%"
+        xlink:href="me/aifner3.jpg"
+        preserveAspectRatio="xMidYMin slice"
+      />
+      <path
+        class="border"
+        d="M172.871,0a28.906,28.906,0,0,1,25.009,14.412L245.805,97.1a28.906,28.906,0,0,1,0,28.989L197.88,208.784A28.906,28.906,0,0,1,172.871,223.2H76.831a28.906,28.906,0,0,1-25.009-14.412L3.9,126.092A28.906,28.906,0,0,1,3.9,97.1L51.821,14.412A28.906,28.906,0,0,1,76.831,0Z"
+        transform="translate(111.598) rotate(30)"></path>
+    </svg>
+  </div>
+  <div class="about-content" data-scroll-animate="fadeInRight">
+    <h2>About Me</h2>
+    <p>
+      <p>
+        Hello! I'm Julius, a physics student and freelance developer currently based in Munich, Germany. I'm passionate
+        about exploring new technologies and bringing ideas to life through coding and hardware. My journey in
+        programming began at the age of 14 when my uncle gifted me an Arduino Micro, sparking a deep interest in the
+        field. Since then, I've been continuously learning and building a variety of projects. <br /><br /> These days, I
+        primarily work with web technologies such as <span class="highlite">Angular</span>, <span class="highlite"
+          >Node.js</span
+        >, and <span class="highlite">TypeScript</span>. However, I also enjoy experimenting with <span class="highlite"
+          >microcontrollers</span
+        >, <span class="highlite">PCB design</span>, and <span class="highlite">3D printing</span>. Additionally, my
+        physics studies have given me the opportunity to work with <span class="highlite">Python</span> for data analysis
+        and simulations.
+      </p>
+    </p>
+  </div>
+</div>
+<style lang="scss">
+  .about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+    text-align: left;
+    width: 100vw;
+    color: var(--text-color);
+
+    .about-content {
+      max-width: 900px;
+      padding: 50px;
+      margin: 20px 50px;
+      border-radius: var(--border-radius);
+      background-color: var(--accent-dark);
+      box-shadow: var(--box-shadow);
+    }
+
+    .hex-image {
+      .border {
+        fill: none;
+        stroke: var(--accent-light);
+        stroke-width: 5;
+      }
+
+      svg {
+        width: 400px;
+        height: 400px;
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .about-container {
+      flex-flow: column;
+      .hex-image {
+        svg {
+          width: 300px;
+          height: 300px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 720px) {
+    .about-container {
+      .about-content {
+        font-size: 1em;
+        padding: 20px;
+        width: 80vw;
+        margin: 0;
+      }
+    }
+  }
+</style>

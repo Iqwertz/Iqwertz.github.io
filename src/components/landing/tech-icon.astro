@@ -1,0 +1,61 @@
+---
+import { Icon } from "astro-icon/components";
+import ConditionalLink from "./conditional-link.astro";
+
+interface Props {
+  icon: string;
+  link?: string;
+}
+
+const { icon, link } = Astro.props;
+---
+
+<div class="container">
+  <ConditionalLink link={link}>
+    <div>
+      <Icon name={icon} />
+    </div>
+  </ConditionalLink>
+</div>
+<style lang="scss">
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+    box-shadow: var(--box-shadow);
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    border: 2px solid var(--accent-light);
+    width: 45px;
+    height: 45px;
+    margin: 0 7px;
+    transition: all 0.1s ease;
+
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  [data-icon] {
+    font-size: 25px;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      width: 35px;
+      height: 35px;
+      margin: 0 5px;
+    }
+
+    [data-icon] {
+      font-size: 20px;
+    }
+  }
+</style>

@@ -1,0 +1,179 @@
+---
+import type { IconItem } from "../../scripts/interfaces";
+import ConditionalLink from "./conditional-link.astro";
+import TechIcon from "./tech-icon.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  techIcons?: IconItem[];
+  link?: string;
+}
+
+const { title, description, image = "/blog-placeholder-1.jpg", techIcons = [], link } = Astro.props;
+---
+
+<div class="container">
+  <ConditionalLink link={link}>
+    <div class="info-container">
+      <div class="title">{title}</div>
+      <p set:html={description} />
+    </div>
+  </ConditionalLink>
+  <img src={image} alt={title} />
+
+  <div class="icon-container">
+    {techIcons.map((icon) => <TechIcon icon={icon.name} link={icon.link} />)}
+  </div>
+</div>
+
+<style lang="scss">
+  .container {
+    margin: 40px;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    width: 400px;
+    height: calc(400px / 1.91);
+    transition: all 0.3s;
+    cursor: pointer;
+
+    img {
+      box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.44);
+      border-radius: 20px 20px 20px 20px;
+      border: 0px solid #000000;
+      transition: 0.3s;
+      object-fit: cover;
+      width: 400px;
+      height: calc(400px / 1.91);
+    }
+
+    &:hover img {
+      filter: blur(1px);
+      filter: brightness(0.1);
+    }
+
+    &:hover h2 {
+      padding-top: 10%;
+    }
+
+    .icon-container {
+      z-index: 10;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-flow: row;
+      margin: -40px 0 0 0;
+      transform: translate(-50%, 0);
+      left: 50%;
+      transition: all 0.3s;
+    }
+    &:hover .icon-container {
+      margin: -30px 0 0 0;
+    }
+
+    .info-container {
+      text-align: center;
+      padding: 1em;
+      box-sizing: border-box;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 3;
+      opacity: 0;
+      transition: 0.2s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-flow: column;
+
+      .title {
+        font-size: 1.4em;
+        font-weight: 500;
+        color: var(--accent-light);
+      }
+
+      p {
+        color: var(--text-color);
+        font-size: 1em;
+        font-weight: 150;
+        margin: 0;
+      }
+    }
+
+    &:hover .info-container {
+      opacity: 1;
+      //transform: scale(1.15);
+    }
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .container {
+      width: 50vw;
+      height: calc(40vw / 1.91);
+
+      img {
+        width: 50vw;
+        height: calc(40vw / 1.91);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      width: 90vw;
+      height: calc(80vw / 1.91);
+      margin: 30px 0;
+
+      img {
+        width: 90vw;
+        height: calc(80vw / 1.91);
+      }
+
+      &:hover {
+        transform: scale(1.08);
+      }
+
+      &:hover .icon-container {
+        margin: -25px 0 0 0;
+      }
+
+      .info-container {
+        .title {
+          font-size: 1.5em;
+        }
+
+        p {
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .container {
+      animation: appear linear;
+      animation-timeline: view();
+      animation-range: entry 0 cover 20%;
+    }
+  }
+
+  @keyframes appear {
+    from {
+      opacity: 0;
+      transform: scale(0.1);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+</style>

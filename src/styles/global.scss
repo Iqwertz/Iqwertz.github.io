@@ -1,0 +1,202 @@
+/*
+  The CSS in this style tag is based off of Bear Blog's default CSS.
+  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
+  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+ */
+
+:root {
+  --accent: #b5e0ad;
+  --accent-dark: #005244;
+  --accent-light: #ff8749; //#00bfa5;
+  --text-color: #f6f4f3;
+  --background-color: #003333;
+  --black: rgb(15, 18, 25);
+  --gray: rgb(96, 115, 159);
+  --gray-light: rgb(229, 233, 240);
+  --gray-dark: rgb(34, 41, 57);
+  --gray-gradient: rgba(var(--gray-light), 50%), #fff;
+  --box-shadow-accent: 10px 10px 0 var(--accent);
+  --box-shadow: 7px 7px 10px #0000003a;
+  --border-radius: 5px;
+  --border-radius-small: 4px;
+
+  --sb-track-color: var(--accent-dark);
+  --sb-thumb-color: var(--accent);
+  --sb-size: 11px;
+
+  --hover-transition: all 0.3s ease-in-out;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+@font-face {
+  font-family: "Atkinson";
+  src: url("/fonts/atkinson-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson";
+  src: url("/fonts/atkinson-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color: var(--gray-dark);
+  font-size: 20px;
+  line-height: 1.5;
+  background-color: var(--background-color);
+  overflow-x: hidden;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 10px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
+main {
+  width: 720px;
+  max-width: calc(100% - 2em);
+  margin: auto;
+  padding: 3em 1em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 0.5rem 0;
+  color: var(--accent-light);
+  line-height: 1.2;
+}
+h1 {
+  font-size: 3.052em;
+}
+h2 {
+  font-size: 2.441em;
+}
+h3 {
+  font-size: 1.953em;
+}
+h4 {
+  font-size: 1.563em;
+}
+h5 {
+  font-size: 1.25em;
+}
+strong,
+b {
+  font-weight: 700;
+}
+a {
+  color: var(--accent);
+}
+a:hover {
+  color: var(--accent);
+}
+p {
+  margin-bottom: 1em;
+}
+.prose p {
+  margin-bottom: 2em;
+}
+textarea {
+  width: 100%;
+  font-size: 16px;
+}
+input {
+  font-size: 16px;
+}
+table {
+  width: 100%;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+code {
+  padding: 2px 5px;
+  background-color: var(--gray-light);
+  border-radius: 2px;
+}
+pre {
+  padding: 1.5em;
+  border-radius: 8px;
+}
+pre > code {
+  all: unset;
+}
+blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 0 0 0 20px;
+  margin: 0px;
+  font-size: 1.333em;
+}
+hr {
+  border: none;
+  border-top: 1px solid var(--gray-light);
+}
+
+.highlite {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+@media (max-width: 720px) {
+  body {
+    font-size: 18px;
+  }
+  main {
+    padding: 1em;
+  }
+}
+
+.sr-only {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+  clip: rect(1px 1px 1px 1px);
+  /* maybe deprecated but we need to support legacy browsers */
+  clip: rect(1px, 1px, 1px, 1px);
+  /* modern browsers, clip-path works inwards from each corner */
+  clip-path: inset(50%);
+  /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
+  white-space: nowrap;
+}

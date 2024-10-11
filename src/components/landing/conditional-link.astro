@@ -1,0 +1,19 @@
+---
+const { link } = Astro.props;
+---
+
+{
+  link ? (
+    <a href={link} target="_blank" rel="noopener noreferrer">
+      <slot />
+    </a>
+  ) : (
+    <slot />
+  )
+}
+
+<style lang="scss">
+  a {
+    cursor: pointer;
+  }
+</style>

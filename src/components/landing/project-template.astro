@@ -1,0 +1,223 @@
+---
+import type { IconItem } from "../../scripts/interfaces";
+import TechIcon from "./tech-icon.astro";
+import ConditionalLink from "./conditional-link.astro";
+import type { Link } from "./project-list.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  imageLink?: string;
+  isLeft?: boolean;
+  techIcons?: IconItem[];
+  links?: Link[];
+}
+
+const {
+  title,
+  description,
+  image = "/blog-placeholder-1.jpg",
+  imageLink,
+  isLeft,
+  techIcons = [],
+  links = [],
+} = Astro.props;
+---
+
+<div class={`project-container ${isLeft ? "left" : "right"}`}>
+  <ConditionalLink link={imageLink}>
+    <div class="project-image" data-scroll-animate="fadeInUp">
+      <img src={image} alt={title} />
+    </div>
+  </ConditionalLink>
+  <div class="project-content">
+    <h3>{title}</h3>
+    <p set:html={description}>
+      <div class="links">
+        {
+          links?.map((link) => (
+            <a href={link.url} target="_blank" rel="noopener noreferrer">
+              {link.text + " >"}
+            </a>
+          ))
+        }
+      </div>
+      <p>
+        <div class="icon-container">
+          {techIcons.map((icon) => <TechIcon icon={icon.name} link={icon.link} />)}
+        </div>
+      </p>
+    </p>
+  </div>
+</div>
+
+<style lang="scss">
+  .project-container {
+    --rel-shift: -500px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-flow: row;
+    text-align: left;
+    color: var(--text-color);
+
+    &.left {
+      flex-flow: row-reverse;
+    }
+
+    &.left .project-content {
+      margin-left: 0;
+      margin-right: var(--rel-shift);
+    }
+
+    &.right {
+      flex-flow: row;
+    }
+
+    &.right .project-content {
+      margin-left: var(--rel-shift);
+      margin-right: 0;
+    }
+
+    .project-image {
+      height: 40vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      border-radius: var(--border-radius);
+
+      img {
+        box-shadow: var(--box-shadow);
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        transition: transform 0.2s ease;
+      }
+
+      &:hover {
+        img {
+          transform: scale(1.07);
+        }
+      }
+    }
+
+    .project-content {
+      position: relative;
+      max-width: 650px;
+      padding: 50px;
+      border-radius: var(--border-radius);
+      background-color: var(--accent-dark);
+      box-shadow: var(--box-shadow);
+      font-size: 0.9em;
+
+      h3 {
+        color: var(--accent);
+        font-weight: 400;
+      }
+
+      .links {
+        a {
+          margin: 0 10px;
+          transition: all 0.2s ease;
+
+          &:hover {
+            color: var(--accent-light);
+          }
+        }
+      }
+
+      .icon-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: row;
+        margin-top: 20px;
+        position: absolute;
+        bottom: -25px;
+      }
+    }
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateY(50px);
+    }
+    100% {
+      transform: translateY(-150px);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .project-container {
+      .project-content {
+        animation: slide linear forwards;
+        animation-timeline: view();
+        animation-range: 00% 100%;
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .project-container {
+      align-items: center;
+      flex-direction: column;
+      flex-flow: column;
+      padding: 0 40px;
+
+      &.left {
+        flex-flow: column;
+      }
+
+      &.left .project-content {
+        margin-left: 0;
+        margin-right: 50px;
+      }
+
+      &.right {
+        flex-flow: column;
+      }
+
+      &.right .project-content {
+        margin-top: -50px;
+        margin-left: 50px;
+      }
+
+      .project-content {
+        margin-top: -50px;
+      }
+
+      .project-image {
+        padding: 0;
+      }
+    }
+  }
+
+  @media (max-width: 720px) {
+    .project-container {
+      margin: 5px 0;
+      padding: 0 10px;
+      &.left .project-content {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      &.right .project-content {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .project-content {
+        padding: 20px;
+        margin: -55px 0 0 0;
+        max-width: 75vw;
+        .icon-container {
+          bottom: -15px;
+        }
+      }
+    }
+  }
+</style>
