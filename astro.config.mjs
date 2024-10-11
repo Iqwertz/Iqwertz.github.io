@@ -41,7 +41,5 @@ export default defineConfig({
     "/terminal": "https://projects.juliushussl.at/terminal/",
     "/Transfertube": "https://projects.juliushussl.at/Transfertube/",
     "/Visualizer": "https://projects.juliushussl.at/Visualizer/",
-    "/VWA%20-%20Julius%20Hussl.pdf":
-      "https://projects.juliushussl.at/VWA/VWA%20-%20Julius%20Hussl.pdf",
   },
 });
