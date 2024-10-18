@@ -3,6 +3,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import AboutMe from "../components/landing/aboutme.astro";
+import Timeline from "../components/landing/timeline.astro";
 import ProjectList from "../components/landing/project-list.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import "../styles/landing.scss";
@@ -148,9 +149,12 @@ const options: ISourceOptions = {
     <div class="about-me" id="aboutme">
       <AboutMe />
     </div>
-    <div class="projects" id="projects">
-      <ProjectList />
+    <div class="timeline-container">
+      <Timeline />
+      <div class="projects" id="projects">
+        <ProjectList />
+      </div>
+      <Footer />
     </div>
-    <Footer />
   </body>
 </html>
