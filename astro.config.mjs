@@ -6,10 +6,12 @@ import sitemap from "@astrojs/sitemap";
 
 import icon from "astro-icon";
 
+import react from "@astrojs/react";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://juliushussl.at/",
-  integrations: [mdx(), sitemap(), icon()],
+  integrations: [mdx(), sitemap(), icon(), react()],
   redirects: {
     "/Battlebots": "https://projects.juliushussl.at/Battlebots/",
     "/Battlebots-stable": "https://projects.juliushussl.at/Battlebots-stable/",

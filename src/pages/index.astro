@@ -9,6 +9,7 @@ import "../styles/landing.scss";
 import Particles from "astro-particles";
 import type { ISourceOptions } from "tsparticles-engine";
 import { Icon } from "astro-icon/components";
+import Globe from "../components/Globe.astro";
 
 const options: ISourceOptions = {
   zLayers: 1,
@@ -148,6 +149,7 @@ const options: ISourceOptions = {
     <div class="about-me" id="aboutme">
       <AboutMe />
     </div>
+    <Globe />
     <div class="projects" id="projects">
       <ProjectList />
     </div>
