@@ -6,7 +6,11 @@ document.addEventListener('click', function (event: any) {
 
   if (target.tagName === 'A') {
     link = target.href;
-  } else if (target.tagName === 'IMG') {
+  } else if (
+    target.tagName === 'IMG' ||
+    target.tagName === 'P' ||
+    target.tagName === 'svg'
+  ) {
     const parentLink = target.closest('a');
     if (parentLink) {
       link = parentLink.href;
