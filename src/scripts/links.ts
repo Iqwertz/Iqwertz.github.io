@@ -13,7 +13,6 @@ document.addEventListener('click', function (event: any) {
     }
   }
   if (link) {
-    console.log('Clicked: ' + link);
     //Register umami event
     if (typeof umami !== 'undefined') {
       umami.track('link', {
