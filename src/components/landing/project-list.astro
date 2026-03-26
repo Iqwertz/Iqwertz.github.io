@@ -14,6 +14,21 @@ export interface Link {
   </div>
 
   <ProjectTemplate
+    title="Smartdorm"
+    description="SmartDorm is a management system I developed to streamline administrative and community tasks at my student dormitory. The platform provides a modern and intuitive React frontend to seamlessly handle the entire tenant lifecycle, from managing subtenants and extensions to coordinating student-run departments. The backend is written in Django and uses PostgreSQL as a database, alongside Redis for session management and ldap for secure authentication and authorization. To support a growing team of network administrators, the project features a professional Git workflow with multi-stage testing and continuous deployment pipelines, allowing us to ship stable new features collaboratively. Currently, the system has been running for over a year without any downtime, after successfully migrating the legacy system to now manage operations for over 300 active residents and thousands of former tenants."
+    image="./projects/Smartdorm.png"
+    imageLink="https://smartdorm.juliushussl.at"
+    isLeft={true}
+    techIcons={[
+      { name: "devicon:python", link: "https://www.python.org/" },
+      { name: "devicon:postgresql", link: "https://www.postgresql.org/" },
+      { name: "devicon:redis", link: "https://redis.io/" },
+      { name: "devicon:react", link: "https://reactjs.org/" },
+      { name: "devicon:git", link: "https://git-scm.com/" },
+    ]}
+    links={[{ text: "Demo", url: "https://smartdorm.juliushussl.at" }]}
+  />
+  <ProjectTemplate
     title="Depictor"
     description='Depictor is an raspberry pie based open-source web app to control 2D pen plotters. It simplifies the process of generating and drawing images by providing a modern and responsive interface built with <span class="highlite">Angular</span>. The app supports real-time plot progress tracking, automatic background removal, draw time estimates, a gallery of previous prints and much more. The backend is primarily powered by <span class="highlite">Node.js</span> but also leverages <span class="highlite">Java</span> and <span class="highlite">c++</span> for performance-critical tasks, ensuring smooth and efficient operation. <br/> The project was tested and developed on a selfmade 2D pen plotter.'
     image="./projects/Depictor.png"
@@ -105,7 +120,7 @@ export interface Link {
       ]}
     />
 
-    <SmallProjectTemplate
+    <!--     <SmallProjectTemplate
       title="Raumklima"
       description="A room climate monitoring system with a web interface powered by Wemos D1 mini and BMP280 sensors, built with Angular and Firebase."
       image="./projects/RoomSensor.png"
@@ -114,11 +129,11 @@ export interface Link {
         { name: "devicon:angular", link: "https://angular.io/" },
         { name: "devicon:firebase", link: "https://firebase.google.com/" },
       ]}
-    />
+    /> -->
 
     <SmallProjectTemplate
       title="E.Z.f.B.S."
-      description="A website I created and maintain for the fundraising organization 'Ein Zuhause für Bukarester Straßenkinder.'"
+      description="A website I created and maintain for 'Ein Zuhause für Bukarester Straßenkinder,' a fundraising organization where I serve as a board member."
       image="./projects/Bukarest.png"
       link="http://www.bukarester-strassenkinder.org/index.php"
       techIcons={[
@@ -139,15 +154,15 @@ export interface Link {
       ]}
     />
 
-    <SmallProjectTemplate
+    <!--     <SmallProjectTemplate
       title="Launchpad Configurator"
       description="An online configurator for a Launchpad built with Angular and SCSS."
       image="./projects/launchpadConfig.png"
       link="https://projects.juliushussl.at/launchpadConfigurator/"
       techIcons={[{ name: "devicon:angular", link: "https://angular.io/" }]}
-    />
+    /> -->
 
-    <SmallProjectTemplate
+    <!--     <SmallProjectTemplate
       title="Poller"
       description="An ad-free survey service built with Angular, SCSS, and Node.js."
       image="./projects/Poller.png"
@@ -156,7 +171,7 @@ export interface Link {
         { name: "devicon:angular", link: "https://angular.io/" },
         { name: "devicon:nodejs", link: "https://nodejs.org/" },
       ]}
-    />
+    /> -->
 
     <SmallProjectTemplate
       title="TransferTube"
@@ -202,7 +217,7 @@ export interface Link {
       ]}
     />
 
-    <SmallProjectTemplate
+    <!--     <SmallProjectTemplate
       title="BLE LED Matrix Web App"
       description="The website for the school ball of my school, built using HTML, CSS, JavaScript, and C++."
       image="./projects/BleLedMatrix.png"
@@ -213,9 +228,9 @@ export interface Link {
         { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
         { name: "devicon:cplusplus", link: "https://cplusplus.com/" },
       ]}
-    />
+    /> -->
 
-    <SmallProjectTemplate
+    <!--     <SmallProjectTemplate
       title="Gif2Matrix"
       description="A simple converter for my Arduino-based 16*16 LED matrix."
       image="./projects/Gif2Matrix.png"
@@ -226,7 +241,7 @@ export interface Link {
         { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
         { name: "devicon:cplusplus", link: "https://cplusplus.com/" },
       ]}
-    />
+    /> -->
 
     <SmallProjectTemplate
       title="Lines.js"
@@ -272,7 +287,7 @@ export interface Link {
         { name: "devicon:p5js", link: "https://p5js.org/" },
       ]}
     />
-
+    <!--
     <SmallProjectTemplate
       title="Verbum Quaero"
       description="A web app for learning Latin vocabulary. Based on the Medias in Res vocabs."
@@ -282,9 +297,9 @@ export interface Link {
         { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
         { name: "devicon:p5js", link: "https://p5js.org/" },
       ]}
-    />
+    /> -->
 
-    <SmallProjectTemplate
+    <!--     <SmallProjectTemplate
       title="DVD Screensaver"
       description="Customizable screensaver inspired by the classic DVD screensaver. Will it hit the corner?"
       image="./projects/DVD.png"
@@ -293,9 +308,9 @@ export interface Link {
         { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
         { name: "devicon:p5js", link: "https://p5js.org/" },
       ]}
-    />
+    /> -->
 
-    <SmallProjectTemplate
+    <!--     <SmallProjectTemplate
       title="Custom Timer"
       description="A custom countdown timer that you can share as a link."
       image="./projects/Ferientimer.png"
@@ -304,7 +319,7 @@ export interface Link {
         { name: "devicon:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
         { name: "devicon:p5js", link: "https://p5js.org/" },
       ]}
-    />
+    /> -->
   </div>
 
   <style lang="scss">

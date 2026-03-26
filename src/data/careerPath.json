@@ -1,0 +1,90 @@
+[
+  {
+    "id": "birth",
+    "date": "1998",
+    "type": "milestone",
+    "title": "Born"
+  },
+  {
+    "id": "start_highschool",
+    "parentId": "birth",
+    "date": "2012",
+    "type": "education",
+    "title": "Started High School",
+    "institution": "Your High School Name"
+  },
+  {
+    "id": "end_highschool",
+    "parentId": "start_highschool",
+    "date": "2017",
+    "type": "education",
+    "title": "Graduated High School"
+  },
+  {
+    "id": "start_uni_physics",
+    "parentId": "end_highschool",
+    "date": "2018-10",
+    "type": "education",
+    "title": "Started BSc Physics",
+    "institution": "LMU Munich",
+    "description": "Initial studies in Physics.",
+    "details": "Focused on theoretical physics and computational methods. Enjoyed astrophysics electives."
+  },
+  {
+    "id": "start_freelance",
+    "parentId": "end_highschool",
+    "date": "2017-09",
+    "type": "job",
+    "title": "Started Freelance Dev",
+    "company": "Self-Employed",
+    "description": "Early web development projects.",
+    "details": "Built websites using HTML, CSS, JS, and later explored frameworks like Angular and Vue. Also worked with Arduino and Raspberry Pi for hardware integration projects."
+  },
+  {
+    "id": "bukarest_project",
+    "parentId": "start_freelance",
+    "date": "2019-03",
+    "type": "project",
+    "title": "Website E.Z.f.B.S.",
+    "description": "Created site for charity org."
+  },
+  {
+    "id": "vwa_project",
+    "parentId": "start_uni_physics",
+    "date": "2020-05",
+    "type": "project",
+    "title": "Tensile Test Machine (VWA)",
+    "description": "Built machine for graduation paper."
+  },
+  {
+    "id": "depictor_project",
+    "parentId": "start_freelance",
+    "date": "2021-08",
+    "type": "project",
+    "title": "Depictor Pen Plotter",
+    "description": "Developed open-source plotter software."
+  },
+  {
+    "id": "start_job_rooms",
+    "parentId": "start_uni_physics",
+    "date": "2023-11",
+    "type": "job",
+    "title": "Rooms App Developer",
+    "company": "Schollheim",
+    "description": "Managed room booking system for dorm."
+  },
+  {
+    "id": "current_physics",
+    "parentId": "start_uni_physics",
+    "date": "2024-07",
+    "type": "education",
+    "title": "Continuing BSc Physics"
+  },
+  {
+    "id": "current_freelance",
+    "parentId": "start_freelance",
+    "date": "2024-07",
+    "type": "job",
+    "title": "Active Freelance Dev"
+  }
+]
