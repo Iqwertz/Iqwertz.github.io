@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import AboutMe from "../components/landing/aboutme.astro";
 import ProjectList from "../components/landing/project-list.astro";
+import Globe from "../components/landing/globe.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import "../styles/landing.scss";
 import Particles from "astro-particles";
@@ -151,6 +152,9 @@ const options: ISourceOptions = {
     </div>
     <div class="projects" id="projects">
       <ProjectList />
+    </div>
+    <div class="travels-wrapper">
+      <Globe />
     </div>
     <Footer />
   </body>
