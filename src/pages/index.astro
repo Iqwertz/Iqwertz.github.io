@@ -6,7 +6,6 @@ import AboutMe from "../components/landing/aboutme.astro";
 import ProjectList from "../components/landing/project-list.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import "../styles/landing.scss";
-import Particles from "astro-particles";
 import type { ISourceOptions } from "tsparticles-engine";
 import { Icon } from "astro-icon/components";
 
@@ -144,8 +143,24 @@ const options: ISourceOptions = {
           </svg>
         </a>
       </div>
+
+      <div id="tsparticles" data-options={JSON.stringify(options)}></div>
+      <script>
+        import { tsParticles } from "tsparticles-engine";
+        import { loadFull } from "tsparticles";
+
+        const initParticles = async () => {
+          const el = document.getElementById("tsparticles");
+          if (el && el.dataset.options) {
+            const options = JSON.parse(el.dataset.options);
+            await loadFull(tsParticles);
+            await tsParticles.load("tsparticles", options);
+          }
+        };
+
+        initParticles();
+      </script>
     </div>
-    <Particles id="tsparticles" options={options} init="particlesInit" />
     <div class="about-me" id="aboutme">
       <AboutMe />
     </div>

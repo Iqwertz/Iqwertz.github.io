@@ -20,7 +20,6 @@
     "animate.css": "^4.1.1",
     "astro": "^4.15.4",
     "astro-icon": "^1.1.1",
-    "astro-particles": "^2.10.0",
     "scss": "^0.2.4",
     "tsparticles": "2.12",
     "typed.js": "^2.1.0",
