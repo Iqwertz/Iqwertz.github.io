@@ -1,0 +1,521 @@
+---
+const events = [
+  {
+    commit: "a41c2de",
+    date: "Sept 2013",
+    branch: "academic",
+    title: "AHS Wiedner Gymnasium",
+    detail: "High School & Matura graduation",
+  },
+  {
+    commit: "c0ffeeb",
+    date: "Oct 2019",
+    branch: "work",
+    title: "Intern @ CERN",
+    detail: "Portable configurator for network switches at the LHCb",
+  },
+  {
+    commit: "b00b1e5",
+    date: "Aug 2020",
+    branch: "work",
+    title: "Intern @ Web & Söhne",
+    detail: "Full-stack development passing workflows with Angular & Express.js",
+  },
+  {
+    commit: "1a2b3c4",
+    date: "Apr 2021",
+    branch: "freelance",
+    title: "Self Employed Dev",
+    detail: "Fullstack SW dev offering Angular, Firebase, Node.js, MVP development & 3D printing",
+  },
+  {
+    commit: "d3adb3f",
+    date: "Aug 2021",
+    branch: "work",
+    title: "Intern @ Web & Söhne",
+    detail: "Second term: tackling more extensive application architecture",
+  },
+  {
+    commit: "8f7e6d5",
+    date: "Sept 2021",
+    branch: "extra",
+    title: "Physics Awards",
+    detail: "Dr. Hans Riegel-Fachpreis & VWA Preis from TU Graz and Austrian Physical Society",
+  },
+  {
+    commit: "e55c192",
+    date: "Nov 2021",
+    branch: "extra",
+    title: "Civilian Servant",
+    detail: "everyone codes: managed UX-Design course & agile team management",
+  },
+  {
+    commit: "90a1b2c",
+    date: "Aug 2022",
+    branch: "academic",
+    title: "BSc. Physics",
+    detail: "Started undergrad in Physics at Technical University of Munich",
+  },
+  {
+    commit: "7fc2901",
+    date: "June 2024",
+    branch: "work",
+    title: "Working Student @ Linque",
+    detail: "Developing Python software & FPGA designs to control photonics computing hardware",
+  },
+  {
+    commit: "4b92def",
+    date: "Aug 2025",
+    branch: "academic",
+    title: "MSc. Condensed Matter Physics",
+    detail: "Started Master's degree at Technical University of Munich",
+  },
+  {
+    commit: "HEAD   ",
+    date: "Present",
+    branch: "extra",
+    title: "Active Commitments",
+    detail: "E.Z.f.B.S. Board Member, 42er Pfadfinder Volunteer & Dorm Network Admin",
+  },
+];
+
+const branches = [
+  { id: "academic", color: "#58a6ff", label: "Academic", isOpen: true }, // GitHub Blue
+  { id: "work", color: "#3fb950", label: "Employment", isOpen: true }, // GitHub Green
+  { id: "freelance", color: "#d2a8ff", label: "Freelance", isOpen: false }, // GitHub Purple
+  { id: "extra", color: "#f0883e", label: "Extracurricular", isOpen: true }, // GitHub Orange
+];
+
+const timelineData = JSON.stringify({
+  events: events.map((e) => ({ branch: e.branch })),
+  branches: branches.map((b) => ({ id: b.id, color: b.color, isOpen: b.isOpen })),
+});
+---
+
+<section id="career" class="git-timeline-container">
+  <div class="git-header">
+    <div class="mac-buttons"><span></span><span></span><span></span></div>
+    <h2><span class="prompt">julius@workspace:~$</span> git log --graph --oneline --all --decorate</h2>
+  </div>
+
+  <div class="git-canvas">
+    <div class="git-legend">
+      {
+        branches.map((b) => (
+          <span class="legend-item" style={`--b-color: ${b.color}`}>
+            <span class="dot" /> {b.label}
+          </span>
+        ))
+      }
+    </div>
+
+    <git-timeline data-timeline={timelineData} class="git-graph-wrapper">
+      <div id="svg-container" class="svg-container" style="opacity: 0;">
+        <svg class="git-svg"></svg>
+      </div>
+
+      <div id="content-container" class="content-container">
+        {
+          events.map((event, rowIndex) => {
+            const eventBranch = branches.find((b) => b.id === event.branch);
+
+            return (
+              <div
+                class="git-row group"
+                data-row-index={rowIndex}
+                data-scroll-animate="fadeInRight"
+                style={`animation-delay: ${rowIndex * 0.1}s;`}
+              >
+                <div class="git-content">
+                  <div class="content-header">
+                    <span class="commit-hash">{event.commit}</span>
+                    <span class="commit-date">({event.date})</span>
+                    <span
+                      class="commit-ref"
+                      style={`color: ${eventBranch?.color}; border-color: ${eventBranch?.color};`}
+                    >
+                      {eventBranch?.label}
+                    </span>
+                  </div>
+                  <div class="commit-message">
+                    <h3 class="message-title" style={`color: ${eventBranch?.color}`}>
+                      {event.title}
+                    </h3>
+                    <p class="message-detail">{event.detail}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </git-timeline>
+  </div>
+</section>
+
+<style lang="scss">
+  .git-timeline-container {
+    max-width: 900px;
+    margin: 4rem auto;
+    background-color: #0d1117; /* GitHub Dark Dimension */
+    border-radius: 12px;
+    border: 1px solid #30363d;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    overflow: hidden;
+    color: #c9d1d9;
+
+    .git-header {
+      background-color: #161b22;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #30363d;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+
+      .mac-buttons {
+        display: flex;
+        gap: 8px;
+        span {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          &:nth-child(1) {
+            background-color: #ff5f56;
+          }
+          &:nth-child(2) {
+            background-color: #ffbd2e;
+          }
+          &:nth-child(3) {
+            background-color: #27c93f;
+          }
+        }
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #e6edf3;
+
+        .prompt {
+          color: #3fb950;
+          font-weight: bold;
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+
+  .git-canvas {
+    padding: 2rem 1.5rem;
+  }
+
+  .git-legend {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--b-color);
+      font-weight: 600;
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--b-color);
+        box-shadow: 0 0 8px var(--b-color);
+      }
+    }
+  }
+
+  .git-graph-wrapper {
+    display: flex;
+    position: relative;
+    margin-top: 1rem;
+    gap: 1rem;
+
+    .svg-container {
+      width: 120px;
+      flex-shrink: 0;
+      position: relative;
+
+      .git-svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: visible;
+      }
+    }
+
+    .content-container {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .git-row {
+    position: relative;
+    padding-bottom: 2rem;
+    transition: background-color 0.2s ease;
+    border-radius: 6px;
+    padding-left: 10px;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.02);
+    }
+  }
+
+  .git-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    z-index: 4;
+
+    .content-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+
+      .commit-hash {
+        color: #e3b341;
+        font-size: 0.9rem;
+      }
+
+      .commit-date {
+        color: #8b949e;
+        font-size: 0.85rem;
+      }
+
+      .commit-ref {
+        font-size: 0.7rem;
+        padding: 1px 8px;
+        border: 1px solid;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        font-weight: bold;
+      }
+    }
+
+    .commit-message {
+      .message-title {
+        margin: 0 0 0.4rem 0;
+        font-size: 1.1rem;
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+      }
+
+      .message-detail {
+        margin: 0;
+        color: #8b949e;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .git-timeline-container {
+      margin: 4rem 1rem;
+    }
+    .git-header h2 {
+      font-size: 0.8rem !important;
+    }
+    .git-canvas {
+      padding: 1rem;
+    }
+    .git-graph-wrapper .svg-container {
+      width: 70px;
+    }
+  }
+
+  @keyframes graphWipeDown {
+    0% {
+      clip-path: inset(0 -50% 100% -50%);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    100% {
+      clip-path: inset(0 -50% -10% -50%);
+      opacity: 1;
+    }
+  }
+
+  :global(.animate__wipeDown) {
+    animation-name: graphWipeDown !important;
+    animation-duration: 2s !important;
+    animation-timing-function: ease-in-out !important;
+    animation-fill-mode: forwards !important;
+  }
+</style>
+
+<script>
+  class GitTimeline extends HTMLElement {
+    resizeObserver: ResizeObserver;
+
+    constructor() {
+      super();
+      this.resizeObserver = new ResizeObserver(() => this.draw());
+    }
+
+    connectedCallback() {
+      this.resizeObserver.observe(this);
+      // Give DOM time to lay out fonts
+      setTimeout(() => this.draw(), 50);
+
+      // Custom intersection observer to handle animations for elements too tall for the default 30% threshold
+      const svgContainer = this.querySelector(".svg-container");
+      if (svgContainer) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (entries[0].isIntersecting) {
+              svgContainer.style.opacity = "1";
+              svgContainer.classList.add("animate__animated", "animate__wipeDown");
+              observer.disconnect();
+            }
+          },
+          { threshold: 0.05 }, // Trigger when just 5% of the timeline enters the screen
+        );
+        observer.observe(this);
+      }
+    }
+
+    disconnectedCallback() {
+      this.resizeObserver.disconnect();
+    }
+
+    draw() {
+      const dataStr = this.dataset.timeline;
+      if (!dataStr) return;
+
+      const { events, branches } = JSON.parse(dataStr);
+      const svg = this.querySelector(".git-svg");
+      const container = this.querySelector(".svg-container");
+
+      if (!svg || !container) return;
+      const containerRect = container.getBoundingClientRect();
+      if (containerRect.height === 0 || containerRect.width === 0) return;
+
+      const rows = Array.from(this.querySelectorAll(".git-row"));
+      const colWidth = 20;
+      const offsetLeft = 14;
+
+      const nodeCoords = rows
+        .map((row: any, i) => {
+          const header = row.querySelector(".content-header");
+          if (!header) return null;
+
+          // Compute Y offset immune to CSS transforms (like fadeInUp)
+          // `row` is positioned relative to `.content-container`
+          // `svg-container` starts at the same top as `.content-container`
+          let nodeY = row.offsetTop + header.offsetTop + header.offsetHeight / 2;
+
+          const branchIndex = branches.findIndex((b: any) => b.id === events[i].branch);
+          const nodeX = offsetLeft + branchIndex * colWidth;
+
+          return {
+            x: nodeX,
+            y: nodeY,
+            color: branches[branchIndex].color,
+            branch: events[i].branch,
+            idx: i,
+          };
+        })
+        .filter(Boolean);
+
+      let svgContent = "";
+
+      const drawPath = (p1: any, p2: any, color: string, isMerge = false) => {
+        // Make the slope steeper by extending the control point Y by 80% (instead of 50%)
+        const cy1 = p1.y + (p2.y - p1.y) * 0.8;
+        const cy2 = p2.y - (p2.y - p1.y) * 0.8;
+        return `<path d="M ${p1.x} ${p1.y} C ${p1.x} ${cy1}, ${p2.x} ${cy2}, ${p2.x} ${p2.y}"
+                 fill="none" stroke="${color}" stroke-width="3" opacity="${isMerge ? 0.6 : 1}" style="filter: drop-shadow(0 0 4px ${color}88);" />`;
+      };
+
+      branches.forEach((b: any) => {
+        const bEvents = nodeCoords.filter((n: any) => n.branch === b.id);
+        if (bEvents.length === 0) return;
+
+        // Vertical/Straight connections
+        for (let i = 0; i < bEvents.length - 1; i++) {
+          svgContent += drawPath(bEvents[i], bEvents[i + 1], b.color);
+        }
+
+        // Start curve
+        const firstEvent = bEvents[0];
+        if (firstEvent && firstEvent.idx > 0) {
+          const prev = nodeCoords[firstEvent.idx - 1];
+          if (prev) svgContent += drawPath(prev, firstEvent, b.color);
+        }
+
+        // End curve (merging) or Open curve (active)
+        const lastEvent = bEvents[bEvents.length - 1];
+        if (lastEvent) {
+          if (!b.isOpen && lastEvent.idx < nodeCoords.length - 1) {
+            const next = nodeCoords[lastEvent.idx + 1];
+            if (next) svgContent += drawPath(lastEvent, next, b.color, true);
+          } else if (b.isOpen) {
+            // Draw straight dashed line down to indicate continuation
+            svgContent += `<path d="M ${lastEvent.x} ${lastEvent.y} L ${lastEvent.x} ${containerRect.height + 40}"
+                     fill="none" stroke="${b.color}" stroke-width="3" stroke-dasharray="6 6" opacity="0.8" style="filter: drop-shadow(0 0 4px ${b.color}88);" />`;
+          }
+        }
+      });
+
+      // Nodes on top
+      nodeCoords.forEach((node: any) => {
+        // horizontal dash pointing to text
+        svgContent += `<line x1="${node.x + 8}" y1="${node.y}" x2="100%" y2="${node.y}"
+                         stroke="${node.color}" stroke-width="2" opacity="0.3" stroke-dasharray="4 2"/>`;
+
+        // outer background
+        svgContent += `<circle cx="${node.x}" cy="${node.y}" r="8" fill="#0d1117" stroke="none" />`;
+
+        // inner dot
+        svgContent += `<circle cx="${node.x}" cy="${node.y}" r="5" fill="#0d1117" stroke="${node.color}" stroke-width="3"
+                         style="transition: all 0.2s ease; transform-origin: ${node.x}px ${node.y}px; filter: drop-shadow(0 0 6px ${node.color});"
+                         onmouseover="this.setAttribute('r', '7')"
+                         onmouseout="this.setAttribute('r', '5')" />`;
+      });
+
+      svg.innerHTML = svgContent;
+    }
+  }
+
+  if (!customElements.get("git-timeline")) {
+    customElements.define("git-timeline", GitTimeline);
+  }
+</script>

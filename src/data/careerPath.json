@@ -1,90 +1,72 @@
 [
   {
-    "id": "birth",
-    "date": "1998",
-    "type": "milestone",
-    "title": "Born"
-  },
-  {
-    "id": "start_highschool",
-    "parentId": "birth",
-    "date": "2012",
+    "date": "Aug 2025 - Present",
     "type": "education",
-    "title": "Started High School",
-    "institution": "Your High School Name"
+    "title": "MSc. Condensed Matter Physics",
+    "location": "Technical University of Munich (TUM)",
+    "description": ""
   },
   {
-    "id": "end_highschool",
-    "parentId": "start_highschool",
-    "date": "2017",
-    "type": "education",
-    "title": "Graduated High School"
-  },
-  {
-    "id": "start_uni_physics",
-    "parentId": "end_highschool",
-    "date": "2018-10",
-    "type": "education",
-    "title": "Started BSc Physics",
-    "institution": "LMU Munich",
-    "description": "Initial studies in Physics.",
-    "details": "Focused on theoretical physics and computational methods. Enjoyed astrophysics electives."
-  },
-  {
-    "id": "start_freelance",
-    "parentId": "end_highschool",
-    "date": "2017-09",
+    "date": "June 2024 - Present",
     "type": "job",
-    "title": "Started Freelance Dev",
-    "company": "Self-Employed",
-    "description": "Early web development projects.",
-    "details": "Built websites using HTML, CSS, JS, and later explored frameworks like Angular and Vue. Also worked with Arduino and Raspberry Pi for hardware integration projects."
+    "title": "Working Student",
+    "location": "Linque, Munich",
+    "description": "Developing Python software for a photonics computing chip, acting as Sys-admin for the company server, and creating FPGA designs to control photonics computing hardware."
   },
   {
-    "id": "bukarest_project",
-    "parentId": "start_freelance",
-    "date": "2019-03",
-    "type": "project",
-    "title": "Website E.Z.f.B.S.",
-    "description": "Created site for charity org."
-  },
-  {
-    "id": "vwa_project",
-    "parentId": "start_uni_physics",
-    "date": "2020-05",
-    "type": "project",
-    "title": "Tensile Test Machine (VWA)",
-    "description": "Built machine for graduation paper."
-  },
-  {
-    "id": "depictor_project",
-    "parentId": "start_freelance",
-    "date": "2021-08",
-    "type": "project",
-    "title": "Depictor Pen Plotter",
-    "description": "Developed open-source plotter software."
-  },
-  {
-    "id": "start_job_rooms",
-    "parentId": "start_uni_physics",
-    "date": "2023-11",
-    "type": "job",
-    "title": "Rooms App Developer",
-    "company": "Schollheim",
-    "description": "Managed room booking system for dorm."
-  },
-  {
-    "id": "current_physics",
-    "parentId": "start_uni_physics",
-    "date": "2024-07",
+    "date": "Aug 2022 - Sept 2025",
     "type": "education",
-    "title": "Continuing BSc Physics"
+    "title": "BSc. Physics",
+    "location": "Technical University of Munich (TUM)",
+    "description": ""
   },
   {
-    "id": "current_freelance",
-    "parentId": "start_freelance",
-    "date": "2024-07",
+    "date": "Nov 2021 - Aug 2022",
     "type": "job",
-    "title": "Active Freelance Dev"
+    "title": "Civilian Servant",
+    "location": "everyone codes, Vienna",
+    "description": "Managed and developed the UX-Design course, designed and maintained the company website, and assisted with agile team management."
+  },
+  {
+    "date": "Oct 2021",
+    "type": "award",
+    "title": "Dr. Hans Riegel-Fachpreis Physik",
+    "location": "Kaiserschild-Stiftung",
+    "description": "Awarded for outstanding pre-scientific work in physics."
+  },
+  {
+    "date": "Sept 2021",
+    "type": "award",
+    "title": "VWA Preis",
+    "location": "TU Graz & Austrian Physical Society",
+    "description": "Recognized for excellent pre-scientific paper in physics."
+  },
+  {
+    "date": "Aug 2020 & Aug 2021",
+    "type": "job",
+    "title": "Intern",
+    "location": "Web & Söhne, Vienna",
+    "description": "Developed professional web applications using Angular and Express.js while gaining insights into managing large teams and workloads."
+  },
+  {
+    "date": "Apr 2021 - Present",
+    "type": "job",
+    "title": "Self-Employed Software Developer",
+    "location": "Vienna",
+    "description": "Providing full-stack development (Angular, Firebase, Node.js, XSLT, TEI). Collaborating with U. Salzburg, developing startup MVPs, and offering 3D design/printing solutions."
+  },
+  {
+    "date": "Oct 2019",
+    "type": "job",
+    "title": "Intern",
+    "location": "CERN - Hssip, Geneva",
+    "description": "Worked on a portable configurator for network switches at the LHCb and studied the operational requirements of a particle collider."
+  },
+  {
+    "date": "Sept 2013 - Aug 2021",
+    "type": "education",
+    "title": "Matura",
+    "location": "AHS Wiedner Gymnasium, Vienna",
+    "description": ""
   }
 ]
