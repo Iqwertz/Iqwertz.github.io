@@ -1,85 +1,296 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
-	</head>
+  <head>
+    <BaseHead title={title} description={description} />
+    <style lang="scss">
+      body {
+        margin: 0;
+        background-color: var(--background-color, #003333);
+        color: var(--text-color, #f6f4f3);
+      }
 
-	<body>
-		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-						<hr />
-					</div>
-					<slot />
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
+      .blog-layout {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .floating-back {
+        position: fixed;
+        top: 2rem;
+        left: 2rem;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 0.75rem;
+        border-radius: 50%;
+        color: var(--text-color, #fff);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      .floating-back:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+        color: var(--accent);
+      }
+
+      .floating-back svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      main {
+        flex: 1;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+      }
+
+      .hero-section {
+        position: relative;
+        width: 100%;
+        height: 60vh;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .hero-section::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 80%;
+        background: linear-gradient(to top, var(--background-color, #003333) 0%, transparent 100%);
+        z-index: 1;
+      }
+
+      .hero-image-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+        opacity: 0.8;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 900px;
+        padding: 0 2rem;
+        margin-top: 100px;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        margin: 0 0 1.5rem 0;
+        color: var(--accent-light, #ff8749);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        line-height: 1.2;
+      }
+
+      .hero-content .date {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        padding: 0.5rem 1.5rem;
+        border-radius: 30px;
+        font-size: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: var(--text-color, #fff);
+      }
+
+      .article-container {
+        width: 800px;
+        max-width: calc(100% - 4rem);
+        margin: 0 auto;
+        padding: 2rem 0 5rem 0;
+        position: relative;
+        z-index: 5;
+        background: var(--background-color, #003333);
+      }
+
+      .prose {
+        color: var(--text-color, #f6f4f3);
+        font-size: 1.15rem;
+        line-height: 1.8;
+      }
+
+      .prose :global(h2) {
+        font-size: 2.2rem;
+        color: var(--accent, #b5e0ad);
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 0.5rem;
+      }
+
+      .prose :global(h3) {
+        font-size: 1.8rem;
+        color: var(--accent-light, #ff8749);
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .prose :global(a) {
+        color: var(--accent-light, #ff8749);
+        text-decoration: none;
+        position: relative;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+
+      .prose :global(a:hover) {
+        color: var(--accent, #b5e0ad);
+      }
+
+      .prose :global(pre) {
+        margin: 2rem 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: var(--box-shadow);
+        border-radius: 12px;
+      }
+
+      .prose :global(img) {
+        border-radius: 12px;
+        margin: 2rem 0;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        width: 100%;
+        height: auto;
+      }
+
+      .prose :global(p) {
+        margin-bottom: 1.5rem;
+      }
+
+      .prose :global(ul),
+      .prose :global(ol) {
+        padding-left: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .prose :global(li) {
+        margin-bottom: 0.5rem;
+      }
+
+      .prose :global(blockquote) {
+        border-left: 4px solid var(--accent, #b5e0ad);
+        padding: 1rem 1.5rem;
+        margin: 2rem 0;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 0 8px 8px 0;
+      }
+
+      @media (max-width: 768px) {
+        .hero-section {
+          height: 50vh;
+          min-height: 400px;
+        }
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+        .floating-back {
+          top: 1rem;
+          left: 1rem;
+        }
+        .article-container {
+          max-width: calc(100% - 2rem);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="blog-layout">
+      <!-- Floating Back Button -->
+      <a href="/#blog" class="floating-back" aria-label="Back to home">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </a>
+
+      <main>
+        <article>
+          <!-- Creative Hero Banner -->
+          <div class="hero-section">
+            <img class="hero-image-bg" src={heroImage || "/me/julius2.jpg"} alt="" />
+            <div class="hero-content animate__animated animate__fadeInUp">
+              <h1>{title}</h1>
+              <div class="date">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"
+                  ></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg
+                >
+                <FormattedDate date={pubDate} />
+                {
+                  updatedDate && (
+                    <span>
+                      {" "}
+                      (Updated <FormattedDate date={updatedDate} />)
+                    </span>
+                  )
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- Clean Prose Area -->
+          <div class="article-container">
+            <div class="prose animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+              <slot />
+            </div>
+          </div>
+        </article>
+      </main>
+      <Footer />
+    </div>
+  </body>
 </html>

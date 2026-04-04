@@ -6,9 +6,16 @@ import sitemap from "@astrojs/sitemap";
 
 import icon from "astro-icon";
 
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://juliushussl.at/",
+  markdown: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
+  },
   integrations: [mdx(), sitemap(), icon()],
   redirects: {
     "/Battlebots": "https://projects.juliushussl.at/Battlebots/",

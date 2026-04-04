@@ -1,0 +1,49 @@
+---
+title: "Showcasing My New Blog Features"
+description: "A quick demo of the new blog capabilities, including MDX, LaTeX formulas, and syntax highlighting."
+pubDate: "2026-04-04"
+heroImage: "/blog-placeholder-about.jpg"
+---
+
+Welcome to my new article format! I've upgraded the portfolio to support fully interactive MDX, complete with everything needed to write deep technical deep-dives about projects.
+
+## Why this upgrade?
+
+Writing about projects requires more than just plain text. I often need to explain algorithms, showcase diagrams, and display code snippets. With this new set-up, it is incredibly clean and scalable.
+
+### 1. Beautiful Math with KaTeX
+
+When discussing machine learning, physics, or algorithmic complexity, I can now use inline math like $\mathcal{O}(n \log n)$ or block equations for more complex formulas:
+
+$$
+f(x) = \int_{-\infty}^{\infty} \hat{f}(\xi)\,e^{2 \pi i \xi x} \,d\xi
+$$
+
+Another example could be the standard quadratic formula:
+
+$$
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$
+
+### 2. Syntax Highlighting
+
+Astro comes with Shiki by default. Now I can drop in fully formatted code blocks for my projects:
+
+```ts
+// src/scripts/animate.ts
+export function animateElements(elements: HTMLElement[]) {
+  elements.forEach((el, index) => {
+    setTimeout(() => {
+      el.classList.add("visible");
+    }, index * 100);
+  });
+}
+```
+
+### 3. Mixing Markdown with Components
+
+Because this is MDX, if I ever want to inject a custom React, Vue, or native Astro component (like a custom chart or a button), I can do so seamlessly!
+
+## Conclusion
+
+This is exactly what I needed to quickly publish articles and project post-mortems. Expect to see more detailed write-ups here soon!
