@@ -6,7 +6,8 @@ const events = [
     branch: "life",
     track: "life",
     trackOpen: true,
-    detail: "Vienna, Austria",
+    title: "Vienna, Austria",
+    detail: "Born and raised",
   },
   {
     commit: "a41c2de",
@@ -27,6 +28,10 @@ const events = [
     title: "Intern @ CERN",
     detail:
       "HSSIP Program: Worked on a portable configurator for network switches at the LHCb, Learned about the different detectors at CERN and what it takes to run a particle collider",
+    highlights: [
+      "Built a portable configurator for network switches at LHCb",
+      "Learned detector architecture and collider operations",
+    ],
   },
   {
     commit: "b00b1e5",
@@ -38,6 +43,10 @@ const events = [
     title: "Intern @ Web & Söhne",
     detail:
       "Learned to develop professional web applications using Angular and Express.js gaining hands-on experience in full-stack development | Got insight into how a software companies manage big teams and workloads",
+    highlights: [
+      "Built full-stack features with Angular and Express.js",
+      "Collaborated in larger team and delivery workflows",
+    ],
   },
   {
     commit: "1a2b3c4",
@@ -47,6 +56,8 @@ const events = [
     trackOpen: true,
     title: "Self Employed Dev",
     detail: "Fullstack SW dev, MVP development & 3D printing",
+    highlights: ["Built MVPs for early-stage ideas", "Delivered custom full-stack solutions"],
+    projects: [{ label: "Project portfolio", href: "/projects" }],
   },
   {
     commit: "e55c192",
@@ -54,9 +65,10 @@ const events = [
     branch: "work",
     track: "civ",
     trackOpen: false,
-    mergeBefore: "90a1b2c", // Merges back before Relocating to Munich
+    mergeBefore: "90a1b2c",
     title: "Civilian Servant @ everyone codes",
     detail: "Managed UX-Design course & agile team management",
+    highlights: ["Managed UX design course", "Supported agile team management"],
   },
   {
     commit: "90a1b2c",
@@ -65,6 +77,7 @@ const events = [
     track: "life",
     trackOpen: true,
     title: "Relocating to Munich",
+    detail: "Moved to Munich to begin academic studies at TUM.",
   },
   {
     commit: "8b9c0d1",
@@ -74,6 +87,7 @@ const events = [
     trackOpen: true,
     title: "B.Sc. Physics",
     detail: "Technical University of Munich",
+    highlights: ["Built strong analytical and quantitative foundation"],
   },
   {
     commit: "7cd103e",
@@ -84,6 +98,14 @@ const events = [
     title: "Networkdepartment @ Schollheim",
     detail:
       "Managing the network infrastructure of the student dorm Schollheim. Developed Smartdorm and Rooms to manage internal processes and room reservations more efficiently",
+    highlights: [
+      "Maintained dorm network infrastructure",
+      "Built tools to streamline internal processes and reservations",
+    ],
+    projects: [
+      { label: "Smartdorm", href: "/projects" },
+      { label: "Rooms", href: "/projects" },
+    ],
   },
   {
     commit: "d3adbe3",
@@ -93,7 +115,8 @@ const events = [
     trackOpen: true,
     title: "Board Member @ 'Ein Zuhause für Bukarester Straßenkinder'",
     detail:
-      "Joined the charity 'Ein Zuhause für Bukarester Straßenkinder' as a board member, helping to organize fundraising events and manage the charity's online presence",
+      "Joined the charity as a board member, helping to organize fundraising events and manage the charity's online presence",
+    highlights: ["Co-organized fundraising initiatives", "Maintained and improved the charity’s online presence"],
   },
   {
     commit: "7fc2901",
@@ -101,9 +124,11 @@ const events = [
     branch: "work",
     track: "linque",
     trackOpen: true,
-    branchFromTrack: "uni", // Branches smoothly out of the 'uni' track timeline
+    branchFromTrack: "uni",
     title: "Working Student @ Linque",
     detail: "Developing Python software & FPGA designs",
+    highlights: ["Developing Python software", "Contributing to FPGA design workflows"],
+    projects: [{ label: "Project showcase", href: "/projects" }],
   },
   {
     commit: "4b92def",
@@ -113,6 +138,7 @@ const events = [
     trackOpen: true,
     title: "MSc. Condensed Matter Physics",
     detail: "Technical University of Munich",
+    highlights: ["Specializing in condensed matter physics"],
   },
 ];
 
@@ -138,69 +164,125 @@ const timelineData = JSON.stringify({
 });
 ---
 
-<section id="career" class="git-timeline-container">
-  <div class="git-header">
-    <div class="mac-buttons"><span></span><span></span><span></span></div>
-    <h2><span class="prompt">julius@earth:~$</span> git log --graph --oneline --all</h2>
+<section id="career" class="career-timeline-section">
+  <div class="title">
+    <h2>Career</h2>
   </div>
 
-  <div class="git-canvas">
-    <div class="git-legend">
-      {
-        branches.map((b) => (
-          <span class="legend-item" style={`--b-color: ${b.color}`}>
-            <span class="dot" /> {b.label}
-          </span>
-        ))
-      }
+  <div class="git-timeline-container">
+    <div class="git-header">
+      <div class="mac-buttons"><span></span><span></span><span></span></div>
+      <h2><span class="prompt">julius@earth:~$</span> git log --graph --oneline --all</h2>
     </div>
 
-    <git-timeline data-timeline={timelineData} class="git-graph-wrapper">
-      <div id="svg-container" class="svg-container" style="opacity: 0;">
-        <svg class="git-svg"></svg>
-      </div>
-
-      <div id="content-container" class="content-container">
+    <div class="git-canvas">
+      <div class="git-legend">
         {
-          events.map((event, rowIndex) => {
-            const eventBranch = branches.find((b) => b.id === event.branch);
-            const coloredBranch = event.coloredAs ? branches.find((b) => b.id === event.coloredAs) : eventBranch;
-
-            return (
-              <div
-                class="git-row group"
-                data-row-index={rowIndex}
-                data-scroll-animate="fadeInRight"
-                style={`animation-delay: ${rowIndex * 0.1}s;`}
-              >
-                <div class="git-content">
-                  <div class="content-header">
-                    <span class="commit-hash">{event.commit}</span>
-                    <span class="commit-date">({event.date})</span>
-                    <span
-                      class="commit-ref"
-                      style={`color: ${coloredBranch?.color}; border-color: ${coloredBranch?.color};`}
-                    >
-                      {coloredBranch?.label}
-                    </span>
-                  </div>
-                  <div class="commit-message">
-                    <h3 class="message-title" style={`color: ${coloredBranch?.color}`}>
-                      {event.title}
-                    </h3>
-                    <p class="message-detail">{event.detail}</p>
-                  </div>
-                </div>
-              </div>
-            );
-          })
+          branches.map((b) => (
+            <span class="legend-item" style={`--b-color: ${b.color}`}>
+              <span class="dot" /> {b.label}
+            </span>
+          ))
         }
       </div>
-    </git-timeline>
+
+      <git-timeline data-timeline={timelineData} class="git-graph-wrapper">
+        <div id="svg-container" class="svg-container" style="opacity: 0;">
+          <svg class="git-svg"></svg>
+        </div>
+
+        <div id="content-container" class="content-container">
+          {
+            events.map((event, rowIndex) => {
+              const eventBranch = branches.find((b) => b.id === event.branch);
+              const coloredBranch = event.coloredAs ? branches.find((b) => b.id === event.coloredAs) : eventBranch;
+              const isExpandable =
+                (event.highlights && event.highlights.length > 0) || (event.projects && event.projects.length > 0);
+
+              return (
+                <div
+                  class={`git-row group ${isExpandable ? "is-expandable" : ""}`}
+                  data-row-index={rowIndex}
+                  data-commit={event.commit}
+                  data-highlights={JSON.stringify(event.highlights ?? [])}
+                  data-projects={JSON.stringify(event.projects ?? [])}
+                  data-scroll-animate="fadeInRight"
+                  style={`animation-delay: ${rowIndex * 0.1}s;`}
+                >
+                  <div class="git-content" style={`--branch-color: ${coloredBranch?.color};`}>
+                    <div class="content-header">
+                      <span class="commit-hash">{event.commit}</span>
+                      <span class="commit-date">({event.date})</span>
+                      <span
+                        class="commit-ref"
+                        style={`color: ${coloredBranch?.color}; border-color: ${coloredBranch?.color};`}
+                      >
+                        {coloredBranch?.label}
+                      </span>
+                      {isExpandable && (
+                        <span class="expand-indicator" title="Click to expand details">
+                          <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <polyline points="6 9 12 15 18 9" />
+                          </svg>
+                        </span>
+                      )}
+                    </div>
+                    <div class="commit-message">
+                      <h3 class="message-title" style={`color: ${coloredBranch?.color}`}>
+                        {event.title}
+                      </h3>
+                      {event.detail && <p class="message-detail">{event.detail}</p>}
+                    </div>
+
+                    {isExpandable && (
+                      <div class="terminal-wrapper">
+                        <div class="terminal-wrapper-inner">
+                          <div class="terminal-container">
+                            <div class="terminal-body">
+                              <div class="terminal-prompt">
+                                <span class="prompt-symbol" style={`color: ${coloredBranch?.color};`}>
+                                  $
+                                </span>
+                                <span class="terminal-command" />
+                              </div>
+                              <div class="terminal-output" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })
+          }
+        </div>
+      </git-timeline>
+    </div>
   </div>
 </section>
 
 <style lang="scss">
+  .career-timeline-section {
+    .title {
+      text-align: center;
+
+      h2 {
+        color: var(--accent);
+        font-weight: 400;
+      }
+    }
+  }
+
   .git-timeline-container {
     max-width: 900px;
     margin: 4rem auto;
@@ -208,6 +290,7 @@ const timelineData = JSON.stringify({
     border-radius: 12px;
     border: 1px solid #1e293b;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    //box-shadow: 15px 15px 0 var(--accent);
     font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
     overflow: hidden;
     color: #e2e8f0;
@@ -282,7 +365,6 @@ const timelineData = JSON.stringify({
         height: 10px;
         border-radius: 50%;
         background-color: var(--b-color);
-        box-shadow: 0 0 10px var(--b-color);
       }
     }
   }
@@ -313,15 +395,20 @@ const timelineData = JSON.stringify({
       flex-grow: 1;
       display: flex;
       flex-direction: column;
+      min-width: 0; /* Important for flex children to allow text wrapping inside */
     }
   }
 
   .git-row {
     position: relative;
-    padding-bottom: 2.5rem;
+    padding-bottom: 1.45rem;
     transition: background-color 0.2s ease;
     border-radius: 8px;
-    padding-left: 10px;
+    padding-left: 8px;
+
+    &.is-expandable .git-content {
+      cursor: pointer;
+    }
 
     &:last-child {
       padding-bottom: 0;
@@ -336,24 +423,25 @@ const timelineData = JSON.stringify({
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
+    padding: 0.35rem 0.8rem;
+    margin-left: 0.25rem;
     z-index: 4;
+    min-width: 0;
 
     .content-header {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 0.5rem;
+      gap: 8px;
+      margin-bottom: 0.35rem;
       flex-wrap: wrap;
 
       .commit-hash {
         color: #facc15;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
       }
       .commit-date {
         color: #94a3b8;
-        font-size: 0.85rem;
+        font-size: 0.78rem;
       }
 
       .commit-ref {
@@ -365,12 +453,22 @@ const timelineData = JSON.stringify({
         font-weight: bold;
         letter-spacing: 0.5px;
       }
+
+      .expand-indicator {
+        margin-left: auto;
+        color: #64748b;
+        display: flex;
+        align-items: center;
+        transition:
+          transform 0.3s ease,
+          color 0.2s ease;
+      }
     }
 
     .commit-message {
       .message-title {
-        margin: 0 0 0.4rem 0;
-        font-size: 1.15rem;
+        margin: 0 0 0.25rem 0;
+        font-size: 1rem;
         font-family:
           system-ui,
           -apple-system,
@@ -378,31 +476,201 @@ const timelineData = JSON.stringify({
         font-weight: 600;
         letter-spacing: 0.3px;
       }
+
       .message-detail {
-        margin: 0;
+        margin: 0.15rem 0 0;
         color: #94a3b8;
-        font-size: 0.95rem;
-        line-height: 1.5;
+        font-size: 0.88rem;
+        line-height: 1.45;
         font-family:
           system-ui,
           -apple-system,
           sans-serif;
+        white-space: normal;
+        overflow-wrap: break-word; /* Ensure detail text wraps properly on mobile */
       }
     }
   }
 
+  /* Interaction and State */
+  .git-row:hover .expand-indicator {
+    color: var(--branch-color);
+  }
+  .git-row.is-open .expand-indicator {
+    transform: rotate(180deg);
+    color: var(--branch-color);
+  }
+
+  /* Terminal Expansion Animation */
+  .terminal-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .terminal-wrapper-inner {
+    overflow: hidden;
+  }
+  .git-row.is-open .terminal-wrapper {
+    grid-template-rows: 1fr;
+  }
+
+  .terminal-container {
+    width: 0%;
+    opacity: 0;
+    margin-top: 0.85rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #020617#fff;
+    transition:
+      width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.2s ease;
+    overflow: hidden; /* Avoid nowrap which blocks mobile, use hidden to restrict horizontal growth */
+    cursor: default;
+  }
+
+  .git-row.is-open .terminal-container {
+    width: 100%;
+    opacity: 1;
+  }
+
+  .terminal-body {
+    padding: 0.85rem;
+    font-size: 0.84rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .terminal-prompt {
+    display: flex;
+    align-items: flex-start; /* Better alignment on mobile */
+    gap: 0.5rem;
+    color: #e2e8f0;
+
+    .prompt-symbol {
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .terminal-command {
+      word-break: break-all;
+    }
+  }
+
+  .terminal-output {
+    opacity: 0;
+    transform: translateY(-4px);
+    margin-top: 0.65rem;
+    color: #cbd5e1;
+    white-space: normal;
+
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    }
+  }
+
+  :global(.detail-list),
+  :global(.projects-list) {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  :global(.detail-list li),
+  :global(.projects-list li) {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+    line-height: 1.5;
+  }
+  :global(.bullet) {
+    color: var(--branch-color);
+    flex-shrink: 0; /* Prevent bullet squishing on mobile */
+  }
+
+  :global(.project-links) {
+    margin-top: 0.85rem;
+    padding-top: 0.65rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  }
+  :global(.project-title) {
+    color: #94a3b8;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.45rem;
+  }
+  :global(.projects-list a) {
+    color: #38bdf8;
+    text-decoration: none;
+    transition: text-decoration 0.2s ease;
+  }
+  :global(.projects-list a:hover) {
+    text-decoration: underline;
+  }
+
+  .typing-caret::after {
+    content: "▋";
+    color: var(--branch-color);
+    margin-left: 4px;
+    animation: caretBlink 0.9s steps(1) infinite;
+  }
+
+  @keyframes caretBlink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  /* Compact Mobile Layout */
   @media screen and (max-width: 600px) {
     .git-timeline-container {
-      margin: 4rem 1rem;
+      margin: 2rem 0.5rem;
+    }
+    .git-header {
+      padding: 0.85rem 1rem;
+      gap: 1rem;
     }
     .git-header h2 {
       font-size: 0.8rem !important;
     }
     .git-canvas {
-      padding: 1rem;
+      padding: 1rem 0.5rem;
+    }
+    .git-legend {
+      gap: 0.75rem;
+      padding: 0.4rem 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .git-graph-wrapper {
+      gap: 0.5rem;
     }
     .git-graph-wrapper .svg-container {
-      width: 60px;
+      width: 75px; /* Dynamically adjusted for scaled-down branches */
+    }
+    .git-row {
+      padding-left: 0;
+    }
+    .git-content {
+      padding: 0.25rem;
+      margin-left: 0;
+    }
+    .content-header {
+      gap: 4px;
+    }
+    .content-header .commit-hash,
+    .content-header .commit-date {
+      font-size: 0.7rem;
+    }
+    .commit-ref {
+      font-size: 0.65rem;
+      padding: 2px 6px;
+    }
+    .terminal-body {
+      padding: 0.65rem;
     }
   }
 
@@ -435,10 +703,12 @@ const timelineData = JSON.stringify({
 <script>
   class GitTimeline extends HTMLElement {
     resizeObserver: ResizeObserver;
+    typingTimers: number[];
 
     constructor() {
       super();
       this.resizeObserver = new ResizeObserver(() => this.draw());
+      this.typingTimers = [];
     }
 
     connectedCallback() {
@@ -459,10 +729,137 @@ const timelineData = JSON.stringify({
         );
         observer.observe(this);
       }
+
+      this.addEventListener("click", (event) => {
+        const target = event.target as HTMLElement;
+
+        // Ensure links are clickable without toggling the row
+        if (target.tagName === "A") return;
+
+        // Avoid triggering click if text is being selected
+        const selection = window.getSelection();
+        if (selection && selection.toString().length > 0) return;
+
+        const row = target.closest(".git-row.is-expandable") as HTMLElement | null;
+        if (!row) return;
+
+        const isInsideTerminal = target.closest(".terminal-container") !== null;
+        const isOpen = row.classList.contains("is-open");
+
+        // Allow interacting/selecting inside terminal without closing
+        // Clicking on the rest of the row (header, title, detail) will close it
+        if (isOpen && isInsideTerminal) return;
+
+        if (isOpen) {
+          this.closeReveal(row);
+        } else {
+          this.openReveal(row);
+        }
+      });
     }
 
     disconnectedCallback() {
       this.resizeObserver.disconnect();
+      this.clearTypingTimers();
+    }
+
+    clearTypingTimers() {
+      this.typingTimers.forEach((timer) => window.clearTimeout(timer));
+      this.typingTimers = [];
+    }
+
+    closeReveal(row: HTMLElement) {
+      this.clearTypingTimers();
+      row.classList.remove("is-open");
+
+      const command = row.querySelector(".terminal-command") as HTMLElement | null;
+      const output = row.querySelector(".terminal-output") as HTMLElement | null;
+
+      if (command) {
+        command.textContent = "";
+        command.classList.remove("typing-caret");
+      }
+      if (output) {
+        output.innerHTML = "";
+        output.classList.remove("is-visible");
+      }
+    }
+
+    openReveal(row: HTMLElement) {
+      this.clearTypingTimers();
+
+      // Automatically close previously opened rows (Accordion behaviour)
+      this.querySelectorAll(".git-row.is-open").forEach((openedRow) => {
+        if (openedRow !== row) this.closeReveal(openedRow as HTMLElement);
+      });
+
+      const commit = row.dataset.commit ?? "";
+      const highlights = JSON.parse(row.dataset.highlights ?? "[]") as string[];
+      const projects = JSON.parse(row.dataset.projects ?? "[]") as Array<{ label: string; href: string }>;
+
+      row.classList.add("is-open");
+
+      const command = row.querySelector(".terminal-command") as HTMLElement | null;
+      const output = row.querySelector(".terminal-output") as HTMLElement | null;
+
+      if (!command || !output) return;
+
+      command.classList.add("typing-caret");
+      command.textContent = "";
+      output.innerHTML = "";
+      output.classList.remove("is-visible");
+
+      // Give the CSS width transition some time to sweep out before typing begins (300ms)
+      const initTimer = window.setTimeout(() => {
+        const fullCommand = `git show ${commit} --details`;
+        const chars = Array.from(fullCommand);
+
+        const typeCommand = (index: number) => {
+          command.textContent = chars.slice(0, index).join("");
+
+          if (index < chars.length) {
+            const timer = window.setTimeout(() => typeCommand(index + 1), 16);
+            this.typingTimers.push(timer);
+            return;
+          }
+
+          command.classList.remove("typing-caret");
+          const renderTimer = window.setTimeout(() => {
+            this.renderOutput(output, highlights, projects);
+          }, 100);
+          this.typingTimers.push(renderTimer);
+        };
+
+        typeCommand(1);
+      }, 350);
+
+      this.typingTimers.push(initTimer);
+    }
+
+    renderOutput(output: HTMLElement, highlights: string[], projects: Array<{ label: string; href: string }>) {
+      let html = "";
+
+      if (highlights.length) {
+        html += `<ul class="detail-list">`;
+        highlights.forEach((item) => {
+          html += `<li><span class="bullet">→</span> <span>${item}</span></li>`;
+        });
+        html += `</ul>`;
+      }
+
+      if (projects.length) {
+        html += `<div class="project-links">`;
+        html += `<div class="project-title">Related Projects:</div>`;
+        html += `<ul class="projects-list">`;
+        projects.forEach((project) => {
+          html += `<li><span class="bullet">↳</span> <a href="${project.href}">${project.label}</a></li>`;
+        });
+        html += `</ul>`;
+        html += `</div>`;
+      }
+
+      output.innerHTML = html;
+      output.classList.add("is-visible");
     }
 
     draw() {
@@ -477,9 +874,15 @@ const timelineData = JSON.stringify({
       const containerRect = container.getBoundingClientRect();
       if (containerRect.height === 0 || containerRect.width === 0) return;
 
+      // Adjust spacing and elements based on screen width
+      const isMobile = window.innerWidth <= 600;
+      const colWidth = isMobile ? 14 : 20;
+      const offsetLeft = isMobile ? 10 : 14;
+      const strokeW = isMobile ? 2 : 3;
+      const rOut = isMobile ? 6 : 8;
+      const rIn = isMobile ? 4 : 5;
+
       const rows = Array.from(this.querySelectorAll(".git-row"));
-      const colWidth = 20;
-      const offsetLeft = 14;
 
       const nodeCoords = rows
         .map((row: any, i) => {
@@ -525,7 +928,7 @@ const timelineData = JSON.stringify({
         for (let i = 0; i < bEvents.length - 1; i++) {
           const p1 = bEvents[i];
           const p2 = bEvents[i + 1];
-          svgContent += `<path d="M ${p1!.x} ${p1!.y} L ${p2!.x} ${p2!.y}" fill="none" stroke="${b.color}" stroke-width="3" style="filter: drop-shadow(0 0 4px ${b.color}88);" />`;
+          svgContent += `<path d="M ${p1!.x} ${p1!.y} L ${p2!.x} ${p2!.y}" fill="none" stroke="${b.color}" stroke-width="${strokeW}"  />`;
         }
 
         if (trackId !== "life") {
@@ -533,13 +936,14 @@ const timelineData = JSON.stringify({
           const parentX = getTrackX(parentTrackId);
 
           const curveEndY = firstEvent!.y;
-          const curveStartY = Math.max(0, curveEndY - 50);
+          const curveOffset = isMobile ? 15 : 25;
+          const curveStartY = Math.max(0, curveEndY - curveOffset * 2);
 
           svgContent += `
             <path d="
               M ${parentX} ${curveStartY}
-              C ${parentX} ${curveStartY + 25}, ${firstEvent!.x} ${curveEndY - 25}, ${firstEvent!.x} ${curveEndY}
-            " fill="none" stroke="${b.color}" stroke-width="3" style="filter: drop-shadow(0 0 4px ${b.color}88);" />
+              C ${parentX} ${curveStartY + curveOffset}, ${firstEvent!.x} ${curveEndY - curveOffset}, ${firstEvent!.x} ${curveEndY}
+            " fill="none" stroke="${b.color}" stroke-width="${strokeW}"  />
           `;
         }
 
@@ -555,7 +959,7 @@ const timelineData = JSON.stringify({
           if (rawLast.mergeBefore) {
             const targetNode = nodeCoords.find((n: any) => events[n.idx].commit === rawLast.mergeBefore);
             if (targetNode) {
-              mergeY = targetNode.y - 25;
+              mergeY = targetNode.y - (isMobile ? 15 : 25);
             }
           }
 
@@ -568,29 +972,28 @@ const timelineData = JSON.stringify({
               M ${lastEvent!.x} ${lastEvent!.y}
               L ${lastEvent!.x} ${curveStartY}
               C ${lastEvent!.x} ${cp1Y}, ${targetX} ${cp2Y}, ${targetX} ${mergeY}
-            " fill="none" stroke="${b.color}" stroke-width="3" opacity="0.6" style="filter: drop-shadow(0 0 4px ${b.color}88);" />
+            " fill="none" stroke="${b.color}" stroke-width="${strokeW}" opacity="0.6" />
           `;
         } else {
-          // UPDATE: Omit dash-array if the track is the main 'life' branch
           const strokeDashAttr = trackId === "life" ? "" : 'stroke-dasharray="6 6"';
 
           svgContent += `
             <path d="M ${lastEvent!.x} ${lastEvent!.y} L ${lastEvent!.x} ${containerRect.height + 40}"
-                  fill="none" stroke="${b.color}" stroke-width="3" ${strokeDashAttr} opacity="0.8" style="filter: drop-shadow(0 0 4px ${b.color}88);" />
+                  fill="none" stroke="${b.color}" stroke-width="${strokeW}" ${strokeDashAttr} opacity="0.8" />
           `;
         }
       });
 
       nodeCoords.forEach((node: any) => {
-        svgContent += `<line x1="${node.x + 8}" y1="${node.y}" x2="100%" y2="${node.y}"
+        svgContent += `<line x1="${node.x + rOut}" y1="${node.y}" x2="100%" y2="${node.y}"
                          stroke="${node.color}" stroke-width="2" opacity="0.2" stroke-dasharray="4 3"/>`;
 
-        svgContent += `<circle cx="${node.x}" cy="${node.y}" r="8" fill="#0f172a" stroke="none" />`;
+        svgContent += `<circle cx="${node.x}" cy="${node.y}" r="${rOut}" fill="#0f172a" stroke="none" />`;
 
-        svgContent += `<circle cx="${node.x}" cy="${node.y}" r="5" fill="#0f172a" stroke="${node.color}" stroke-width="3"
-                         style="transition: all 0.2s ease; transform-origin: ${node.x}px ${node.y}px; filter: drop-shadow(0 0 8px ${node.color});"
-                         onmouseover="this.setAttribute('r', '7')"
-                         onmouseout="this.setAttribute('r', '5')" />`;
+        svgContent += `<circle cx="${node.x}" cy="${node.y}" r="${rIn}" fill="#0f172a" stroke="${node.color}" stroke-width="${strokeW}"
+                         style="transition: all 0.2s ease; transform-origin: ${node.x}px ${node.y}px; "
+                         onmouseover="this.setAttribute('r', '${rIn + 2}')"
+                         onmouseout="this.setAttribute('r', '${rIn}')" />`;
       });
 
       svg.innerHTML = svgContent;
