@@ -2,11 +2,10 @@
 const events = [
   {
     commit: "init   ",
-    date: "Sept 2013",
+    date: "2003",
     branch: "life",
     track: "life",
     trackOpen: true,
-    title: "The Journey Begins",
     detail: "Vienna, Austria",
   },
   {
@@ -16,7 +15,7 @@ const events = [
     track: "highschool",
     trackOpen: true,
     title: "AHS Wiedner Gymnasium",
-    detail: "Started High School",
+    detail: "Graduated with Honors, Focus on natural sciences & mathematics",
   },
   {
     commit: "c0ffeeb",
@@ -24,19 +23,21 @@ const events = [
     branch: "academic",
     track: "highschool",
     trackOpen: false,
-    mergeBefore: "e55c192", // Beautifully merges back right before Civilian Service (Visually ~Summer 2021)
+    mergeBefore: "e55c192",
     title: "Intern @ CERN",
-    detail: "Portable configurator for network switches at the LHCb",
+    detail:
+      "HSSIP Program: Worked on a portable configurator for network switches at the LHCb, Learned about the different detectors at CERN and what it takes to run a particle collider",
   },
   {
     commit: "b00b1e5",
-    date: "Aug 2020",
+    date: "Aug 2020 & Aug 2021",
     branch: "life",
     track: "life",
     coloredAs: "work",
     trackOpen: true,
     title: "Intern @ Web & Söhne",
-    detail: "Full-stack development passing workflows with Angular & Express.js",
+    detail:
+      "Learned to develop professional web applications using Angular and Express.js gaining hands-on experience in full-stack development | Got insight into how a software companies manage big teams and workloads",
   },
   {
     commit: "1a2b3c4",
@@ -54,8 +55,8 @@ const events = [
     track: "civ",
     trackOpen: false,
     mergeBefore: "90a1b2c", // Merges back before Relocating to Munich
-    title: "Civilian Servant",
-    detail: "everyone codes: managed UX-Design course & agile team management",
+    title: "Civilian Servant @ everyone codes",
+    detail: "Managed UX-Design course & agile team management",
   },
   {
     commit: "90a1b2c",
@@ -64,7 +65,6 @@ const events = [
     track: "life",
     trackOpen: true,
     title: "Relocating to Munich",
-    detail: "Started academic path at Technical University of Munich",
   },
   {
     commit: "8b9c0d1",
@@ -72,8 +72,28 @@ const events = [
     branch: "academic",
     track: "uni",
     trackOpen: true,
-    title: "BSc. Physics",
+    title: "B.Sc. Physics",
     detail: "Technical University of Munich",
+  },
+  {
+    commit: "7cd103e",
+    date: "Apr 2023 - Present",
+    branch: "extra",
+    track: "extra",
+    trackOpen: true,
+    title: "Networkdepartment @ Schollheim",
+    detail:
+      "Managing the network infrastructure of the student dorm Schollheim. Developed Smartdorm and Rooms to manage internal processes and room reservations more efficiently",
+  },
+  {
+    commit: "d3adbe3",
+    date: "Oct 2023 - Present",
+    branch: "extra",
+    track: "extra",
+    trackOpen: true,
+    title: "Board Member @ 'Ein Zuhause für Bukarester Straßenkinder'",
+    detail:
+      "Joined the charity 'Ein Zuhause für Bukarester Straßenkinder' as a board member, helping to organize fundraising events and manage the charity's online presence",
   },
   {
     commit: "7fc2901",
@@ -121,7 +141,7 @@ const timelineData = JSON.stringify({
 <section id="career" class="git-timeline-container">
   <div class="git-header">
     <div class="mac-buttons"><span></span><span></span><span></span></div>
-    <h2><span class="prompt">julius@workspace:~$</span> git log --graph --oneline --all</h2>
+    <h2><span class="prompt">julius@earth:~$</span> git log --graph --oneline --all</h2>
   </div>
 
   <div class="git-canvas">
