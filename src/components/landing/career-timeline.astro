@@ -16,7 +16,7 @@ const events = [
     track: "highschool",
     trackOpen: true,
     title: "AHS Wiedner Gymnasium",
-    detail: "High School & Matura graduation",
+    detail: "Started High School",
   },
   {
     commit: "c0ffeeb",
@@ -24,9 +24,9 @@ const events = [
     branch: "academic",
     track: "highschool",
     trackOpen: false,
+    mergeBefore: "e55c192", // Beautifully merges back right before Civilian Service (Visually ~Summer 2021)
     title: "Intern @ CERN",
     detail: "Portable configurator for network switches at the LHCb",
-    mergeIndex: 6,
   },
   {
     commit: "b00b1e5",
@@ -53,9 +53,9 @@ const events = [
     branch: "work",
     track: "civ",
     trackOpen: false,
+    mergeBefore: "90a1b2c", // Merges back before Relocating to Munich
     title: "Civilian Servant",
     detail: "everyone codes: managed UX-Design course & agile team management",
-    mergeIndex: 6,
   },
   {
     commit: "90a1b2c",
@@ -81,6 +81,7 @@ const events = [
     branch: "work",
     track: "linque",
     trackOpen: true,
+    branchFromTrack: "uni", // Branches smoothly out of the 'uni' track timeline
     title: "Working Student @ Linque",
     detail: "Developing Python software & FPGA designs",
   },
@@ -96,20 +97,22 @@ const events = [
 ];
 
 const branches = [
-  { id: "life", color: "#8b949e", label: "Life", isOpen: true }, // GitHub Grey
-  { id: "academic", color: "#58a6ff", label: "Academic", isOpen: true }, // GitHub Blue
-  { id: "work", color: "#3fb950", label: "Employment", isOpen: true }, // GitHub Green
-  { id: "freelance", color: "#d2a8ff", label: "Freelance", isOpen: true }, // GitHub Purple
-  { id: "extra", color: "#f0883e", label: "Extracurricular", isOpen: true }, // GitHub Orange
+  { id: "life", color: "#06b6d4", label: "Life", isOpen: true }, // Vibrant Cyan
+  { id: "academic", color: "#a855f7", label: "Academic", isOpen: true }, // Violet Purple
+  { id: "work", color: "#10b981", label: "Employment", isOpen: true }, // Emerald Green
+  { id: "freelance", color: "#f43f5e", label: "Freelance", isOpen: true }, // Rose Pink
+  { id: "extra", color: "#f59e0b", label: "Extracurricular", isOpen: true }, // Amber
 ];
 
 const timelineData = JSON.stringify({
   events: events.map((e) => ({
+    commit: e.commit,
     branch: e.branch,
     track: e.track,
     trackOpen: e.trackOpen,
     coloredAs: e.coloredAs,
-    mergeIndex: e.mergeIndex,
+    mergeBefore: e.mergeBefore,
+    branchFromTrack: e.branchFromTrack,
   })),
   branches: branches.map((b) => ({ id: b.id, color: b.color, isOpen: b.isOpen })),
 });
@@ -118,7 +121,7 @@ const timelineData = JSON.stringify({
 <section id="career" class="git-timeline-container">
   <div class="git-header">
     <div class="mac-buttons"><span></span><span></span><span></span></div>
-    <h2><span class="prompt">julius@workspace:~$</span> git log --graph --oneline --all --decorate</h2>
+    <h2><span class="prompt">julius@workspace:~$</span> git log --graph --oneline --all</h2>
   </div>
 
   <div class="git-canvas">
@@ -141,6 +144,7 @@ const timelineData = JSON.stringify({
         {
           events.map((event, rowIndex) => {
             const eventBranch = branches.find((b) => b.id === event.branch);
+            const coloredBranch = event.coloredAs ? branches.find((b) => b.id === event.coloredAs) : eventBranch;
 
             return (
               <div
@@ -155,13 +159,13 @@ const timelineData = JSON.stringify({
                     <span class="commit-date">({event.date})</span>
                     <span
                       class="commit-ref"
-                      style={`color: ${eventBranch?.color}; border-color: ${eventBranch?.color};`}
+                      style={`color: ${coloredBranch?.color}; border-color: ${coloredBranch?.color};`}
                     >
-                      {eventBranch?.label}
+                      {coloredBranch?.label}
                     </span>
                   </div>
                   <div class="commit-message">
-                    <h3 class="message-title" style={`color: ${eventBranch?.color}`}>
+                    <h3 class="message-title" style={`color: ${coloredBranch?.color}`}>
                       {event.title}
                     </h3>
                     <p class="message-detail">{event.detail}</p>
@@ -180,18 +184,18 @@ const timelineData = JSON.stringify({
   .git-timeline-container {
     max-width: 900px;
     margin: 4rem auto;
-    background-color: #0d1117; /* GitHub Dark Dimension */
+    background-color: #0f172a;
     border-radius: 12px;
-    border: 1px solid #30363d;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid #1e293b;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
     overflow: hidden;
-    color: #c9d1d9;
+    color: #e2e8f0;
 
     .git-header {
-      background-color: #161b22;
+      background-color: #0b0f19;
       padding: 1rem 1.5rem;
-      border-bottom: 1px solid #30363d;
+      border-bottom: 1px solid #1e293b;
       display: flex;
       align-items: center;
       gap: 1.5rem;
@@ -204,25 +208,25 @@ const timelineData = JSON.stringify({
           height: 12px;
           border-radius: 50%;
           &:nth-child(1) {
-            background-color: #ff5f56;
+            background-color: #f43f5e;
           }
           &:nth-child(2) {
-            background-color: #ffbd2e;
+            background-color: #f59e0b;
           }
           &:nth-child(3) {
-            background-color: #27c93f;
+            background-color: #10b981;
           }
         }
       }
 
       h2 {
         margin: 0;
-        font-size: 1rem;
+        font-size: 0.95rem;
         font-weight: normal;
-        color: #e6edf3;
+        color: #cbd5e1;
 
         .prompt {
-          color: #3fb950;
+          color: #06b6d4;
           font-weight: bold;
           margin-right: 8px;
         }
@@ -243,6 +247,7 @@ const timelineData = JSON.stringify({
     padding: 0.5rem 1rem;
     background: rgba(255, 255, 255, 0.03);
     border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 
     .legend-item {
       display: flex;
@@ -250,13 +255,14 @@ const timelineData = JSON.stringify({
       gap: 0.5rem;
       color: var(--b-color);
       font-weight: 600;
+      letter-spacing: 0.5px;
 
       .dot {
         width: 10px;
         height: 10px;
         border-radius: 50%;
         background-color: var(--b-color);
-        box-shadow: 0 0 8px var(--b-color);
+        box-shadow: 0 0 10px var(--b-color);
       }
     }
   }
@@ -268,7 +274,7 @@ const timelineData = JSON.stringify({
     gap: 1rem;
 
     .svg-container {
-      width: 120px;
+      width: 110px;
       flex-shrink: 0;
       position: relative;
 
@@ -292,17 +298,16 @@ const timelineData = JSON.stringify({
 
   .git-row {
     position: relative;
-    padding-bottom: 2rem;
+    padding-bottom: 2.5rem;
     transition: background-color 0.2s ease;
-    border-radius: 6px;
+    border-radius: 8px;
     padding-left: 10px;
 
     &:last-child {
       padding-bottom: 0;
     }
-
     &:hover {
-      background-color: rgba(255, 255, 255, 0.02);
+      background-color: rgba(255, 255, 255, 0.03);
     }
   }
 
@@ -323,29 +328,29 @@ const timelineData = JSON.stringify({
       flex-wrap: wrap;
 
       .commit-hash {
-        color: #e3b341;
+        color: #facc15;
         font-size: 0.9rem;
       }
-
       .commit-date {
-        color: #8b949e;
+        color: #94a3b8;
         font-size: 0.85rem;
       }
 
       .commit-ref {
         font-size: 0.7rem;
-        padding: 1px 8px;
+        padding: 2px 10px;
         border: 1px solid;
         border-radius: 12px;
         background: rgba(255, 255, 255, 0.05);
         font-weight: bold;
+        letter-spacing: 0.5px;
       }
     }
 
     .commit-message {
       .message-title {
         margin: 0 0 0.4rem 0;
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         font-family:
           system-ui,
           -apple-system,
@@ -353,11 +358,10 @@ const timelineData = JSON.stringify({
         font-weight: 600;
         letter-spacing: 0.3px;
       }
-
       .message-detail {
         margin: 0;
-        color: #8b949e;
-        font-size: 0.9rem;
+        color: #94a3b8;
+        font-size: 0.95rem;
         line-height: 1.5;
         font-family:
           system-ui,
@@ -378,7 +382,7 @@ const timelineData = JSON.stringify({
       padding: 1rem;
     }
     .git-graph-wrapper .svg-container {
-      width: 70px;
+      width: 60px;
     }
   }
 
@@ -419,22 +423,19 @@ const timelineData = JSON.stringify({
 
     connectedCallback() {
       this.resizeObserver.observe(this);
-      // Give DOM time to lay out fonts
       setTimeout(() => this.draw(), 50);
 
-      // Custom intersection observer to handle animations for elements too tall for the default 30% threshold
       const svgContainer = this.querySelector(".svg-container") as HTMLElement;
       if (svgContainer) {
         const observer = new IntersectionObserver(
           (entries) => {
-            // Trigger animation when the element reaches the middle of the viewport
             if (entries[0].isIntersecting) {
               svgContainer.style.opacity = "1";
               svgContainer.classList.add("animate__animated", "animate__wipeDown");
               observer.disconnect();
             }
           },
-          { rootMargin: "0px 0px -50% 0px", threshold: 0 }, // Trigger when element hits middle of screen
+          { rootMargin: "0px 0px -50% 0px", threshold: 0 },
         );
         observer.observe(this);
       }
@@ -465,11 +466,7 @@ const timelineData = JSON.stringify({
           const header = row.querySelector(".content-header");
           if (!header) return null;
 
-          // Compute Y offset immune to CSS transforms (like fadeInUp)
-          // `row` is positioned relative to `.content-container`
-          // `svg-container` starts at the same top as `.content-container`
           let nodeY = row.offsetTop + header.offsetTop + header.offsetHeight / 2;
-
           const branchIndex = branches.findIndex((b: any) => b.id === events[i].branch);
           const nodeX = offsetLeft + branchIndex * colWidth;
 
@@ -488,12 +485,11 @@ const timelineData = JSON.stringify({
 
       let svgContent = "";
 
-      const drawPath = (p1: any, p2: any, color: string, isMerge = false) => {
-        // Make the slope steeper by extending the control point Y by 80% (instead of 50%)
-        const cy1 = p1.y + (p2.y - p1.y) * 0.8;
-        const cy2 = p2.y - (p2.y - p1.y) * 0.8;
-        return `<path d="M ${p1.x} ${p1.y} C ${p1.x} ${cy1}, ${p2.x} ${cy2}, ${p2.x} ${p2.y}"
-                 fill="none" stroke="${color}" stroke-width="3" opacity="${isMerge ? 0.6 : 1}" style="filter: drop-shadow(0 0 4px ${color}88);" />`;
+      const getTrackX = (trackId: string) => {
+        const ev = events.find((e: any) => e.track === trackId);
+        if (!ev) return offsetLeft;
+        const bIdx = branches.findIndex((b: any) => b.id === ev.branch);
+        return offsetLeft + bIdx * colWidth;
       };
 
       const tracks = Array.from(new Set(events.map((e: any) => e.track)));
@@ -503,64 +499,76 @@ const timelineData = JSON.stringify({
         if (bEvents.length === 0) return;
 
         const firstEvent = bEvents[0];
-        if (!firstEvent) return;
-        const b = branches.find((b: any) => b.id === firstEvent.branch);
+        const rawFirst = events[firstEvent!.idx];
+        const b = branches.find((br: any) => br.id === firstEvent!.branch);
 
-        // Vertical/Straight connections inside the same track
         for (let i = 0; i < bEvents.length - 1; i++) {
-          svgContent += drawPath(bEvents[i], bEvents[i + 1], b.color);
+          const p1 = bEvents[i];
+          const p2 = bEvents[i + 1];
+          svgContent += `<path d="M ${p1!.x} ${p1!.y} L ${p2!.x} ${p2!.y}" fill="none" stroke="${b.color}" stroke-width="3" style="filter: drop-shadow(0 0 4px ${b.color}88);" />`;
         }
 
         if (trackId !== "life") {
-          // Non-life tracks: Start curve from the latest 'life' commit
-          if (firstEvent!.idx > 0) {
-            const prevLife = [...nodeCoords].reverse().find((n: any) => n.idx < firstEvent!.idx && n.branch === "life");
-            const prev = prevLife || nodeCoords[firstEvent!.idx - 1]; // fallback if no life
-            svgContent += drawPath(prev, firstEvent, b.color);
+          const parentTrackId = rawFirst.branchFromTrack || "life";
+          const parentX = getTrackX(parentTrackId);
+
+          const curveEndY = firstEvent!.y;
+          const curveStartY = Math.max(0, curveEndY - 50);
+
+          svgContent += `
+            <path d="
+              M ${parentX} ${curveStartY}
+              C ${parentX} ${curveStartY + 25}, ${firstEvent!.x} ${curveEndY - 25}, ${firstEvent!.x} ${curveEndY}
+            " fill="none" stroke="${b.color}" stroke-width="3" style="filter: drop-shadow(0 0 4px ${b.color}88);" />
+          `;
+        }
+
+        const lastEvent = bEvents[bEvents.length - 1];
+        const rawLast = events[lastEvent!.idx];
+
+        if (!rawLast.trackOpen) {
+          const targetTrackId = "life";
+          const targetX = getTrackX(targetTrackId);
+
+          let mergeY = lastEvent!.y + 50;
+
+          if (rawLast.mergeBefore) {
+            const targetNode = nodeCoords.find((n: any) => events[n.idx].commit === rawLast.mergeBefore);
+            if (targetNode) {
+              mergeY = targetNode.y - 25;
+            }
           }
 
-          // End curve (merging) or Open dashed line
-          const lastEvent = bEvents[bEvents.length - 1];
-          if (!lastEvent) return;
-          if (!lastEvent) return;
-          const rawEvent = events[lastEvent!.idx];
+          const curveStartY = Math.max(lastEvent!.y, mergeY - 50);
+          const cp1Y = curveStartY + (mergeY - curveStartY) / 2;
+          const cp2Y = mergeY - (mergeY - curveStartY) / 2;
 
-          if (!rawEvent.trackOpen && lastEvent!.idx < nodeCoords.length - 1) {
-            // Find the next life commit to merge back into
-            let next = null;
-            if (rawEvent.mergeIndex !== undefined) {
-              next = nodeCoords[rawEvent.mergeIndex];
-            } else {
-              const nextLife = nodeCoords.find((n: any) => n.idx > lastEvent!.idx && n.branch === "life");
-              next = nextLife || nodeCoords[lastEvent!.idx + 1];
-            }
-            if (next) {
-              svgContent += drawPath(lastEvent, next, b.color, true);
-            }
-          } else if (rawEvent.trackOpen) {
-            svgContent += `<path d="M ${lastEvent!.x} ${lastEvent!.y} L ${lastEvent!.x} ${containerRect.height + 40}"
-                     fill="none" stroke="${b.color}" stroke-width="3" stroke-dasharray="6 6" opacity="0.8" style="filter: drop-shadow(0 0 4px ${b.color}88);" />`;
-          }
+          svgContent += `
+            <path d="
+              M ${lastEvent!.x} ${lastEvent!.y}
+              L ${lastEvent!.x} ${curveStartY}
+              C ${lastEvent!.x} ${cp1Y}, ${targetX} ${cp2Y}, ${targetX} ${mergeY}
+            " fill="none" stroke="${b.color}" stroke-width="3" opacity="0.6" style="filter: drop-shadow(0 0 4px ${b.color}88);" />
+          `;
         } else {
-          // Life track always extends down (if trackOpen isn't false, which it shouldn't be for life)
-          const lastEvent = bEvents[bEvents.length - 1];
-          svgContent += `<path d="M ${lastEvent!.x} ${lastEvent!.y} L ${lastEvent!.x} ${containerRect.height + 40}"
-                     fill="none" stroke="${b.color}" stroke-width="3" stroke-dasharray="6 6" opacity="0.8" style="filter: drop-shadow(0 0 4px ${b.color}88);" />`;
+          // UPDATE: Omit dash-array if the track is the main 'life' branch
+          const strokeDashAttr = trackId === "life" ? "" : 'stroke-dasharray="6 6"';
+
+          svgContent += `
+            <path d="M ${lastEvent!.x} ${lastEvent!.y} L ${lastEvent!.x} ${containerRect.height + 40}"
+                  fill="none" stroke="${b.color}" stroke-width="3" ${strokeDashAttr} opacity="0.8" style="filter: drop-shadow(0 0 4px ${b.color}88);" />
+          `;
         }
       });
 
-      // Nodes on top
       nodeCoords.forEach((node: any) => {
-        // horizontal dash pointing to text
         svgContent += `<line x1="${node.x + 8}" y1="${node.y}" x2="100%" y2="${node.y}"
-                         stroke="${node.color}" stroke-width="2" opacity="0.3" stroke-dasharray="4 2"/>`;
+                         stroke="${node.color}" stroke-width="2" opacity="0.2" stroke-dasharray="4 3"/>`;
 
-        // outer background
-        svgContent += `<circle cx="${node.x}" cy="${node.y}" r="8" fill="#0d1117" stroke="none" />`;
+        svgContent += `<circle cx="${node.x}" cy="${node.y}" r="8" fill="#0f172a" stroke="none" />`;
 
-        // inner dot
-        svgContent += `<circle cx="${node.x}" cy="${node.y}" r="5" fill="#0d1117" stroke="${node.color}" stroke-width="3"
-                         style="transition: all 0.2s ease; transform-origin: ${node.x}px ${node.y}px; filter: drop-shadow(0 0 6px ${node.color});"
+        svgContent += `<circle cx="${node.x}" cy="${node.y}" r="5" fill="#0f172a" stroke="${node.color}" stroke-width="3"
+                         style="transition: all 0.2s ease; transform-origin: ${node.x}px ${node.y}px; filter: drop-shadow(0 0 8px ${node.color});"
                          onmouseover="this.setAttribute('r', '7')"
                          onmouseout="this.setAttribute('r', '5')" />`;
       });
