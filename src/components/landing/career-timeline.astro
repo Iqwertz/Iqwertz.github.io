@@ -1,23 +1,40 @@
 ---
 const events = [
   {
-    commit: "a41c2de",
+    commit: "init   ",
     date: "Sept 2013",
+    branch: "life",
+    track: "life",
+    trackOpen: true,
+    title: "The Journey Begins",
+    detail: "Vienna, Austria",
+  },
+  {
+    commit: "a41c2de",
+    date: "Sept 2013 - June 2021",
     branch: "academic",
+    track: "highschool",
+    trackOpen: true,
     title: "AHS Wiedner Gymnasium",
     detail: "High School & Matura graduation",
   },
   {
     commit: "c0ffeeb",
     date: "Oct 2019",
-    branch: "work",
+    branch: "academic",
+    track: "highschool",
+    trackOpen: false,
     title: "Intern @ CERN",
     detail: "Portable configurator for network switches at the LHCb",
+    mergeIndex: 6,
   },
   {
     commit: "b00b1e5",
     date: "Aug 2020",
-    branch: "work",
+    branch: "life",
+    track: "life",
+    coloredAs: "work",
+    trackOpen: true,
     title: "Intern @ Web & Söhne",
     detail: "Full-stack development passing workflows with Angular & Express.js",
   },
@@ -25,69 +42,75 @@ const events = [
     commit: "1a2b3c4",
     date: "Apr 2021",
     branch: "freelance",
+    track: "freelance",
+    trackOpen: true,
     title: "Self Employed Dev",
-    detail: "Fullstack SW dev offering Angular, Firebase, Node.js, MVP development & 3D printing",
-  },
-  {
-    commit: "d3adb3f",
-    date: "Aug 2021",
-    branch: "work",
-    title: "Intern @ Web & Söhne",
-    detail: "Second term: tackling more extensive application architecture",
-  },
-  {
-    commit: "8f7e6d5",
-    date: "Sept 2021",
-    branch: "extra",
-    title: "Physics Awards",
-    detail: "Dr. Hans Riegel-Fachpreis & VWA Preis from TU Graz and Austrian Physical Society",
+    detail: "Fullstack SW dev, MVP development & 3D printing",
   },
   {
     commit: "e55c192",
-    date: "Nov 2021",
-    branch: "extra",
+    date: "Nov 2021 - Aug 2022",
+    branch: "work",
+    track: "civ",
+    trackOpen: false,
     title: "Civilian Servant",
     detail: "everyone codes: managed UX-Design course & agile team management",
+    mergeIndex: 6,
   },
   {
     commit: "90a1b2c",
     date: "Aug 2022",
+    branch: "life",
+    track: "life",
+    trackOpen: true,
+    title: "Relocating to Munich",
+    detail: "Started academic path at Technical University of Munich",
+  },
+  {
+    commit: "8b9c0d1",
+    date: "Aug 2022 - Aug 2025",
     branch: "academic",
+    track: "uni",
+    trackOpen: true,
     title: "BSc. Physics",
-    detail: "Started undergrad in Physics at Technical University of Munich",
+    detail: "Technical University of Munich",
   },
   {
     commit: "7fc2901",
     date: "June 2024",
     branch: "work",
+    track: "linque",
+    trackOpen: true,
     title: "Working Student @ Linque",
-    detail: "Developing Python software & FPGA designs to control photonics computing hardware",
+    detail: "Developing Python software & FPGA designs",
   },
   {
     commit: "4b92def",
-    date: "Aug 2025",
+    date: "Aug 2025 - Present",
     branch: "academic",
+    track: "uni",
+    trackOpen: true,
     title: "MSc. Condensed Matter Physics",
-    detail: "Started Master's degree at Technical University of Munich",
-  },
-  {
-    commit: "HEAD   ",
-    date: "Present",
-    branch: "extra",
-    title: "Active Commitments",
-    detail: "E.Z.f.B.S. Board Member, 42er Pfadfinder Volunteer & Dorm Network Admin",
+    detail: "Technical University of Munich",
   },
 ];
 
 const branches = [
+  { id: "life", color: "#8b949e", label: "Life", isOpen: true }, // GitHub Grey
   { id: "academic", color: "#58a6ff", label: "Academic", isOpen: true }, // GitHub Blue
   { id: "work", color: "#3fb950", label: "Employment", isOpen: true }, // GitHub Green
-  { id: "freelance", color: "#d2a8ff", label: "Freelance", isOpen: false }, // GitHub Purple
+  { id: "freelance", color: "#d2a8ff", label: "Freelance", isOpen: true }, // GitHub Purple
   { id: "extra", color: "#f0883e", label: "Extracurricular", isOpen: true }, // GitHub Orange
 ];
 
 const timelineData = JSON.stringify({
-  events: events.map((e) => ({ branch: e.branch })),
+  events: events.map((e) => ({
+    branch: e.branch,
+    track: e.track,
+    trackOpen: e.trackOpen,
+    coloredAs: e.coloredAs,
+    mergeIndex: e.mergeIndex,
+  })),
   branches: branches.map((b) => ({ id: b.id, color: b.color, isOpen: b.isOpen })),
 });
 ---
@@ -359,6 +382,10 @@ const timelineData = JSON.stringify({
     }
   }
 
+  .svg-container {
+    transition: opacity 0.2s ease-in;
+  }
+
   @keyframes graphWipeDown {
     0% {
       clip-path: inset(0 -50% 100% -50%);
@@ -396,17 +423,18 @@ const timelineData = JSON.stringify({
       setTimeout(() => this.draw(), 50);
 
       // Custom intersection observer to handle animations for elements too tall for the default 30% threshold
-      const svgContainer = this.querySelector(".svg-container");
+      const svgContainer = this.querySelector(".svg-container") as HTMLElement;
       if (svgContainer) {
         const observer = new IntersectionObserver(
           (entries) => {
+            // Trigger animation when the element reaches the middle of the viewport
             if (entries[0].isIntersecting) {
               svgContainer.style.opacity = "1";
               svgContainer.classList.add("animate__animated", "animate__wipeDown");
               observer.disconnect();
             }
           },
-          { threshold: 0.05 }, // Trigger when just 5% of the timeline enters the screen
+          { rootMargin: "0px 0px -50% 0px", threshold: 0 }, // Trigger when element hits middle of screen
         );
         observer.observe(this);
       }
@@ -448,8 +476,11 @@ const timelineData = JSON.stringify({
           return {
             x: nodeX,
             y: nodeY,
-            color: branches[branchIndex].color,
+            color: events[i].coloredAs
+              ? branches.find((b: any) => b.id === events[i].coloredAs).color
+              : branches[branchIndex].color,
             branch: events[i].branch,
+            track: events[i].track,
             idx: i,
           };
         })
@@ -465,33 +496,56 @@ const timelineData = JSON.stringify({
                  fill="none" stroke="${color}" stroke-width="3" opacity="${isMerge ? 0.6 : 1}" style="filter: drop-shadow(0 0 4px ${color}88);" />`;
       };
 
-      branches.forEach((b: any) => {
-        const bEvents = nodeCoords.filter((n: any) => n.branch === b.id);
+      const tracks = Array.from(new Set(events.map((e: any) => e.track)));
+
+      tracks.forEach((trackId: any) => {
+        const bEvents = nodeCoords.filter((n: any) => n.track === trackId);
         if (bEvents.length === 0) return;
 
-        // Vertical/Straight connections
+        const firstEvent = bEvents[0];
+        if (!firstEvent) return;
+        const b = branches.find((b: any) => b.id === firstEvent.branch);
+
+        // Vertical/Straight connections inside the same track
         for (let i = 0; i < bEvents.length - 1; i++) {
           svgContent += drawPath(bEvents[i], bEvents[i + 1], b.color);
         }
 
-        // Start curve
-        const firstEvent = bEvents[0];
-        if (firstEvent && firstEvent.idx > 0) {
-          const prev = nodeCoords[firstEvent.idx - 1];
-          if (prev) svgContent += drawPath(prev, firstEvent, b.color);
-        }
+        if (trackId !== "life") {
+          // Non-life tracks: Start curve from the latest 'life' commit
+          if (firstEvent!.idx > 0) {
+            const prevLife = [...nodeCoords].reverse().find((n: any) => n.idx < firstEvent!.idx && n.branch === "life");
+            const prev = prevLife || nodeCoords[firstEvent!.idx - 1]; // fallback if no life
+            svgContent += drawPath(prev, firstEvent, b.color);
+          }
 
-        // End curve (merging) or Open curve (active)
-        const lastEvent = bEvents[bEvents.length - 1];
-        if (lastEvent) {
-          if (!b.isOpen && lastEvent.idx < nodeCoords.length - 1) {
-            const next = nodeCoords[lastEvent.idx + 1];
-            if (next) svgContent += drawPath(lastEvent, next, b.color, true);
-          } else if (b.isOpen) {
-            // Draw straight dashed line down to indicate continuation
-            svgContent += `<path d="M ${lastEvent.x} ${lastEvent.y} L ${lastEvent.x} ${containerRect.height + 40}"
+          // End curve (merging) or Open dashed line
+          const lastEvent = bEvents[bEvents.length - 1];
+          if (!lastEvent) return;
+          if (!lastEvent) return;
+          const rawEvent = events[lastEvent!.idx];
+
+          if (!rawEvent.trackOpen && lastEvent!.idx < nodeCoords.length - 1) {
+            // Find the next life commit to merge back into
+            let next = null;
+            if (rawEvent.mergeIndex !== undefined) {
+              next = nodeCoords[rawEvent.mergeIndex];
+            } else {
+              const nextLife = nodeCoords.find((n: any) => n.idx > lastEvent!.idx && n.branch === "life");
+              next = nextLife || nodeCoords[lastEvent!.idx + 1];
+            }
+            if (next) {
+              svgContent += drawPath(lastEvent, next, b.color, true);
+            }
+          } else if (rawEvent.trackOpen) {
+            svgContent += `<path d="M ${lastEvent!.x} ${lastEvent!.y} L ${lastEvent!.x} ${containerRect.height + 40}"
                      fill="none" stroke="${b.color}" stroke-width="3" stroke-dasharray="6 6" opacity="0.8" style="filter: drop-shadow(0 0 4px ${b.color}88);" />`;
           }
+        } else {
+          // Life track always extends down (if trackOpen isn't false, which it shouldn't be for life)
+          const lastEvent = bEvents[bEvents.length - 1];
+          svgContent += `<path d="M ${lastEvent!.x} ${lastEvent!.y} L ${lastEvent!.x} ${containerRect.height + 40}"
+                     fill="none" stroke="${b.color}" stroke-width="3" stroke-dasharray="6 6" opacity="0.8" style="filter: drop-shadow(0 0 4px ${b.color}88);" />`;
         }
       });
 
