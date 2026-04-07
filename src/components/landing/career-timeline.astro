@@ -7,7 +7,6 @@ const events = [
     track: "life",
     trackOpen: true,
     title: "Vienna, Austria",
-    detail: "Born and raised",
   },
   {
     commit: "a41c2de",
@@ -16,7 +15,19 @@ const events = [
     track: "highschool",
     trackOpen: true,
     title: "AHS Wiedner Gymnasium",
-    detail: "Graduated with Honors, Focus on natural sciences & mathematics",
+    detail: "Graduated with honors",
+    extendedDescription:
+      "Wrote my VWA (thesis) on the tensile strength of 3D-printed components. For this I built a Tensile Test Machine to measure the tensile strength of 3D-printed components for my final paper. The thesis won three awards and sparked my passion for hardware design and scientific research.",
+    highlights: [
+      "Dr. Hans Riegel-Fachpreis Physik (Kaiserschild Foundation)",
+      "VWA-Preis of the Faculty of Electrical Engineering (TU Graz)",
+      "Austrian Physical Society VWA Award",
+    ],
+    projects: [
+      { label: "Paper", href: "https://projects.juliushussl.at/VWA/VWA%20-%20Julius%20Hussl.pdf" },
+      { label: "Tensile Test Machine", href: "https://github.com/Iqwertz/OpenPull-Web-Controller" },
+      { label: "Open Pull Analyzer", href: "https://github.com/Iqwertz/OpenPullTestDataVisualizer" },
+    ],
   },
   {
     commit: "c0ffeeb",
@@ -27,11 +38,9 @@ const events = [
     mergeBefore: "e55c192",
     title: "Intern @ CERN",
     detail:
-      "HSSIP Program: Worked on a portable configurator for network switches at the LHCb, Learned about the different detectors at CERN and what it takes to run a particle collider",
-    highlights: [
-      "Built a portable configurator for network switches at LHCb",
-      "Learned detector architecture and collider operations",
-    ],
+      "HSSIP Program. Lifed on-site at CERN for 2 Weeks and got the opertunity to work on real hardware for the LHCb experiment.",
+    extendedDescription:
+      "During the HSSIP internship I got to see what it takes to run one of the largest scientific experiments in the world. I developed a portable configurator for the LHCb network switches, which was then used by the on-site engineers to quickly reconfigure the network during maintenance periods. During that time my office desk was beside the room in which the Internet was invented, which was a quiet a nice touch. In general it was a truly inspiring experience that showed me how cutting-edge science is done in practice and sparked my passion for scientific research and hardware design.",
   },
   {
     commit: "b00b1e5",
@@ -40,24 +49,31 @@ const events = [
     track: "life",
     coloredAs: "work",
     trackOpen: true,
-    title: "Intern @ Web & Söhne",
+    title: "Software Intern @ Web & Söhne",
     detail:
-      "Learned to develop professional web applications using Angular and Express.js gaining hands-on experience in full-stack development | Got insight into how a software companies manage big teams and workloads",
-    highlights: [
-      "Built full-stack features with Angular and Express.js",
-      "Collaborated in larger team and delivery workflows",
+      "Two summer internships at a Vienna-based software company specializing in custom IT solutions for B2B clients.",
+    extendedDescription:
+      "My first real exposure to professional B2B software delivery. I had a phenomenal mentor who showed me how large tech companies structure their workflows. Learned how to build reliable full-stack applications with Angular and Express.js, set up CI/CD pipelines, and adopted modern Agile delivery workflows. After the internship I fully got into software development and allowed me to get my first freelance clients right out of high school.",
+    projects: [
+      { label: "Battlebots", href: "https://projects.juliushussl.at/Battlebots/#/" },
+      { label: "Connect-4 Online", href: "https://projects.juliushussl.at/Connect-4/#/Connect-4/" },
     ],
   },
   {
     commit: "1a2b3c4",
-    date: "Apr 2021",
+    date: "Apr 2021 - Present",
     branch: "freelance",
     track: "freelance",
     trackOpen: true,
-    title: "Self Employed Dev",
-    detail: "Fullstack SW dev, MVP development & 3D printing",
-    highlights: ["Built MVPs for early-stage ideas", "Delivered custom full-stack solutions"],
-    projects: [{ label: "Project portfolio", href: "/projects" }],
+    title: "Self-Employed Software Engineer",
+    detail: "Registered EPU. Building software solutions for startups, small businesses, and Universities.",
+    extendedDescription:
+      "Started taking on freelance clients after my first internship and never stopped since. I've built custom web applications, internal tools, and automation scripts for a variety of clients, including startups, small businesses, and universities. This work has allowed me to apply my software development skills in a real-world context and has taught me how to effectively communicate with clients to understand their needs and deliver solutions that exceed their expectations.",
+    highlights: [
+      "Collaborated with the University of Salzburg on custom internal web projects",
+      "Built MVPs from scratch for clients",
+      "Did custom 3D printing & hardware prototyping projects",
+    ],
   },
   {
     commit: "e55c192",
@@ -67,8 +83,10 @@ const events = [
     trackOpen: false,
     mergeBefore: "90a1b2c",
     title: "Civilian Servant @ everyone codes",
-    detail: "Managed UX-Design course & agile team management",
-    highlights: ["Managed UX design course", "Supported agile team management"],
+    detail: "Taught programming to long-term unemployed individuals to help them transition into tech.",
+    extendedDescription:
+      "As part of my civilian service, I worked for everyone codes, a non-profit organization that provides free programming education to long-term unemployed individuals. I taught basic programming concepts and helped students build their own projects to improve their chances of finding employment in the tech industry. I learned that struggling to learn technical concepts is rarely just about skill or intelligence, it's usually linked to navigating massive personal and social barriers. A lesson in patience and community support I'll never forget.",
+    projects: [{ label: "everyone codes", href: "https://everyonecodes.io/" }],
   },
   {
     commit: "90a1b2c",
@@ -77,17 +95,23 @@ const events = [
     track: "life",
     trackOpen: true,
     title: "Relocating to Munich",
-    detail: "Moved to Munich to begin academic studies at TUM.",
   },
   {
     commit: "8b9c0d1",
-    date: "Aug 2022 - Aug 2025",
+    date: "Aug 2022 - Sept 2025",
     branch: "academic",
     track: "uni",
     trackOpen: true,
     title: "B.Sc. Physics",
-    detail: "Technical University of Munich",
-    highlights: ["Built strong analytical and quantitative foundation"],
+    detail: "TUM Munich. Thesis: Determination of the Spectrum of Remoderated Positrons",
+    extendedDescription:
+      "Graduated in minimum study time. For my thesis at the FRMII reactor, I designed a retarding field analyzer to characterize the energy spectrum of remoderated positrons. This involved designing and assembling a custom 'active' sample holder that could generate a retarding field while being held at a few kV potential, which was quite a fun hardware challenge, involving c programming, 3D printing, PCB design, soldering and a lot of coffee. I also learned how to verify and improve the design using COMSOL multiphysics simulations, which was a great introduction to computational physics techniques.",
+    projects: [
+      {
+        label: "Bachelor's Thesis",
+        href: "https://projects.juliushussl.at/Bachelorarbeit/Bachelorarbeit_Julius_Hussl.pdf",
+      },
+    ],
   },
   {
     commit: "7cd103e",
@@ -95,16 +119,19 @@ const events = [
     branch: "extra",
     track: "extra",
     trackOpen: true,
-    title: "Networkdepartment @ Schollheim",
-    detail:
-      "Managing the network infrastructure of the student dorm Schollheim. Developed Smartdorm and Rooms to manage internal processes and room reservations more efficiently",
+    title: "IT Lead @ Schollheim Network Dept.",
+    detail: "Managing the IT and network infrastructure for a 300-resident dorm.",
+    extendedDescription:
+      "In parallel to maintaining the dorm's IT and authentication infrastructure, I architected and shipped two core internal platforms used by every resident. SmartDorm, which is a full tenant-lifecycle management system (React, Django, PostgreSQL, Redis, LDAP) that replaced a legacy setup and now supports over 300 active residents plus thousands of former tenants and Rooms, which is a shared-space booking and access-management app (Angular 17, Express.js, Redis, LDAP) used by residents to reserve rooms and manage access codes. To scale collaboration within the network-admin team, I introduced structured Git workflows and CI/CD pipelines for reliable releases. Both systems have been operating stably in production for over a year without significant downtime.",
     highlights: [
-      "Maintained dorm network infrastructure",
-      "Built tools to streamline internal processes and reservations",
+      "Built SmartDorm and migrated legacy workflows to a modern platform managing full tenant lifecycles",
+      "Built Rooms for shared-space booking and access-code management, adopted by nearly 300 residents",
+      "Maintained LDAP-backed auth and dorm IT services; introduced Git + CI/CD practices for collaborative delivery",
+      "Designed an ESP32 based washing machine tracker for real-time availability updates",
     ],
     projects: [
-      { label: "Smartdorm", href: "/projects" },
-      { label: "Rooms", href: "/projects" },
+      { label: "Smartdorm", href: "https://smartdorm.juliushussl.at/login" },
+      { label: "Rooms", href: "https://rooms.schollheim.net/#/" },
     ],
   },
   {
@@ -113,22 +140,29 @@ const events = [
     branch: "extra",
     track: "extra",
     trackOpen: true,
-    title: "Board Member @ 'Ein Zuhause für Bukarester Straßenkinder'",
+    title: "Board Member at the Charity 'Ein Zhause für Bukarester Straßenkinder'",
     detail:
-      "Joined the charity as a board member, helping to organize fundraising events and manage the charity's online presence",
-    highlights: ["Co-organized fundraising initiatives", "Maintained and improved the charity’s online presence"],
+      "Helping run a charity focused on supporting children that have to grow up in less fortunate circumstances.",
   },
   {
     commit: "7fc2901",
-    date: "June 2024",
+    date: "June 2024 - Present",
     branch: "work",
     track: "linque",
     trackOpen: true,
     branchFromTrack: "uni",
     title: "Working Student @ Linque",
-    detail: "Developing Python software & FPGA designs",
-    highlights: ["Developing Python software", "Contributing to FPGA design workflows"],
-    projects: [{ label: "Project showcase", href: "/projects" }],
+    detail:
+      "Working at the deep-tech photonics startup Linque, created the control software for their photonic chips and manage the companies internal IT infrastructure.",
+    extendedDescription:
+      "Joined Linque as one of the earliest working students and helped build the product control architecture from an experimental setup into a production-oriented stack. Replaced a Raspberry-Pi-based control path with a custom FPGA implementation (Microblaze + Custom IP Cores), reducing measurement cycles from ~30 minutes to ~100 ms. Designed optimization pipelines for MZI networks, including Particle Swarm Optimization with path-sweeping refinement, and later implemented frequency-modulation plus FFT-based routines to enable continuous live tuning without downtime. My work spans the full product stack, from embedded FPGA logic and PCB integration, over low-level c drivers, up to higher-level python scripts and web interfaces, ensuring seamless operation and rapid iteration cycles for our photonic products.",
+    highlights: [
+      "Migrated chip control from Raspberry Pi to custom FPGA logic, cutting measurement time from ~30 minutes to ~100 ms",
+      "Developed a PSO + path-sweeping optimization pipeline for non-convex photonic state tuning",
+      "Implemented frequency-modulation and FFT-based calibration routines for live, zero-downtime operation",
+      "Worked across product layers from embedded/PCB integration to higher-level software interfaces",
+    ],
+    projects: [{ label: "Startup Website", href: "https://linque.eu" }],
   },
   {
     commit: "4b92def",
@@ -137,8 +171,7 @@ const events = [
     track: "uni",
     trackOpen: true,
     title: "MSc. Condensed Matter Physics",
-    detail: "Technical University of Munich",
-    highlights: ["Specializing in condensed matter physics"],
+    detail: "TUM Munich. Focus on computational materials, applied ML and photonics.",
   },
 ];
 
@@ -197,13 +230,16 @@ const timelineData = JSON.stringify({
               const eventBranch = branches.find((b) => b.id === event.branch);
               const coloredBranch = event.coloredAs ? branches.find((b) => b.id === event.coloredAs) : eventBranch;
               const isExpandable =
-                (event.highlights && event.highlights.length > 0) || (event.projects && event.projects.length > 0);
+                (event.extendedDescription && event.extendedDescription.length > 0) ||
+                (event.highlights && event.highlights.length > 0) ||
+                (event.projects && event.projects.length > 0);
 
               return (
                 <div
                   class={`git-row group ${isExpandable ? "is-expandable" : ""}`}
                   data-row-index={rowIndex}
                   data-commit={event.commit}
+                  data-description={event.extendedDescription ? encodeURIComponent(event.extendedDescription) : ""}
                   data-highlights={JSON.stringify(event.highlights ?? [])}
                   data-projects={JSON.stringify(event.projects ?? [])}
                   data-scroll-animate="fadeInRight"
@@ -290,7 +326,6 @@ const timelineData = JSON.stringify({
     border-radius: 12px;
     border: 1px solid #1e293b;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    //box-shadow: 15px 15px 0 var(--accent);
     font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
     overflow: hidden;
     color: #e2e8f0;
@@ -395,7 +430,7 @@ const timelineData = JSON.stringify({
       flex-grow: 1;
       display: flex;
       flex-direction: column;
-      min-width: 0; /* Important for flex children to allow text wrapping inside */
+      min-width: 0;
     }
   }
 
@@ -487,7 +522,7 @@ const timelineData = JSON.stringify({
           -apple-system,
           sans-serif;
         white-space: normal;
-        overflow-wrap: break-word; /* Ensure detail text wraps properly on mobile */
+        overflow-wrap: break-word;
       }
     }
   }
@@ -520,11 +555,11 @@ const timelineData = JSON.stringify({
     margin-top: 0.85rem;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    background: #020617#fff;
+    background: #020617;
     transition:
       width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
       opacity 0.2s ease;
-    overflow: hidden; /* Avoid nowrap which blocks mobile, use hidden to restrict horizontal growth */
+    overflow: hidden;
     cursor: default;
   }
 
@@ -542,7 +577,7 @@ const timelineData = JSON.stringify({
 
   .terminal-prompt {
     display: flex;
-    align-items: flex-start; /* Better alignment on mobile */
+    align-items: flex-start;
     gap: 0.5rem;
     color: #e2e8f0;
 
@@ -572,27 +607,37 @@ const timelineData = JSON.stringify({
     }
   }
 
+  /* Support for mixed layout text paragraphs and bullet points in output */
+  :global(.terminal-text) {
+    margin: 0 0 0.85rem 0;
+    line-height: 1.55;
+    color: #e2e8f0;
+    white-space: pre-line;
+  }
+
   :global(.detail-list),
   :global(.projects-list) {
     margin: 0;
     padding: 0;
     list-style: none;
   }
+
   :global(.detail-list li),
   :global(.projects-list li) {
     display: flex;
     align-items: flex-start;
     gap: 0.5rem;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.45rem;
     line-height: 1.5;
   }
+
   :global(.bullet) {
     color: var(--branch-color);
-    flex-shrink: 0; /* Prevent bullet squishing on mobile */
+    flex-shrink: 0;
   }
 
   :global(.project-links) {
-    margin-top: 0.85rem;
+    margin-top: 1rem;
     padding-top: 0.65rem;
     border-top: 1px dashed rgba(255, 255, 255, 0.1);
   }
@@ -625,7 +670,6 @@ const timelineData = JSON.stringify({
     }
   }
 
-  /* Compact Mobile Layout */
   @media screen and (max-width: 600px) {
     .git-timeline-container {
       margin: 2rem 0.5rem;
@@ -649,7 +693,7 @@ const timelineData = JSON.stringify({
       gap: 0.5rem;
     }
     .git-graph-wrapper .svg-container {
-      width: 75px; /* Dynamically adjusted for scaled-down branches */
+      width: 75px;
     }
     .git-row {
       padding-left: 0;
@@ -733,10 +777,8 @@ const timelineData = JSON.stringify({
       this.addEventListener("click", (event) => {
         const target = event.target as HTMLElement;
 
-        // Ensure links are clickable without toggling the row
         if (target.tagName === "A") return;
 
-        // Avoid triggering click if text is being selected
         const selection = window.getSelection();
         if (selection && selection.toString().length > 0) return;
 
@@ -746,8 +788,6 @@ const timelineData = JSON.stringify({
         const isInsideTerminal = target.closest(".terminal-container") !== null;
         const isOpen = row.classList.contains("is-open");
 
-        // Allow interacting/selecting inside terminal without closing
-        // Clicking on the rest of the row (header, title, detail) will close it
         if (isOpen && isInsideTerminal) return;
 
         if (isOpen) {
@@ -788,12 +828,16 @@ const timelineData = JSON.stringify({
     openReveal(row: HTMLElement) {
       this.clearTypingTimers();
 
-      // Automatically close previously opened rows (Accordion behaviour)
       this.querySelectorAll(".git-row.is-open").forEach((openedRow) => {
         if (openedRow !== row) this.closeReveal(openedRow as HTMLElement);
       });
 
       const commit = row.dataset.commit ?? "";
+
+      // Decrypt the newly supported extendedDescription format
+      const rawDesc = row.dataset.description ?? "";
+      const description = rawDesc ? decodeURIComponent(rawDesc) : "";
+
       const highlights = JSON.parse(row.dataset.highlights ?? "[]") as string[];
       const projects = JSON.parse(row.dataset.projects ?? "[]") as Array<{ label: string; href: string }>;
 
@@ -809,7 +853,6 @@ const timelineData = JSON.stringify({
       output.innerHTML = "";
       output.classList.remove("is-visible");
 
-      // Give the CSS width transition some time to sweep out before typing begins (300ms)
       const initTimer = window.setTimeout(() => {
         const fullCommand = `git show ${commit} --details`;
         const chars = Array.from(fullCommand);
@@ -825,7 +868,7 @@ const timelineData = JSON.stringify({
 
           command.classList.remove("typing-caret");
           const renderTimer = window.setTimeout(() => {
-            this.renderOutput(output, highlights, projects);
+            this.renderOutput(output, description, highlights, projects);
           }, 100);
           this.typingTimers.push(renderTimer);
         };
@@ -836,8 +879,18 @@ const timelineData = JSON.stringify({
       this.typingTimers.push(initTimer);
     }
 
-    renderOutput(output: HTMLElement, highlights: string[], projects: Array<{ label: string; href: string }>) {
+    renderOutput(
+      output: HTMLElement,
+      description: string,
+      highlights: string[],
+      projects: Array<{ label: string; href: string }>,
+    ) {
       let html = "";
+
+      // Allow inserting smooth text directly in terminal.
+      if (description) {
+        html += `<p class="terminal-text">${description}</p>`;
+      }
 
       if (highlights.length) {
         html += `<ul class="detail-list">`;
@@ -874,7 +927,6 @@ const timelineData = JSON.stringify({
       const containerRect = container.getBoundingClientRect();
       if (containerRect.height === 0 || containerRect.width === 0) return;
 
-      // Adjust spacing and elements based on screen width
       const isMobile = window.innerWidth <= 600;
       const colWidth = isMobile ? 14 : 20;
       const offsetLeft = isMobile ? 10 : 14;
