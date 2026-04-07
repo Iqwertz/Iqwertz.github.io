@@ -1,90 +1,124 @@
-[
-  {
-    "id": "birth",
-    "date": "1998",
-    "type": "milestone",
-    "title": "Born"
-  },
-  {
-    "id": "start_highschool",
-    "parentId": "birth",
-    "date": "2012",
-    "type": "education",
-    "title": "Started High School",
-    "institution": "Your High School Name"
-  },
-  {
-    "id": "end_highschool",
-    "parentId": "start_highschool",
-    "date": "2017",
-    "type": "education",
-    "title": "Graduated High School"
-  },
-  {
-    "id": "start_uni_physics",
-    "parentId": "end_highschool",
-    "date": "2018-10",
-    "type": "education",
-    "title": "Started BSc Physics",
-    "institution": "LMU Munich",
-    "description": "Initial studies in Physics.",
-    "details": "Focused on theoretical physics and computational methods. Enjoyed astrophysics electives."
-  },
-  {
-    "id": "start_freelance",
-    "parentId": "end_highschool",
-    "date": "2017-09",
-    "type": "job",
-    "title": "Started Freelance Dev",
-    "company": "Self-Employed",
-    "description": "Early web development projects.",
-    "details": "Built websites using HTML, CSS, JS, and later explored frameworks like Angular and Vue. Also worked with Arduino and Raspberry Pi for hardware integration projects."
-  },
-  {
-    "id": "bukarest_project",
-    "parentId": "start_freelance",
-    "date": "2019-03",
-    "type": "project",
-    "title": "Website E.Z.f.B.S.",
-    "description": "Created site for charity org."
-  },
-  {
-    "id": "vwa_project",
-    "parentId": "start_uni_physics",
-    "date": "2020-05",
-    "type": "project",
-    "title": "Tensile Test Machine (VWA)",
-    "description": "Built machine for graduation paper."
-  },
-  {
-    "id": "depictor_project",
-    "parentId": "start_freelance",
-    "date": "2021-08",
-    "type": "project",
-    "title": "Depictor Pen Plotter",
-    "description": "Developed open-source plotter software."
-  },
-  {
-    "id": "start_job_rooms",
-    "parentId": "start_uni_physics",
-    "date": "2023-11",
-    "type": "job",
-    "title": "Rooms App Developer",
-    "company": "Schollheim",
-    "description": "Managed room booking system for dorm."
-  },
-  {
-    "id": "current_physics",
-    "parentId": "start_uni_physics",
-    "date": "2024-07",
-    "type": "education",
-    "title": "Continuing BSc Physics"
-  },
-  {
-    "id": "current_freelance",
-    "parentId": "start_freelance",
-    "date": "2024-07",
-    "type": "job",
-    "title": "Active Freelance Dev"
-  }
-]
+{
+  "events": [
+    {
+      "commit": "init",
+      "date": "Sept 2013",
+      "branch": "life",
+      "track": "life",
+      "trackOpen": true,
+      "title": "The Journey Begins",
+      "detail": "Vienna, Austria",
+      "important": true
+    },
+    {
+      "commit": "a41c2de",
+      "date": "Sept 2013 - June 2021",
+      "branch": "academic",
+      "track": "highschool",
+      "trackOpen": false,
+      "title": "AHS Wiedner Gymnasium",
+      "detail": "High School & Matura graduation",
+      "mergeIndex": 6,
+      "important": true
+    },
+    {
+      "commit": "c0ffeeb",
+      "date": "Oct 2019",
+      "branch": "work",
+      "track": "work_history",
+      "trackOpen": true,
+      "title": "Intern @ CERN",
+      "detail": "Portable configurator for network switches at the LHCb"
+    },
+    {
+      "commit": "b00b1e5",
+      "date": "Aug 2020",
+      "branch": "work",
+      "track": "work_history",
+      "trackOpen": true,
+      "title": "Intern @ Web & Söhne",
+      "detail": "Full-stack development passing workflows with Angular & Express.js"
+    },
+    {
+      "commit": "1a2b3c4",
+      "date": "Apr 2021 - Present",
+      "branch": "freelance",
+      "track": "freelance",
+      "trackOpen": true,
+      "title": "Self Employed Dev",
+      "detail": "Fullstack SW dev, MVP development & 3D printing"
+    },
+    {
+      "commit": "e55c192",
+      "date": "Nov 2021 - Aug 2022",
+      "branch": "work",
+      "track": "work_history",
+      "trackOpen": false,
+      "title": "Civilian Servant",
+      "detail": "everyone codes: managed UX-Design course & agile team management",
+      "mergeIndex": 6
+    },
+    {
+      "commit": "90a1b2c",
+      "date": "Aug 2022",
+      "branch": "life",
+      "track": "life",
+      "trackOpen": true,
+      "title": "Relocating to Munich",
+      "detail": "Started academic path at Technical University of Munich",
+      "important": true
+    },
+    {
+      "commit": "8b9c0d1",
+      "date": "Aug 2022 - Aug 2025",
+      "branch": "academic",
+      "track": "uni",
+      "trackOpen": false,
+      "title": "BSc. Physics",
+      "detail": "Technical University of Munich",
+      "mergeIndex": 9,
+      "important": true
+    },
+    {
+      "commit": "7fc2901",
+      "date": "June 2024 - Present",
+      "branch": "work",
+      "track": "linque",
+      "trackOpen": true,
+      "title": "Working Student @ Linque",
+      "detail": "Developing Python software & FPGA designs"
+    },
+    {
+      "commit": "4b92def",
+      "date": "Aug 2025 - Present",
+      "branch": "academic",
+      "track": "uni",
+      "trackOpen": true,
+      "title": "MSc. Condensed Matter Physics",
+      "detail": "Technical University of Munich",
+      "important": true
+    }
+  ],
+  "branches": [
+    { "id": "life", "color": "#8b949e", "label": "Life", "isOpen": true },
+    {
+      "id": "academic",
+      "color": "#58a6ff",
+      "label": "Academic",
+      "isOpen": true
+    },
+    { "id": "work", "color": "#3fb950", "label": "Employment", "isOpen": true },
+    {
+      "id": "freelance",
+      "color": "#d2a8ff",
+      "label": "Freelance",
+      "isOpen": true
+    },
+    {
+      "id": "extra",
+      "color": "#f0883e",
+      "label": "Extracurricular",
+      "isOpen": true
+    }
+  ]
+}

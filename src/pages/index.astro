@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import AboutMe from "../components/landing/aboutme.astro";
 import ProjectList from "../components/landing/project-list.astro";
+import CareerTimeline from "../components/landing/career-timeline.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import "../styles/landing.scss";
 import type { ISourceOptions } from "tsparticles-engine";
@@ -163,6 +164,9 @@ const options: ISourceOptions = {
     </div>
     <div class="about-me" id="aboutme">
       <AboutMe />
+    </div>
+    <div class="career-timeline">
+      <CareerTimeline />
     </div>
     <div class="projects" id="projects">
       <ProjectList />
