@@ -25,19 +25,21 @@
   <div class="about-content" data-scroll-animate="fadeInRight">
     <h2>About Me</h2>
     <p>
-      <p>
-        Hello! I'm Julius, a physics student and freelance developer currently based in Munich, Germany. I'm passionate
-        about exploring new technologies and bringing ideas to life through coding and hardware. My journey in
-        programming began at the age of 14 when my uncle gifted me an Arduino Micro, sparking a deep interest in the
-        field. Since then, I've been continuously learning and building a variety of projects. <br /><br /> These days, I
-        primarily work with web technologies such as <span class="highlite">Angular</span>, <span class="highlite"
-          >Node.js</span
-        >, and <span class="highlite">TypeScript</span>. However, I also enjoy experimenting with <span class="highlite"
-          >microcontrollers</span
-        >, <span class="highlite">PCB design</span>, and <span class="highlite">3D printing</span>. Additionally, my
-        physics studies have given me the opportunity to work with <span class="highlite">Python</span> for data analysis
-        and simulations.
-      </p>
+      Hello! I'm Julius, a physics student and developer based in Munich. I enjoy exploring the intersection of physics,
+      hardware, and software and turning ideas into working systems. <br /><br />
+
+      My projects range from web applications and backend services to hardware development with
+      <span class="highlite">microcontrollers</span>, <span class="highlite">PCBs</span>, and
+      <span class="highlite">FPGAs</span>. Alongside my physics studies at the Technical University of Munich, I work on
+      control systems and optimization algorithms for integrated photonic chips at the startup Linque. Recently I have
+      also been exploring agentic coding and how large language models will reshape the way we build software and
+      hardware.
+      <br /><br />
+
+      I am most motivated by difficult problems that connect theory with practical engineering and result in systems
+      that actually work. I am always looking for new challenges and opportunities to learn and grow as a developer and
+      physicist. So if you have any cool projects you'd like to collaborate on, hit me up at
+      <a href="mailto:contact@juliushussl.at">contact@juliushussl.at</a>.
     </p>
   </div>
 </div>
@@ -48,11 +50,14 @@
     align-items: center;
     flex-flow: row;
     text-align: left;
-    width: 100vw;
+    width: 100%;
     color: var(--text-color);
+    overflow-x: clip;
 
     .about-content {
       max-width: 900px;
+      width: min(900px, calc(100vw - 2rem));
+      box-sizing: border-box;
       padding: 50px;
       margin: 20px 50px;
       border-radius: var(--border-radius);
@@ -91,7 +96,7 @@
       .about-content {
         font-size: 1em;
         padding: 20px;
-        width: 80vw;
+        width: calc(100vw - 2rem);
         margin: 0;
       }
     }

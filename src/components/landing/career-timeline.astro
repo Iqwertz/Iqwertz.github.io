@@ -38,7 +38,7 @@ const events = [
     mergeBefore: "e55c192",
     title: "Intern @ CERN",
     detail:
-      "HSSIP Program. Lifed on-site at CERN for 2 Weeks and got the opertunity to work on real hardware for the LHCb experiment.",
+      "HSSIP Program. Lived on-site at CERN for 2 Weeks and got the opertunity to work on real hardware for the LHCb experiment.",
     extendedDescription:
       "During the HSSIP internship I got to see what it takes to run one of the largest scientific experiments in the world. I developed a portable configurator for the LHCb network switches, which was then used by the on-site engineers to quickly reconfigure the network during maintenance periods. During that time my office desk was beside the room in which the Internet was invented, which was a quiet a nice touch. In general it was a truly inspiring experience that showed me how cutting-edge science is done in practice and sparked my passion for scientific research and hardware design.",
   },
@@ -68,7 +68,7 @@ const events = [
     title: "Self-Employed Software Engineer",
     detail: "Registered EPU. Building software solutions for startups, small businesses, and Universities.",
     extendedDescription:
-      "Started taking on freelance clients after my first internship and never stopped since. I've built custom web applications, internal tools, and automation scripts for a variety of clients, including startups, small businesses, and universities. This work has allowed me to apply my software development skills in a real-world context and has taught me how to effectively communicate with clients to understand their needs and deliver solutions that exceed their expectations.",
+      "Got the oppertunity to do some freelance software development after my internship and afterwards continued to take on freelance clients in parallel to my studies. I've built custom web applications, internal tools, and automation scripts for a variety of clients, including startups, small businesses, and universities. This work has allowed me to apply my software development skills in a real-world context and has taught me how to effectively communicate with clients to understand their needs and deliver solutions that exceed their expectations.",
     highlights: [
       "Collaborated with the University of Salzburg on custom internal web projects",
       "Built MVPs from scratch for clients",
@@ -159,10 +159,10 @@ const events = [
     highlights: [
       "Migrated chip control from Raspberry Pi to custom FPGA logic, cutting measurement time from ~30 minutes to ~100 ms",
       "Developed a PSO + path-sweeping optimization pipeline for non-convex photonic state tuning",
-      "Implemented frequency-modulation and FFT-based calibration routines for live, zero-downtime operation",
+      //"Implemented frequency-modulation and FFT-based calibration routines for live, zero-downtime operation",
       "Worked across product layers from embedded/PCB integration to higher-level software interfaces",
     ],
-    projects: [{ label: "Startup Website", href: "https://linque.eu" }],
+    projects: [{ label: "Linque", href: "https://linque.eu" }],
   },
   {
     commit: "4b92def",
@@ -209,7 +209,7 @@ const timelineData = JSON.stringify({
     </div>
 
     <div class="git-canvas">
-      <div class="git-legend">
+      <!--       <div class="git-legend">
         {
           branches.map((b) => (
             <span class="legend-item" style={`--b-color: ${b.color}`}>
@@ -217,7 +217,7 @@ const timelineData = JSON.stringify({
             </span>
           ))
         }
-      </div>
+      </div> -->
 
       <git-timeline data-timeline={timelineData} class="git-graph-wrapper">
         <div id="svg-container" class="svg-container" style="opacity: 0;">
@@ -243,7 +243,7 @@ const timelineData = JSON.stringify({
                   data-highlights={JSON.stringify(event.highlights ?? [])}
                   data-projects={JSON.stringify(event.projects ?? [])}
                   data-scroll-animate="fadeInRight"
-                  style={`animation-delay: ${rowIndex * 0.1}s;`}
+                  style={`animation-delay: ${rowIndex * 0.03}s;`}
                 >
                   <div class="git-content" style={`--branch-color: ${coloredBranch?.color};`}>
                     <div class="content-header">
@@ -769,7 +769,7 @@ const timelineData = JSON.stringify({
               observer.disconnect();
             }
           },
-          { rootMargin: "0px 0px -50% 0px", threshold: 0 },
+          { rootMargin: "0px 0px -30% 0px", threshold: 0 },
         );
         observer.observe(this);
       }
