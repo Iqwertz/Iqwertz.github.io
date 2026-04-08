@@ -7,12 +7,17 @@ function ElementVisible(
   percentage: number,
   callback: (isVisible: boolean) => void,
 ): void {
+  if (element.dataset.scrollAnimatePrepared === 'true') {
+    return;
+  }
+
   const options = {
     threshold: percentage / 100,
   };
 
-  //set innitial opacity to 0
+  //set initial opacity to 0 once before first reveal
   element.style.opacity = '0';
+  element.dataset.scrollAnimatePrepared = 'true';
 
   const observer = new IntersectionObserver((entries) => {
     const entry = entries[0];
@@ -35,6 +40,7 @@ function ElementVisible(
 
 // Define the handleScrollAnimation function for applying animations
 function handleScrollAnimation(element: HTMLElement) {
+  element.style.opacity = '1';
   element.classList.add('animate__animated');
 
   const animationName = element.getAttribute('data-scroll-animate');
@@ -43,7 +49,7 @@ function handleScrollAnimation(element: HTMLElement) {
   }
 
   // Remove the data-scroll-animate attribute to prevent re-triggering the animation
-  // element.removeAttribute("data-scroll-animate");
+  element.removeAttribute('data-scroll-animate');
 }
 
 // Define the main scroll event listener function
